@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 32386125}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2952,7 +2952,7 @@ GameObject:
   - component: {fileID: 1057955659}
   - component: {fileID: 1057955658}
   m_Layer: 0
-  m_Name: tappeto2
+  m_Name: tappeto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2965,10 +2965,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1057955656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.016708, y: 0.050975107, z: -0.32}
-  m_LocalScale: {x: 0.2330568, y: 2.31015, z: 0.3219693}
+  m_LocalPosition: {x: 0.1437637, y: 0.050975304, z: -0.32}
+  m_LocalScale: {x: 0.23305663, y: 2.310159, z: 0.32196897}
   m_Children: []
-  m_Father: {fileID: 1592502321}
+  m_Father: {fileID: 580661930}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1057955658
@@ -3956,6 +3956,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3432456, y: 0.96687555, z: 2.400084}
   m_Center: {x: 0.1716237, y: 0.45132187, z: -0.24278776}
+--- !u!1 &1601999532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1601999534}
+  - component: {fileID: 1601999533}
+  m_Layer: 0
+  m_Name: A*
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1601999533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601999532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd0333aec37ba440b1ad6493292126b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  gridWorldSize: {x: 62, y: 62}
+  nodeRadius: 0
+--- !u!4 &1601999534
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601999532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.6, y: 0, z: -30.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1632259680 stripped
 Transform:
   m_PrefabParentObject: {fileID: 479256, guid: 220c818457a8d2441bf84edb4edee095, type: 2}
@@ -4489,10 +4534,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1938381561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 0.0509753, z: -0.32}
-  m_LocalScale: {x: 0.23305683, y: 2.3101504, z: 0.321969}
+  m_LocalPosition: {x: 0.13952811, y: 0.050975103, z: -0.3200003}
+  m_LocalScale: {x: 0.23305695, y: 2.3101413, z: 0.32196924}
   m_Children: []
-  m_Father: {fileID: 580661930}
+  m_Father: {fileID: 1592502321}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1938381563
@@ -4621,7 +4666,7 @@ GameObject:
   - component: {fileID: 1977895177}
   - component: {fileID: 1977895176}
   - component: {fileID: 1977895178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Muri
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4635,7 +4680,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977895174}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -1.5108978, z: 0}
+  m_LocalPosition: {x: 0, y: -1.53, z: 0}
   m_LocalScale: {x: 125.53227, y: 125.532234, z: 125.53225}
   m_Children: []
   m_Father: {fileID: 66186549}
