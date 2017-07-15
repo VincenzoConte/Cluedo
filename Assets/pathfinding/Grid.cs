@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Grid : MonoBehaviour {
 
 	public LayerMask unwalkableMask;
-	public Vector2 gridWorldSize;
-	public float nodeRadius;
+	Vector2 gridWorldSize;
+	float nodeRadius;
 	Node[,] grid;
     public Transform bottomRight;
 
@@ -18,6 +18,7 @@ public class Grid : MonoBehaviour {
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;
 		gridSizeY = 25;
+        gridWorldSize = new Vector2(24 * nodeDiameter, 25 * nodeDiameter);
 		CreateGrid();
 	}
 
@@ -29,8 +30,8 @@ public class Grid : MonoBehaviour {
         for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius-0.4f,unwalkableMask));
-				grid[x,y] = new Node(walkable,worldPoint, x,y);
+				bool walkable = !(Physics.CheckSphere(worldPoint ,nodeRadius-0.4f ,unwalkableMask));
+				grid[x,y] = new Node(walkable, worldPoint, x, y);
 			}
 		}
 	}
