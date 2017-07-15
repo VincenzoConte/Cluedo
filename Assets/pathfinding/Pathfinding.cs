@@ -79,7 +79,8 @@ public class Pathfinding : MonoBehaviour {
 
     void Move(List<Node> path)
     {
-        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+        //cammino
+        /*foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
             GameObject.Destroy(t, 0f);
         Vector3[] points= new Vector3[path.Count];
         int i = 0;
@@ -89,7 +90,17 @@ public class Pathfinding : MonoBehaviour {
             points[i] = new Vector3(n.worldPosition.x, y, n.worldPosition.z);
             i++;
         }
-        seeker.transform.DOPath(points, path.Count, PathType.CatmullRom, PathMode.Full3D, 5);
+        seeker.transform.DOPath(points, path.Count, PathType.CatmullRom, PathMode.Full3D, 5);*/
+
+        //salti
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+            GameObject.Destroy(t, 0f);
+        Sequence seq = DOTween.Sequence();
+        float y = seeker.position.y;
+        foreach (Node n in path)
+        {
+            seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, y, n.worldPosition.z),1 , 1, 1));
+        }
 
 
     }
