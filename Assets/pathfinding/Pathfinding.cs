@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class Pathfinding : MonoBehaviour {
 
-	public Transform seeker, target;
+	public Transform seeker;
     public int length;
 	Grid grid;
 
@@ -70,11 +71,28 @@ public class Pathfinding : MonoBehaviour {
 			currentNode = currentNode.parent;
 		}
 		path.Reverse();
-        //Move();
+        Move(path);
         //testing
-        seeker.transform.position = endNode.worldPosition;
+        //seeker.transform.position = endNode.worldPosition;
 
 	}
+
+    void Move(List<Node> path)
+    {
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+            GameObject.Destroy(t, 0f);
+        Vector3[] points= new Vector3[path.Count];
+        int i = 0;
+        float y = seeker.position.y;
+        foreach(Node n in path)
+        {
+            points[i] = new Vector3(n.worldPosition.x, y, n.worldPosition.z);
+            i++;
+        }
+        seeker.transform.DOPath(points, path.Count, PathType.CatmullRom, PathMode.Full3D, 5);
+
+
+    }
 
 	int GetDistance(Node nodeA, Node nodeB) {
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);

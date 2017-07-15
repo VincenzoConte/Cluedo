@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveOnClick : MonoBehaviour {
 
     Pathfinding aStar;
+    //public Node parent;
 	// Use this for initialization
 	void Start () {
         aStar = GameObject.Find("A*").GetComponent<Pathfinding>();
@@ -23,6 +24,7 @@ public class MoveOnClick : MonoBehaviour {
 
     void OnMouseDown()
     {
+        //aStar.FindPath(parent.worldPosition);
         aStar.FindPath(transform.position);
     }
 }

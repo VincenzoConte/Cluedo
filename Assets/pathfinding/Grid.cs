@@ -106,6 +106,7 @@ public class Grid : MonoBehaviour {
                 new Quaternion());
             clone.transform.localScale = new Vector3(nodeDiameter - .8f, 0.2f, nodeDiameter - .8f);
             clone.tag = "target";
+            //clone.GetComponent<MoveOnClick>().parent = n;
         }
     }
 

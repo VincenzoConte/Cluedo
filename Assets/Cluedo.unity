@@ -2555,13 +2555,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 868966951}
-  m_LocalRotation: {x: 0.31251666, y: -0, z: -0, w: 0.9499123}
-  m_LocalPosition: {x: -0.18, y: 1.601, z: -2.9}
+  m_LocalRotation: {x: 0.3374808, y: -0, z: -0, w: 0.94133246}
+  m_LocalPosition: {x: 0, y: 1.66, z: -2.8}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 891841763}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.422, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 39.447002, y: 0, z: 0}
 --- !u!1001 &886246854
 Prefab:
   m_ObjectHideFlags: 0
@@ -2729,7 +2729,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891841757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 1.94, z: 0.26}
+  m_LocalPosition: {x: 11.47, y: 1.94, z: 0.57}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 868966956}
@@ -4143,8 +4143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seeker: {fileID: 891841763}
-  target: {fileID: 0}
-  length: 1
+  length: 5
 --- !u!4 &1632259680 stripped
 Transform:
   m_PrefabParentObject: {fileID: 479256, guid: 220c818457a8d2441bf84edb4edee095, type: 2}
