@@ -8,12 +8,13 @@ public class Grid : MonoBehaviour {
 	public Vector2 gridWorldSize;
 	public float nodeRadius;
 	Node[,] grid;
+    public Transform bottomRight;
 
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
 
 	void Awake() {
-        nodeRadius = gridWorldSize.x / 48;
+        nodeRadius = (-transform.position.x+bottomRight.position.x) / 48;
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;
 		gridSizeY = 25;
@@ -28,7 +29,7 @@ public class Grid : MonoBehaviour {
         for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
+				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius-0.4f,unwalkableMask));
 				grid[x,y] = new Node(walkable,worldPoint, x,y);
 			}
 		}
@@ -76,7 +77,7 @@ public class Grid : MonoBehaviour {
 				if (path != null)
 					if (path.Contains(n))
 						Gizmos.color = Color.black;
-				Gizmos.DrawCube(n.worldPosition, new Vector3(1,0.1f,1) * (nodeDiameter-.3f));
+				Gizmos.DrawCube(n.worldPosition, new Vector3(1,0.1f,1) * (nodeDiameter-.8f));
 			}
 		}
 
