@@ -12,6 +12,7 @@ public class Node {
 	public int hCost;
 	public Node parent;
     public int position;
+    public bool room=false;
 	
 	public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY) {
 		walkable = _walkable;

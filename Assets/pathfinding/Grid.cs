@@ -34,7 +34,28 @@ public class Grid : MonoBehaviour {
 				grid[x,y] = new Node(walkable, worldPoint, x, y);
 			}
 		}
+        CreateDoors();
 	}
+
+    void CreateDoors()
+    {
+        grid[6, 6].room = true;
+        grid[6, 8].room = true;
+        grid[8,12].room = true;
+        grid[11,7].room = true;
+        grid[12,7].room = true;
+        grid[17,4].room = true;
+        grid[16,8].room = true;
+        grid[20,11].room = true;
+        grid[22,11].room = true;
+        grid[17,15].room = true;
+        grid[4, 17].room = true;
+        grid[7, 19].room = true;
+        grid[9, 16].room = true;
+        grid[14, 16].room = true;
+        grid[16, 19].room = true;
+        grid[18, 18].room = true;
+    }
 
 	public List<Node> GetNeighbours(Node node) {
 		List<Node> neighbours = new List<Node>();
@@ -78,7 +99,9 @@ public class Grid : MonoBehaviour {
 				if (path != null)
 					if (path.Contains(n))
 						Gizmos.color = Color.black;
-				Gizmos.DrawCube(n.worldPosition, new Vector3(1,0.1f,1) * (nodeDiameter-.8f));
+                if(n.room)
+                    Gizmos.color = Color.blue;
+                Gizmos.DrawCube(n.worldPosition, new Vector3(1,0.1f,1) * (nodeDiameter-.8f));
 			}
 		}
 
