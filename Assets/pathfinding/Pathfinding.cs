@@ -16,7 +16,8 @@ public class Pathfinding : MonoBehaviour {
 		FindTargets (seeker.position, length);
 	}
 
-	void FindPath(Vector3 startPos, Vector3 targetPos) {
+	public void FindPath(Vector3 targetPos) {
+        Vector3 startPos = seeker.position;
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
@@ -69,8 +70,9 @@ public class Pathfinding : MonoBehaviour {
 			currentNode = currentNode.parent;
 		}
 		path.Reverse();
-
-		grid.path = path;
+        //Move();
+        //testing
+        seeker.transform.position = endNode.worldPosition;
 
 	}
 
@@ -133,6 +135,7 @@ public class Pathfinding : MonoBehaviour {
         }
         targets.Remove(startNode);
         grid.path = targets;
+        grid.DrawTargets();
     }
 
 }

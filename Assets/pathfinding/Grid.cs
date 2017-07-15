@@ -9,6 +9,7 @@ public class Grid : MonoBehaviour {
 	float nodeRadius;
 	Node[,] grid;
     public Transform bottomRight;
+    public GameObject target;
 
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
@@ -91,17 +92,34 @@ public class Grid : MonoBehaviour {
 
 	public List<Node> path;
 
+    public void DrawTargets()
+    {
+        //testing
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+            GameObject.Destroy(t, 0f);
+        //end testing
+        foreach(Node n in path)
+        {
+            GameObject clone=GameObject.Instantiate(
+                target,
+                n.worldPosition,
+                new Quaternion());
+            clone.transform.localScale = new Vector3(nodeDiameter - .8f, 0.2f, nodeDiameter - .8f);
+            clone.tag = "target";
+        }
+    }
+
 	void OnDrawGizmos() {
         //Gizmos.DrawWireCube(transform.position,new Vector3(gridWorldSize.x,1,gridWorldSize.y));
         if (grid != null) {
 			foreach (Node n in grid) {
 				Gizmos.color = (n.walkable)?Color.white:Color.red;
-				if (path != null)
+				/*if (path != null)
 					if (path.Contains(n))
-						Gizmos.color = Color.black;
+						Gizmos.color = Color.black;*/
                 if(n.room)
                     Gizmos.color = Color.blue;
-                Gizmos.DrawCube(n.worldPosition, new Vector3(1,0.1f,1) * (nodeDiameter-.8f));
+                Gizmos.DrawCube(n.worldPosition, new Vector3(nodeDiameter - .8f, 0.1f, nodeDiameter - .8f));
 			}
 		}
 
