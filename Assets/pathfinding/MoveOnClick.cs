@@ -24,7 +24,7 @@ public class MoveOnClick : MonoBehaviour {
 
     void OnMouseDown()
     {
-        //aStar.FindPath(parent.worldPosition);
         aStar.FindPath(transform.position);
+  
     }
 }

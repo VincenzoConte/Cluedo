@@ -39,6 +39,8 @@ public class Pathfinding : MonoBehaviour {
 			closedSet.Add(node);
 
 			if (node == targetNode) {
+                targetNode.walkable = false;
+                startNode.walkable = true;
 				RetracePath(startNode,targetNode);
 				return;
 			}
@@ -105,6 +107,15 @@ public class Pathfinding : MonoBehaviour {
 
     }
 
+    public void MoveInRoom(Room room)
+    {
+        Node n = room.GetWalkableNode();
+        if (n != null)
+        {
+            seeker.transform.position = n.worldPosition;
+        }
+    }
+
 	int GetDistance(Node nodeA, Node nodeB) {
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
 		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
@@ -134,14 +145,26 @@ public class Pathfinding : MonoBehaviour {
             }
 
             openSet.Remove(node);
+            bool room = false;
+            if (node.room != null)
+            {
+                if (node.position < length)
+                    node.drawRoom = true;
+                room = true;
+            }
 
             foreach (Node neighbour in grid.GetNeighbours(node))
             {
                 if (neighbour.walkable && !targets.Contains(neighbour))
                 {
+                    bool isInRoom=false;
+                    if (room && Room.CheckNode(neighbour))
+                    {
+                        isInRoom = true;
+                    }
 
                     //int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-                    if (!openSet.Contains(neighbour) || /*newCostToNeighbour < neighbour.gCost*/ node.position+1 < neighbour.position)
+                    if (!isInRoom && (!openSet.Contains(neighbour) || /*newCostToNeighbour < neighbour.gCost*/ node.position+1 < neighbour.position))
                     {
                         //neighbour.gCost = newCostToNeighbour;
                         //neighbour.hCost = 0;

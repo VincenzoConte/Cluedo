@@ -10,6 +10,7 @@ public class Grid : MonoBehaviour {
 	Node[,] grid;
     public Transform bottomRight;
     public GameObject target;
+    public GameObject roomTarget;
 
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
@@ -40,25 +41,36 @@ public class Grid : MonoBehaviour {
 
     void CreateDoors()
     {
-        grid[6, 6].room = true;
-        grid[6, 8].room = true;
-        grid[8,12].room = true;
-        grid[11,7].room = true;
-        grid[12,7].room = true;
-        grid[17,4].room = true;
-        grid[16,8].room = true;
-        grid[20,11].room = true;
-        grid[22,11].room = true;
-        grid[17,15].room = true;
-        grid[4, 17].room = true;
-        grid[7, 19].room = true;
-        grid[9, 16].room = true;
-        grid[14, 16].room = true;
-        grid[16, 19].room = true;
-        grid[18, 18].room = true;
+        Room.radius = nodeRadius;
+        Room salotto = new Room("salotto", GameObject.Find("area salotto").transform);
+        Room pranzo = new Room("sala da pranzo", GameObject.Find("area pranzo").transform);
+        Room ingresso = new Room("ingresso", GameObject.Find("area ingresso").transform);
+        Room studio = new Room("studio", GameObject.Find("area studio").transform);
+        Room biblioteca = new Room("biblioteca", GameObject.Find("area salotto").transform);
+        Room cucina = new Room("cucina", GameObject.Find("area cucina").transform);
+        Room serra = new Room("serra", GameObject.Find("area serra").transform);
+        Room biliardo = new Room("sala del biliardo", GameObject.Find("area biliardo").transform);
+        Room ballo = new Room("sala da ballo", GameObject.Find("area ballo").transform);
+
+        grid[6, 6].room = salotto;
+        grid[6, 8].room = pranzo;
+        grid[8, 12].room = pranzo;
+        grid[11, 7].room = ingresso;
+        grid[12, 7].room = ingresso;
+        grid[17, 4].room = studio;
+        grid[16, 8].room = biblioteca;
+        grid[20,11].room = biblioteca;
+        grid[22,11].room = biliardo;
+        grid[17,15].room = biliardo;
+        grid[4, 17].room = cucina;
+        grid[7, 19].room = ballo;
+        grid[9, 16].room = ballo;
+        grid[14, 16].room = ballo;
+        grid[16, 19].room = ballo;
+        grid[18, 18].room = serra;
     }
 
-	public List<Node> GetNeighbours(Node node) {
+    public List<Node> GetNeighbours(Node node) {
 		List<Node> neighbours = new List<Node>();
 
 		for (int x = -1; x <= 1; x++) {
@@ -106,7 +118,17 @@ public class Grid : MonoBehaviour {
                 new Quaternion());
             clone.transform.localScale = new Vector3(nodeDiameter - .8f, 0.2f, nodeDiameter - .8f);
             clone.tag = "target";
-            //clone.GetComponent<MoveOnClick>().parent = n;
+            if (n.drawRoom)
+            {
+                n.drawRoom = false;
+                clone = GameObject.Instantiate(
+                roomTarget,
+                new Vector3(n.room.area.position.x, 0.2f, n.room.area.position.z),
+                new Quaternion());
+                clone.transform.localScale =n.room.area.localScale;
+                clone.GetComponent<MoveInRoom>().room = n.room;
+                clone.tag = "target";
+            }
         }
     }
 
@@ -118,8 +140,8 @@ public class Grid : MonoBehaviour {
 				/*if (path != null)
 					if (path.Contains(n))
 						Gizmos.color = Color.black;*/
-                if(n.room)
-                    Gizmos.color = Color.blue;
+                /*if(n.room)
+                    Gizmos.color = Color.blue;*/
                 Gizmos.DrawCube(n.worldPosition, new Vector3(nodeDiameter - .8f, 0.1f, nodeDiameter - .8f));
 			}
 		}
