@@ -11,11 +11,24 @@ public class Grid : MonoBehaviour {
     public Transform bottomRight;
     public GameObject target;
     public GameObject roomTarget;
+    Room[] rooms;
 
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
 
 	void Awake() {
+
+        rooms = new Room[9];
+        Room.radius = nodeRadius;
+        rooms[0] = new Room("salotto", GameObject.Find("area salotto").transform);
+        rooms[1] = new Room("sala da pranzo", GameObject.Find("area pranzo").transform);
+        rooms[2] = new Room("ingresso", GameObject.Find("area ingresso").transform);
+        rooms[3] = new Room("studio", GameObject.Find("area studio").transform);
+        rooms[4] = new Room("biblioteca", GameObject.Find("area biblioteca").transform);
+        rooms[5] = new Room("cucina", GameObject.Find("area cucina").transform);
+        rooms[6] = new Room("serra", GameObject.Find("area serra").transform);
+        rooms[7] = new Room("sala del biliardo", GameObject.Find("area biliardo").transform);
+        rooms[8] = new Room("sala da ballo", GameObject.Find("area ballo").transform);
         nodeRadius = (-transform.position.x+bottomRight.position.x) / 48;
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;
@@ -41,39 +54,52 @@ public class Grid : MonoBehaviour {
 
     void CreateDoors()
     {
-        Room.radius = nodeRadius;
-        Room salotto = new Room("salotto", GameObject.Find("area salotto").transform);
-        Room pranzo = new Room("sala da pranzo", GameObject.Find("area pranzo").transform);
-        Room ingresso = new Room("ingresso", GameObject.Find("area ingresso").transform);
-        Room studio = new Room("studio", GameObject.Find("area studio").transform);
-        Room biblioteca = new Room("biblioteca", GameObject.Find("area salotto").transform);
-        Room cucina = new Room("cucina", GameObject.Find("area cucina").transform);
-        Room serra = new Room("serra", GameObject.Find("area serra").transform);
-        Room biliardo = new Room("sala del biliardo", GameObject.Find("area biliardo").transform);
-        Room ballo = new Room("sala da ballo", GameObject.Find("area ballo").transform);
+        rooms[0].doors.Add(grid[6, 6]);
+        grid[6, 6].room = rooms[0];
 
-        grid[6, 6].room = salotto;
-        grid[6, 8].room = pranzo;
-        grid[8, 12].room = pranzo;
-        grid[11, 7].room = ingresso;
-        grid[12, 7].room = ingresso;
-        grid[17, 4].room = studio;
-        grid[16, 8].room = biblioteca;
-        grid[20,11].room = biblioteca;
-        grid[22,11].room = biliardo;
-        grid[17,15].room = biliardo;
-        grid[4, 17].room = cucina;
-        grid[7, 19].room = ballo;
-        grid[9, 16].room = ballo;
-        grid[14, 16].room = ballo;
-        grid[16, 19].room = ballo;
-        grid[18, 18].room = serra;
+        rooms[1].doors.Add(grid[6, 8]);
+        rooms[1].doors.Add(grid[8, 12]);
+        grid[6, 8].room = rooms[1];
+        grid[8, 12].room = rooms[1];
+
+        rooms[2].doors.Add(grid[11, 7]);
+        rooms[2].doors.Add(grid[12, 7]);
+        grid[11, 7].room = rooms[2];
+        grid[12, 7].room = rooms[2];
+
+        rooms[3].doors.Add(grid[17, 4]);
+        grid[17, 4].room = rooms[3];
+
+        rooms[4].doors.Add(grid[16, 8]);
+        rooms[4].doors.Add(grid[20, 11]);
+        grid[16, 8].room = rooms[4];
+        grid[20,11].room = rooms[4];
+
+        rooms[7].doors.Add(grid[22, 11]);
+        rooms[7].doors.Add(grid[17, 15]);
+        grid[22,11].room = rooms[7];
+        grid[17,15].room = rooms[7];
+
+        rooms[5].doors.Add(grid[4, 17]);
+        grid[4, 17].room = rooms[5];
+
+        rooms[8].doors.Add(grid[7, 19]);
+        rooms[8].doors.Add(grid[9, 16]);
+        rooms[8].doors.Add(grid[14, 16]);
+        rooms[8].doors.Add(grid[16, 19]);
+        grid[7, 19].room = rooms[8];
+        grid[9, 16].room = rooms[8];
+        grid[14, 16].room = rooms[8];
+        grid[16, 19].room = rooms[8];
+
+        rooms[6].doors.Add(grid[18, 18]);
+        grid[18, 18].room = rooms[6];
     }
 
     public List<Node> GetNeighbours(Node node) {
 		List<Node> neighbours = new List<Node>();
 
-		for (int x = -1; x <= 1; x++) {
+        for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
 				if ((x == 0 && y == 0) || (x != 0 && y != 0))
 					continue;
@@ -89,6 +115,19 @@ public class Grid : MonoBehaviour {
 
 		return neighbours;
 	}
+
+    public Room FindRoom(Node n)
+    {
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (rooms[i].IsInRoom(n))
+            {
+                return rooms[i];
+            }
+
+        }
+        return null;
+    }
 	
 
 	public Node NodeFromWorldPoint(Vector3 worldPosition) {

@@ -7,31 +7,56 @@ public class Room {
     public string name;
     public Transform area;
     public static float radius=0;
+    public List<Node> doors;
 
     public Room(string name, Transform area)
     {
         this.area = area;
         this.name = name;
+        doors = new List<Node>();
     }
 
     public static bool CheckNode(Node n)
     {
-        if (Physics.CheckSphere(n.worldPosition, radius - 0.4f, LayerMask.GetMask("room")))
-            return true;
+        return Physics.CheckSphere(n.worldPosition, radius - 0.4f, LayerMask.GetMask("room"));
+    }
+
+    public bool IsInRoom(Node n)
+    {
+        float x = area.localScale.x / 2;
+        float z = area.localScale.z / 2;
+        if (n.worldPosition.x > area.position.x - x && n.worldPosition.x < area.position.x + x)
+            if (n.worldPosition.z > area.position.z - z && n.worldPosition.z < area.position.z + z)
+                return true;
         return false;
     }
 
     public Node GetWalkableNode()
     {
         Grid grid = GameObject.Find("A*").GetComponent<Grid>();
-        for(float x=area.position.x-area.localScale.x/2; x<= area.position.x + area.localScale.x / 2; x = x + radius * 2)
+        Node n = grid.NodeFromWorldPoint(area.position);
+        if (n.walkable)
+            return n;
+        List<Node> list = new List<Node>();
+        list.Add(n);
+        int i = 0;
+        while (i < 600)
         {
-            for (float z = area.position.z - area.localScale.z / 2; z <= area.position.z + area.localScale.z / 2; z = z + radius * 2)
+            foreach(Node neigh in grid.GetNeighbours(n))
             {
-                Node n = grid.NodeFromWorldPoint(new Vector3(x, 0, z));
-                if (n.walkable)
-                    return n;
+                if (IsInRoom(neigh))
+                {
+                    if (neigh.walkable)
+                        return neigh;
+                    else if (!list.Contains(neigh))
+                        list.Add(neigh);
+                }
             }
+            list.Remove(n);
+            if (list.Count == 0)
+                break;
+            n = list[0];
+            i++;
         }
         return null;
 

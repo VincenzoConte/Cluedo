@@ -24,9 +24,21 @@ public class Pathfinding : MonoBehaviour {
 
 		List<Node> openSet = new List<Node>();
 		HashSet<Node> closedSet = new HashSet<Node>();
-		openSet.Add(startNode);
+        if (Room.CheckNode(startNode))
+        {
+            List<Node> doors = grid.FindRoom(startNode).doors;
+            Node min = doors[0];
+            foreach (Node n in doors)
+            {
+                if (GetDistance(n, targetNode) < GetDistance(min, targetNode))
+                    min = n;
+            }
+            seeker.position = new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z);
+            startNode = min;
+        }
+        openSet.Add(startNode);
 
-		while (openSet.Count > 0) {
+        while (openSet.Count > 0) {
 			Node node = openSet[0];
 			for (int i = 1; i < openSet.Count; i ++) {
 				if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost) {
@@ -112,7 +124,7 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
-            seeker.transform.position = n.worldPosition;
+            seeker.transform.position = new Vector3(n.worldPosition.x,seeker.position.y,n.worldPosition.z);
         }
     }
 
@@ -132,8 +144,21 @@ public class Pathfinding : MonoBehaviour {
 
         List<Node> openSet = new List<Node>();
         List<Node> targets = new List<Node>();
-        startNode.position = 0;
-        openSet.Add(startNode);
+        Room room  = null;
+        if (Room.CheckNode(startNode))
+        {
+            room = grid.FindRoom(startNode);
+            foreach (Node n in room.doors)
+            {
+                n.position = 0;
+                openSet.Add(n);
+            }        
+        }
+        else
+        {
+            startNode.position = 0;
+            openSet.Add(startNode);
+        }
 
         while (openSet.Count > 0)
         {
@@ -145,12 +170,12 @@ public class Pathfinding : MonoBehaviour {
             }
 
             openSet.Remove(node);
-            bool room = false;
+            bool door = false;
             if (node.room != null)
             {
-                if (node.position < length)
+                if ((room==null || !room.Equals(node.room)) && node.position < length)
                     node.drawRoom = true;
-                room = true;
+                door = true;
             }
 
             foreach (Node neighbour in grid.GetNeighbours(node))
@@ -158,13 +183,13 @@ public class Pathfinding : MonoBehaviour {
                 if (neighbour.walkable && !targets.Contains(neighbour))
                 {
                     bool isInRoom=false;
-                    if (room && Room.CheckNode(neighbour))
+                    if (door && Room.CheckNode(neighbour))
                     {
                         isInRoom = true;
                     }
 
                     //int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-                    if (!isInRoom && (!openSet.Contains(neighbour) || /*newCostToNeighbour < neighbour.gCost*/ node.position+1 < neighbour.position))
+                    if (!isInRoom && (!openSet.Contains(neighbour) || node.position+1 < neighbour.position))
                     {
                         //neighbour.gCost = newCostToNeighbour;
                         //neighbour.hCost = 0;
