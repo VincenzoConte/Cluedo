@@ -4,16 +4,20 @@
  
  public class dice : MonoBehaviour {
  
-     public List<Vector3> directions;
-     public List<int> sideValues;
-      public float forceAmount = 10.0f;
-      public float torqueAmount = 10.0f;
-      public ForceMode forceMode;
-      Rigidbody rb;
-      bool flag;
-     void Start ()
+    public List<Vector3> directions;
+    public List<int> sideValues;
+    public float forceAmount = 10.0f;
+    public float torqueAmount = 10.0f;
+    public ForceMode forceMode;
+    public int value;
+    SwitchCamera changeView;
+    Rigidbody rb;
+    bool flag;
+    void Start ()
 	{
-		if (directions.Count == 0) {
+        value = 0;
+        changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
+        if (directions.Count == 0) {
 			// Object space directions
 			directions.Add (Vector3.up);
 			sideValues.Add (5); // up
@@ -32,18 +36,19 @@
 			rb = this.GetComponent<Rigidbody> ();
 			flag = true;
 		}
-	}
+    }
 
      void Update(){
      if(Input.GetKey (KeyCode.D)){          //lancia
-     rb.AddForce (Random.onUnitSphere*forceAmount, forceMode);
-     rb.AddTorque (Random.onUnitSphere*torqueAmount, forceMode);
-			flag = false;
+        changeView.ActiveTopView();
+        rb.AddForce (Random.onUnitSphere*forceAmount, forceMode);
+        rb.AddTorque (Random.onUnitSphere*torqueAmount, forceMode);
+		flag = false;
      }
 
      if(rb.IsSleeping ()){
 			if(flag==false){
-				Debug.Log("Risultato lancio: " + GetNumber(Vector3.up, 30f));
+				value = GetNumber(Vector3.up, 30f);
 				flag = true;
 			}
      }

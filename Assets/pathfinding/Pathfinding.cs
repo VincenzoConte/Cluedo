@@ -7,14 +7,25 @@ public class Pathfinding : MonoBehaviour {
 
 	public Transform seeker;
     public int length;
+    SwitchCamera changeView;
+    dice dado1, dado2;
 	Grid grid;
 
 	void Awake() {
-		grid = GetComponent<Grid> ();
-	}
+        changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
+        grid = GetComponent<Grid> ();
+        dado1 = GameObject.Find("dado").GetComponent<dice>();
+        dado2 = GameObject.Find("dado 2").GetComponent<dice>();
+    }
 
 	void Update() {
-		FindTargets (seeker.position, length);
+        if (dado1.value > 0 && dado2.value > 0)
+        {
+            FindTargets(seeker.position, dado1.value + dado2.value);
+            changeView.ActivePlayerView();
+            dado1.value = 0;
+            dado2.value = 0;
+        }
 	}
 
 	public void FindPath(Vector3 targetPos) {
