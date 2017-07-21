@@ -11602,7 +11602,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891841757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 2.91, z: -11.3}
+  m_LocalPosition: {x: 4.73, y: 2.91, z: -11.86}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 868966956}
@@ -18615,7 +18615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seeker: {fileID: 891841763}
-  length: 5
 --- !u!1 &1606783956 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 192794, guid: 56f7f75a5a759294eba64b11cf7ac626, type: 2}

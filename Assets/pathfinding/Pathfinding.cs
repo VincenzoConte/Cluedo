@@ -6,7 +6,6 @@ using DG.Tweening;
 public class Pathfinding : MonoBehaviour {
 
 	public Transform seeker;
-    public int length;
     SwitchCamera changeView;
     dice dado1, dado2;
 	Grid grid;
@@ -21,6 +20,7 @@ public class Pathfinding : MonoBehaviour {
 	void Update() {
         if (dado1.value > 0 && dado2.value > 0)
         {
+            Debug.Log(dado1.value + dado2.value);
             FindTargets(seeker.position, dado1.value + dado2.value);
             changeView.ActivePlayerView();
             dado1.value = 0;
@@ -161,7 +161,7 @@ public class Pathfinding : MonoBehaviour {
             room = grid.FindRoom(startNode);
             foreach (Node n in room.doors)
             {
-                n.position = 0;
+                n.position = 1;
                 openSet.Add(n);
             }        
         }
