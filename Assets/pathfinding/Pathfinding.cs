@@ -132,6 +132,8 @@ public class Pathfinding : MonoBehaviour {
 
     public void MoveInRoom(Room room)
     {
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+            GameObject.Destroy(t, 0f);
         Node n = room.GetWalkableNode();
         if (n != null)
         {
