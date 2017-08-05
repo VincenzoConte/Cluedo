@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 82e06ea42b4f630499a78c66c188f6fa
+  - enabled: 1
+    path: Assets/Cluedo.unity
+    guid: 71d2fe3aa0fa61343a5cbdd54b1c0b69

@@ -20,9 +20,10 @@ namespace Prototype.NetworkLobby
         [Tooltip("Time in second between all players ready & match start")]
         public float prematchCountdown = 5.0f;
 
-        [Space]
+        /*[Space]
         [Header("UI Reference")]
-        public LobbyTopPanel topPanel;
+        public LobbyTopPanel topPanel;*/
+        bool isInGame;
 
         public RectTransform mainMenuPanel;
         public RectTransform lobbyPanel;
@@ -35,8 +36,8 @@ namespace Prototype.NetworkLobby
 
         public Button backButton;
 
-        public Text statusInfo;
-        public Text hostInfo;
+        //public Text statusInfo;
+        //public Text hostInfo;
 
         //Client numPlayers from NetworkManager is always 0, so we count (throught connect/destroy in LobbyPlayer) the number
         //of players, so that even client know how many player there is.
@@ -71,7 +72,7 @@ namespace Prototype.NetworkLobby
         {
             if (SceneManager.GetSceneAt(0).name == lobbyScene)
             {
-                if (topPanel.isInGame)
+                if (isInGame)
                 {
                     ChangeTo(lobbyPanel);
                     if (_isMatchmaking)
@@ -102,8 +103,8 @@ namespace Prototype.NetworkLobby
                     ChangeTo(mainMenuPanel);
                 }
 
-                topPanel.ToggleVisibility(true);
-                topPanel.isInGame = false;
+                //topPanel.ToggleVisibility(true);
+                isInGame = false;
             }
             else
             {
@@ -112,8 +113,8 @@ namespace Prototype.NetworkLobby
                 Destroy(GameObject.Find("MainMenuUI(Clone)"));
 
                 //backDelegate = StopGameClbk;
-                topPanel.isInGame = true;
-                topPanel.ToggleVisibility(false);
+                isInGame = true;
+                //topPanel.ToggleVisibility(false);
             }
         }
 
@@ -151,8 +152,8 @@ namespace Prototype.NetworkLobby
 
         public void SetServerInfo(string status, string host)
         {
-            statusInfo.text = status;
-            hostInfo.text = host;
+            /*statusInfo.text = status;
+            hostInfo.text = host;*/
         }
 
 
@@ -161,7 +162,7 @@ namespace Prototype.NetworkLobby
         public void GoBackButton()
         {
             backDelegate();
-			topPanel.isInGame = false;
+			isInGame = false;
         }
 
         // ----------------- Server management
@@ -235,7 +236,6 @@ namespace Prototype.NetworkLobby
         public override void OnStartHost()
         {
             base.OnStartHost();
-
             ChangeTo(lobbyPanel);
             backDelegate = StopHostClbk;
             SetServerInfo("Hosting", networkAddress);

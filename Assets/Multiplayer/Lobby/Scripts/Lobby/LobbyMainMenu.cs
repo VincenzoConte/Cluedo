@@ -12,18 +12,18 @@ namespace Prototype.NetworkLobby
         public RectTransform lobbyServerList;
         public RectTransform lobbyPanel;
 
-        public InputField ipInput;
-        public InputField matchNameInput;
+        //public InputField ipInput;
+        //public InputField matchNameInput;
 
         public void OnEnable()
         {
-            lobbyManager.topPanel.ToggleVisibility(true);
+            //lobbyManager.topPanel.ToggleVisibility(true);
 
-            ipInput.onEndEdit.RemoveAllListeners();
-            ipInput.onEndEdit.AddListener(onEndEditIP);
+            //ipInput.onEndEdit.RemoveAllListeners();
+            //ipInput.onEndEdit.AddListener(onEndEditIP);
 
-            matchNameInput.onEndEdit.RemoveAllListeners();
-            matchNameInput.onEndEdit.AddListener(onEndEditGameName);
+            //matchNameInput.onEndEdit.RemoveAllListeners();
+            //matchNameInput.onEndEdit.AddListener(onEndEditGameName);
         }
 
         public void OnClickHost()
@@ -35,7 +35,7 @@ namespace Prototype.NetworkLobby
         {
             lobbyManager.ChangeTo(lobbyPanel);
 
-            lobbyManager.networkAddress = ipInput.text;
+            //lobbyManager.networkAddress = ipInput.text;
             lobbyManager.StartClient();
 
             lobbyManager.backDelegate = lobbyManager.StopClientClbk;
@@ -58,17 +58,16 @@ namespace Prototype.NetworkLobby
         {
             lobbyManager.StartMatchMaker();
             lobbyManager.matchMaker.CreateMatch(
-                matchNameInput.text,
+                "",
                 (uint)lobbyManager.maxPlayers,
                 true,
 				"", "", "", 0, 0,
 				lobbyManager.OnMatchCreate);
-
             lobbyManager.backDelegate = lobbyManager.StopHost;
             lobbyManager._isMatchmaking = true;
             lobbyManager.DisplayIsConnecting();
 
-            lobbyManager.SetServerInfo("Matchmaker Host", lobbyManager.matchHost);
+            //lobbyManager.SetServerInfo("Matchmaker Host", lobbyManager.matchHost);
         }
 
         public void OnClickOpenServerList()
