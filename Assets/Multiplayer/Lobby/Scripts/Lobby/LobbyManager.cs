@@ -201,6 +201,7 @@ namespace Prototype.NetworkLobby
         public void StopClientClbk()
         {
             StopClient();
+            s_Singleton.StopClient();
 
             if (_isMatchmaking)
             {
@@ -245,7 +246,7 @@ namespace Prototype.NetworkLobby
 		{
 			base.OnMatchCreate(success, extendedInfo, matchInfo);
             _currentMatchID = (System.UInt64)matchInfo.networkId;
-		}
+        }
 
 		public override void OnDestroyMatch(bool success, string extendedInfo)
 		{

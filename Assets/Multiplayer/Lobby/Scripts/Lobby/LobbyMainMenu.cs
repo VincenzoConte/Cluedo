@@ -58,7 +58,7 @@ namespace Prototype.NetworkLobby
         {
             lobbyManager.StartMatchMaker();
             lobbyManager.matchMaker.CreateMatch(
-                "",
+                lobbyManager.matchHost,
                 (uint)lobbyManager.maxPlayers,
                 true,
 				"", "", "", 0, 0,
