@@ -16,11 +16,6 @@ public class Room {
         doors = new List<Node>();
     }
 
-    public string getNomeStanza()
-    {
-		return this.name;
-    }
-
     public static bool CheckNode(Node n)
     {
         return Physics.CheckSphere(n.worldPosition, radius - 0.4f, LayerMask.GetMask("room"));

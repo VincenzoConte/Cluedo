@@ -1,5 +1,7 @@
-<<<<<<< HEAD
+
 m_EditorVersion: 2017.1.0f3
-=======
 m_EditorVersion: 5.6.2f1
->>>>>>> 2a2106bf00b000442f50505e9c4bb3a45ca71398
+2a2106bf00b000442f50505e9c4bb3a45ca71398
+
+m_EditorVersion: 5.6.1f1
+parent of 88f8ba2... UI e aggiunta di funzioni

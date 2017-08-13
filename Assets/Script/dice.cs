@@ -45,6 +45,7 @@
             if (rb.IsSleeping())
             {
                 value = GetNumber(Vector3.up, 30f);
+                Debug.Log(value);
                 flag = false;
             }
         }
