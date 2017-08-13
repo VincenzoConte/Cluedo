@@ -31,7 +31,7 @@ public class M_Button : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		buttons = new Button[] {b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21};
-		Debug.Log (buttons.Length);
+
 	}
 
 	public void setIcon(int id, Sprite img)

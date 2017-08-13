@@ -6,8 +6,8 @@
  
     public List<Vector3> directions;
     public List<int> sideValues;
-    public float forceAmount = 10.0f;
-    public float torqueAmount = 10.0f;
+    public float forceAmount = 20.0f;
+    public float torqueAmount = 50.0f;
     public ForceMode forceMode;
     public int value;
     SwitchCamera changeView;
@@ -38,22 +38,27 @@
 		}
     }
 
-     void Update(){
-     if(Input.GetKey (KeyCode.D)){          //lancia
-        changeView.ActiveTopView();
-        rb.AddForce (Random.onUnitSphere*forceAmount, forceMode);
-        rb.AddTorque (Random.onUnitSphere*torqueAmount, forceMode);
-		flag = false;
+     void Update ()
+	{
      }
 
-     if(rb.IsSleeping ()){
-			if(flag==false){
-				value = GetNumber(Vector3.up, 30f);
-				flag = true;
+
+
+     public void RollTheDice(){
+        //lancia
+		changeView.ActiveTopView ();
+			rb.AddForce (Random.onUnitSphere * forceAmount, forceMode);
+			rb.AddTorque (Random.onUnitSphere * torqueAmount, forceMode);
+			flag = false;
+ 
+			if (rb.IsSleeping ()) {
+				if (flag == false) {
+					value = GetNumber (Vector3.up, 30f);
+					Debug.Log (value);
+					flag = true;
+				}
 			}
      }
-     }
-
 
      public int GetNumber(Vector3 referenceVectorUp, float epsilonDeg = 5f) {
          Vector3 referenceObjectSpace = transform.InverseTransformDirection(referenceVectorUp);
