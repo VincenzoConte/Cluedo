@@ -34,30 +34,31 @@
 			directions.Add (Vector3.back);
 			sideValues.Add (6); // back
 			rb = this.GetComponent<Rigidbody> ();
-			flag = true;
+			flag = false;
 		}
     }
 
      void Update ()
 	{
-     }
+        if (flag)
+        {
+            if (rb.IsSleeping())
+            {
+                value = GetNumber(Vector3.up, 30f);
+                Debug.Log(value);
+                flag = false;
+            }
+        }
+    }
 
 
 
      public void RollTheDice(){
         //lancia
 		changeView.ActiveTopView ();
-			rb.AddForce (Random.onUnitSphere * forceAmount, forceMode);
-			rb.AddTorque (Random.onUnitSphere * torqueAmount, forceMode);
-			flag = false;
- 
-			if (rb.IsSleeping ()) {
-				if (flag == false) {
-					value = GetNumber (Vector3.up, 30f);
-					Debug.Log (value);
-					flag = true;
-				}
-			}
+		rb.AddForce ((Random.onUnitSphere + Vector3.one) * forceAmount, forceMode);
+		rb.AddTorque ((Random.onUnitSphere + Vector3.one) * torqueAmount, forceMode);
+        flag = true;
      }
 
      public int GetNumber(Vector3 referenceVectorUp, float epsilonDeg = 5f) {
