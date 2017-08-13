@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Security.Cryptography.X509Certificates;
-using UnityEngine.Experimental.UIElements;
-using System.Security.Cryptography;
 
 public class ButtonInventary : MonoBehaviour {
 
