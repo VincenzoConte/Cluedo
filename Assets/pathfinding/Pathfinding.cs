@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor;
 
 public class Pathfinding : MonoBehaviour {
 
@@ -9,12 +10,16 @@ public class Pathfinding : MonoBehaviour {
     SwitchCamera changeView;
     dice dado1, dado2;
 	Grid grid;
+	GameObject colliderr;
+	OperativaInterfaccia oi;
 
 	void Awake() {
         changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
         grid = GetComponent<Grid> ();
         dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
+		oi = GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ();
+		colliderr = GameObject.Find ("ColliderDadi");
     }
 
 	void Update() {
@@ -25,6 +30,10 @@ public class Pathfinding : MonoBehaviour {
             changeView.ActivePlayerView();
             dado1.value = 0;
             dado2.value = 0;
+            //Setto invisibili i dadi e collider
+            dado1.gameObject.SetActive (false);
+            dado2.gameObject.SetActive (false);
+            colliderr.gameObject.SetActive (false);
         }
 	}
 
@@ -126,8 +135,7 @@ public class Pathfinding : MonoBehaviour {
         {
             seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, y, n.worldPosition.z),1 , 1, 1));
         }
-
-
+		oi.setMiSonoSpostato ();
     }
 
     public void MoveInRoom(Room room)
@@ -139,6 +147,7 @@ public class Pathfinding : MonoBehaviour {
         {
             seeker.transform.position = new Vector3(n.worldPosition.x,seeker.position.y,n.worldPosition.z);
         }
+		oi.setMiSonoSpostato ();
     }
 
 	int GetDistance(Node nodeA, Node nodeB) {
