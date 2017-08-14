@@ -2125,6 +2125,7 @@ GameObject:
   - component: {fileID: 1050264826}
   - component: {fileID: 1050264825}
   - component: {fileID: 1050264824}
+  - component: {fileID: 1050264829}
   m_Layer: 5
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -2167,7 +2168,7 @@ MonoBehaviour:
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: MainMenu
   m_OnlineScene: 
   m_SpawnPrefabs: []
@@ -2229,7 +2230,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 6
   m_MaxPlayersPerConnection: 2
-  m_MinPlayers: 2
+  m_MinPlayers: 3
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1947056257129570, guid: 1b648f19d0180154bb0cd88b2fc3501e,
@@ -2306,6 +2307,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &1050264829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050264823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f33da3824aef445bda7832a6852878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053613656
 GameObject:
   m_ObjectHideFlags: 0
