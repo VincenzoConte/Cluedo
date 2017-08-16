@@ -7177,7 +7177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 1340794980104766, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
-  cards: []
+  numPlayers: 6
 --- !u!4 &887891207
 Transform:
   m_ObjectHideFlags: 0
