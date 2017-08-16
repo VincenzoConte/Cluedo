@@ -32,52 +32,53 @@ public class DistribuzioneCarte : MonoBehaviour {
 
 	void DealCards(){
 		int j = 0;
-		int dealTime = 5;
+		float dealTime = 0.8f;
+		Sequence seq = DOTween.Sequence ();
 		for(j=0;j<cards.Length;j++) {
 			if (numPlayers == 3) {
 				if (dirCardDecider == 0) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false));
 				}
 				if (dirCardDecider == 1) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 52), dealTime, false));
 				}
 				if (dirCardDecider == 2) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 52), dealTime, false));
 				}
 
 				dirCardDecider = (dirCardDecider + 1) % numPlayers;
 
 			} else if (numPlayers == 4) {
 				if (dirCardDecider == 0) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false));
 				}
 				if (dirCardDecider == 1) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 0), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 0), dealTime, false));
 				}
 				if (dirCardDecider == 2) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, 52), dealTime, false));
 				}
 				if (dirCardDecider == 3) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 0), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 0), dealTime, false));
 				}
 
 				dirCardDecider = (dirCardDecider + 1) % numPlayers;
 
 			} else if (numPlayers == 5) {
 				if (dirCardDecider == 0) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false));
 				}
 				if (dirCardDecider == 1) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 0), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 0), dealTime, false));
 				}
 				if (dirCardDecider == 2) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 52), dealTime, false));
 				}
 				if (dirCardDecider == 3) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 52), dealTime, false));
 				}
 				if (dirCardDecider == 4) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 0), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 0), dealTime, false));
 				}
 
 				dirCardDecider = (dirCardDecider + 1) % numPlayers;
@@ -85,22 +86,22 @@ public class DistribuzioneCarte : MonoBehaviour {
 
 			} else if (numPlayers == 6) {
 				if (dirCardDecider == 0) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -52), dealTime, false));
 				}
 				if (dirCardDecider == 1) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (	cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, -30), dealTime, false));
 				}
 				if (dirCardDecider == 2) {
-					cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (	cards[j].transform.DOMove (new Vector3 (-47, cards[j].transform.position.y, 31), dealTime, false));
 				}
 				if (dirCardDecider == 3) {
-					cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (	cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, 52), dealTime, false));
 				}
 				if (dirCardDecider == 4) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 52), dealTime, false);
+					seq.Append (	cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, 31), dealTime, false));
 				}
 				if (dirCardDecider == 5) {
-					cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, -52), dealTime, false);
+					seq.Append (	cards[j].transform.DOMove (new Vector3 (50, cards[j].transform.position.y, -30), dealTime, false));
 				}
 
 				dirCardDecider = (dirCardDecider + 1) % numPlayers;
