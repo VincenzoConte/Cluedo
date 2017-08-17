@@ -5,7 +5,6 @@ public class Room {
 
     public string name;
     public Transform area;
-    public static float radius=0;
     public List<Node> doors;
 
     public Room(string name, Transform area)
@@ -22,11 +21,13 @@ public class Room {
 
     public static bool CheckNode(Node n)
     {
-        return Physics.CheckSphere(n.worldPosition, radius - 0.4f, LayerMask.GetMask("room"));
+        return Physics.CheckSphere(n.worldPosition, 0.1f, LayerMask.GetMask("room"));
     }
 
     public bool IsInRoom(Node n)
     {
+        if (!Room.CheckNode(n))
+            return false;
         float x = area.localScale.x / 2;
         float z = area.localScale.z / 2;
         if (n.worldPosition.x > area.position.x - x && n.worldPosition.x < area.position.x + x)

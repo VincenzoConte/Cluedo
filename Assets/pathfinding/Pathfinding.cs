@@ -162,7 +162,7 @@ public class Pathfinding : MonoBehaviour {
     void FindTargets(Vector3 startPos, int length)
     {
         Node startNode = grid.NodeFromWorldPoint(startPos);
-
+        Debug.Log(startNode.gridX + " " + startNode.gridY);
         List<Node> openSet = new List<Node>();
         List<Node> targets = new List<Node>();
         Room room  = null;

@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour {
 
 	public LayerMask unwalkableMask;
 	Vector2 gridWorldSize;
-	float nodeRadius;
+	public float nodeRadius;
 	Node[,] grid;
     public Transform bottomRight;
     public GameObject target;
@@ -19,7 +19,6 @@ public class Grid : MonoBehaviour {
 	void Awake() {
 
         rooms = new Room[9];
-        Room.radius = nodeRadius;
         rooms[0] = new Room("salotto", GameObject.Find("area salotto").transform);
         rooms[1] = new Room("sala da pranzo", GameObject.Find("area pranzo").transform);
         rooms[2] = new Room("ingresso", GameObject.Find("area ingresso").transform);
@@ -131,15 +130,18 @@ public class Grid : MonoBehaviour {
 	
 
 	public Node NodeFromWorldPoint(Vector3 worldPosition) {
-		float percentX = (worldPosition.x + gridWorldSize.x/2) / gridWorldSize.x;
+        /*float percentX = (worldPosition.x + gridWorldSize.x/2) / gridWorldSize.x;
 		float percentY = (worldPosition.z + gridWorldSize.y/2) / gridWorldSize.y;
 		percentX = Mathf.Clamp01(percentX);
 		percentY = Mathf.Clamp01(percentY);
-
 		int x = Mathf.RoundToInt((gridSizeX-1) * percentX);
 		int y = Mathf.RoundToInt((gridSizeY-1) * percentY);
-		return grid[x,y];
-	}
+		return grid[x,y];*/
+
+        int x = Mathf.FloorToInt((-transform.position.x + worldPosition.x) / nodeDiameter);
+        int y = Mathf.FloorToInt((-transform.position.z + worldPosition.z) / nodeDiameter);
+        return grid[x, y];
+    }
 
 	public List<Node> path;
 
