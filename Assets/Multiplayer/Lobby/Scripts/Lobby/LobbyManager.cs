@@ -34,7 +34,7 @@ namespace Prototype.NetworkLobby
 
         protected RectTransform currentPanel;
 
-        public Button backButton;
+        public RectTransform backPanel;
 
         //public Text statusInfo;
         //public Text hostInfo;
@@ -60,7 +60,7 @@ namespace Prototype.NetworkLobby
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
             currentPanel = mainMenuPanel;
 
-            backButton.gameObject.SetActive(false);
+            backPanel.gameObject.SetActive(false);
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
@@ -134,11 +134,11 @@ namespace Prototype.NetworkLobby
 
             if (currentPanel != mainMenuPanel)
             {
-                backButton.gameObject.SetActive(true);
+                backPanel.gameObject.SetActive(true);
             }
             else
             {
-                backButton.gameObject.SetActive(false);
+                backPanel.gameObject.SetActive(false);
                 SetServerInfo("Offline", "None");
                 _isMatchmaking = false;
             }
@@ -329,7 +329,6 @@ namespace Prototype.NetworkLobby
         {
             //This hook allows you to apply state data from the lobby-player to the game-player
             //just subclass "LobbyHook" and add it to the lobby object.
-
             if (_lobbyHooks)
                 _lobbyHooks.OnLobbyServerSceneLoadedForPlayer(this, lobbyPlayer, gamePlayer);
 
@@ -347,8 +346,10 @@ namespace Prototype.NetworkLobby
 					allready &= lobbySlots[i].readyToBegin;
 			}
 
-			if(allready)
-				StartCoroutine(ServerCountdownCoroutine());
+            if (allready)
+            {
+                StartCoroutine(ServerCountdownCoroutine());
+            }
         }
 
         public IEnumerator ServerCountdownCoroutine()
@@ -384,8 +385,8 @@ namespace Prototype.NetworkLobby
                     (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
                 }
             }
-
             ServerChangeScene(playScene);
+            this.gameObject.SetActive(false);
         }
 
         // ----------------- Client callbacks ------------------
