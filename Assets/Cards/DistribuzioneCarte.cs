@@ -8,7 +8,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject card;
 	GameObject[] cards;
 	bool a = true;
-	public int numPlayers = 4;
+
+	[SyncVar]
+		public int numPlayers = 4;
+
 	int dirCardDecider = 0;
 	// Use this for initialization
 	void Start () {
@@ -20,8 +23,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 
 		cards = GameObject.FindGameObjectsWithTag ("card");
-
-		numPlayers = NetworkServer.connections.Count;
+		if (NetworkServer.active) {
+			numPlayers = NetworkServer.connections.Count;
+		}
 	}
 	
 	// Update is called once per frame
