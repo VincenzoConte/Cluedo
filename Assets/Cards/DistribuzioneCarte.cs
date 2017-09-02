@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Networking;
 
-public class DistribuzioneCarte : MonoBehaviour {
+public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject card;
 	GameObject[] cards;
 	bool a = true;
@@ -19,6 +20,8 @@ public class DistribuzioneCarte : MonoBehaviour {
 		}
 
 		cards = GameObject.FindGameObjectsWithTag ("card");
+
+		numPlayers = NetworkServer.connections.Count;
 	}
 	
 	// Update is called once per frame
