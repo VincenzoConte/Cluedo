@@ -14,15 +14,13 @@ public class Communication : NetworkBehaviour {
         {
             turno = 0;
             players = new NetworkConnection[NetworkServer.connections.Count];
-            Debug.Log(NetworkServer.connections.Count);
             NetworkServer.connections.CopyTo(players, 0);
-            TargetCambioTurno(players[turno], 0);
+            TargetCambioTurno(players[turno+1], 0);
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     [TargetRpc]
