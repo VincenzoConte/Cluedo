@@ -26,7 +26,7 @@ private dice dado1,dado2;
 		botola.gameObject.SetActive (false);
 		grid = GameObject.Find("A*").GetComponent<Grid>();
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
-		isMyTurn = true;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
+		isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
 		isInRoom = false;
 		usatoBotola = false;
 		lanciatoDadi = false;
