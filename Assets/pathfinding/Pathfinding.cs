@@ -144,7 +144,7 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
-            seeker.transform.position = new Vector3(n.worldPosition.x,seeker.position.y,n.worldPosition.z);
+            seeker.transform.position = new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z);
         }
 		oi.setMiSonoSpostato ();
     }
@@ -162,7 +162,7 @@ public class Pathfinding : MonoBehaviour {
     void FindTargets(Vector3 startPos, int length)
     {
         Node startNode = grid.NodeFromWorldPoint(startPos);
-        Debug.Log(startNode.gridX + " " + startNode.gridY);
+        //Debug.Log(startNode.gridX + " " + startNode.gridY);
         List<Node> openSet = new List<Node>();
         List<Node> targets = new List<Node>();
         Room room  = null;
@@ -194,8 +194,17 @@ public class Pathfinding : MonoBehaviour {
             bool door = false;
             if (node.room != null)
             {
-                if ((room==null || !room.Equals(node.room)) && node.position < length)
-                    node.drawRoom = true;
+                if ((room == null || !room.Equals(node.room)) && node.position < length && !node.room.draw)
+                {
+                    Node n = node.room.GetWalkableNode();
+                    if (n != null)
+                    {
+                        n.drawRoom = true;
+                        n.room = node.room;
+                        n.room.draw = true;
+                        targets.Add(n);
+                    }
+                }
                 door = true;
             }
 

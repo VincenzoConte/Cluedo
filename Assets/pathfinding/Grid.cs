@@ -153,21 +153,26 @@ public class Grid : MonoBehaviour {
         //end testing
         foreach(Node n in path)
         {
-            GameObject clone=GameObject.Instantiate(
-                target,
-                n.worldPosition,
-                new Quaternion());
-            clone.transform.localScale = new Vector3(nodeDiameter - .8f, 0.2f, nodeDiameter - .8f);
-            clone.tag = "target";
+            GameObject clone;
             if (n.drawRoom)
             {
                 n.drawRoom = false;
+                n.room.draw = false;
                 clone = GameObject.Instantiate(
                 roomTarget,
                 new Vector3(n.room.area.position.x, 0.2f, n.room.area.position.z),
                 new Quaternion());
-                clone.transform.localScale =n.room.area.localScale;
+                clone.transform.localScale = n.room.area.localScale;
                 clone.GetComponent<MoveInRoom>().room = n.room;
+                clone.tag = "target";
+            }
+            else
+            {
+                clone = GameObject.Instantiate(
+                    target,
+                    n.worldPosition,
+                    new Quaternion());
+                clone.transform.localScale = new Vector3(nodeDiameter - .8f, 0.2f, nodeDiameter - .8f);
                 clone.tag = "target";
             }
         }
