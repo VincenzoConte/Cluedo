@@ -13,7 +13,9 @@ private dice dado1,dado2;
 	    bool isMyTurn, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
 	    Grid grid;
 	    SwitchCamera sc;
-
+		
+		Pathfinding aStar;
+		Room room;
 
 
 
@@ -32,6 +34,8 @@ private dice dado1,dado2;
 		dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
+
+		aStar = GameObject.Find("A*").GetComponent<Pathfinding>();
 	}
 	
 	// Update is called once per frame
@@ -57,7 +61,7 @@ private dice dado1,dado2;
 
 			if ((!lanciatoDadi) && isInRoom) {
 			string myStanza = myRoom ();
-			if (myStanza.Equals ("cucina") || myStanza.Equals ("serra") || myStanza.Equals ("studio") || myStanza.Equals ("salotto")) {                                                        //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
+			if (myStanza.Equals ("cucina") || myStanza.Equals ("serra") || myStanza.Equals ("studio") || myStanza.Equals ("salotto")) {   //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
 				botola.gameObject.SetActive (true);                 //posso utilizzarla
 			}
 			if(usatoBotola)
@@ -123,6 +127,23 @@ private dice dado1,dado2;
 
 	public void usaBotola()
 	{
+		string myStanza = myRoom ();
+		if(myStanza.Equals("cucina"))
+		{
+				aStar.MoveInRoom(new Room("studio", GameObject.Find("area studio").transform));
+			}
+		else if(myStanza.Equals("studio"))
+				{
+					aStar.MoveInRoom(new Room("cucina", GameObject.Find("area cucina").transform));
+				}
+		else if(myStanza.Equals("serra"))
+					{
+						aStar.MoveInRoom(new Room("salotto", GameObject.Find("area salotto").transform));
+					}
+		else if(myStanza.Equals("salotto"))
+						{
+							aStar.MoveInRoom(new Room("serra", GameObject.Find("area serra").transform));
+						}
 		usatoBotola = true;
 	}
 
