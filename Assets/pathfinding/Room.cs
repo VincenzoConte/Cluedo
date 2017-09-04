@@ -6,6 +6,7 @@ public class Room {
     public string name;
     public Transform area;
     public List<Node> doors;
+    public bool draw = false;
 
     public Room(string name, Transform area)
     {
