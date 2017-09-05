@@ -10,7 +10,7 @@ public GameObject dadi, pedina;
 public Button accusa, botola, ipotesi, endTurn;
 private dice dado1,dado2;
 	    GameObject colliderDadi;
-	    bool isMyTurn, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
+    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
 	    Grid grid;
 	    SwitchCamera sc;
 		
@@ -26,7 +26,7 @@ private dice dado1,dado2;
 		botola.gameObject.SetActive (false);
 		grid = GameObject.Find("A*").GetComponent<Grid>();
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
-		isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
+		//isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
 		isInRoom = false;
 		usatoBotola = false;
 		lanciatoDadi = false;
@@ -41,7 +41,8 @@ private dice dado1,dado2;
 	// Update is called once per frame
 	void Update ()
 	{
-		if (isMyTurn) {                   //Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
+        Debug.Log(isMyTurn);
+        if (isMyTurn) {                   //Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
 			accusa.gameObject.SetActive (true);
 			endTurn.gameObject.SetActive (true);
 			ipotesi.gameObject.SetActive (false);

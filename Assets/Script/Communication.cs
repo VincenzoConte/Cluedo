@@ -9,40 +9,34 @@ public class Communication : NetworkBehaviour {
 
     NetworkConnection[] players;
     int turno;
-    public const short msg = 1000;
+    public static short msg = MsgType.Highest + 2;
+    static OperativaInterfaccia oi;
 
-	// Use this for initialization
-	void Start () {
-        //NetworkManager.singleton.client.RegisterHandler(MsgType.NetworkInfo, InizioTurno);
+    // Use this for initialization
+    void Start () {
+	}
+
+    void OnEnable()
+    {
+        oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
         if (NetworkServer.active)
         {
             turno = 0;
             players = new NetworkConnection[NetworkServer.connections.Count];
             NetworkServer.connections.CopyTo(players, 0);
-            /*for (int i = 0; i < players.Length; i++)
-            {
-                TargetCambioTurno(players[i], i);
-            }*/
-            /*players[1].RegisterHandler(1000, InizioTurno);
-            players[1].InvokeHandler(1000, new NetworkReader(), Channels.DefaultReliable);
-            NetworkServer.SendToClient(players[1].connectionId, MsgType.Highest+5, new EmptyMessage());*/
-            TargetCambioTurno(players[1], 0);
+            players[turno].Send(msg, new EmptyMessage());
+            Debug.Log("messaggio inviato");
         }
-	}
+    }
 
-    /*private void InizioTurno(NetworkMessage netMsg)
+    public static void InizioTurno(NetworkMessage netMsg)
     {
-        this.gameObject.GetComponent<OperativaInterfaccia>().setTurnoTrue();
+        oi.setTurnoTrue();
         Debug.Log("mio turno");
-    }*/
+    }
 
     // Update is called once per frame
     void Update () {
 	}
 
-    [TargetRpc]
-    public void TargetCambioTurno(NetworkConnection target, int extra)
-    {
-        this.gameObject.GetComponent<OperativaInterfaccia>().setTurnoTrue();
-    }
 }

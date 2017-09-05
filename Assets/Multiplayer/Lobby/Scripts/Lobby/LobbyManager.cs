@@ -398,6 +398,7 @@ namespace Prototype.NetworkLobby
             infoPanel.gameObject.SetActive(false);
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
+            conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
 
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)
@@ -406,7 +407,6 @@ namespace Prototype.NetworkLobby
                 SetServerInfo("Client", networkAddress);
             }
         }
-
 
         public override void OnClientDisconnect(NetworkConnection conn)
         {
