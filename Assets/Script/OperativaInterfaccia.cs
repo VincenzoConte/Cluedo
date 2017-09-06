@@ -159,4 +159,10 @@ private dice dado1,dado2;
 	{
 		miSonoSpostato = true; 
 	}
+
+
+
+
+
+
 }
