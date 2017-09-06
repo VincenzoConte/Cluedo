@@ -894,7 +894,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 373908445}
-        m_MethodName: OnClickCreateMatchmakingGame
+        m_MethodName: OnClickHost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 6
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 3
+  m_MinPlayers: 2
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1947056257129570, guid: 1b648f19d0180154bb0cd88b2fc3501e,
@@ -4126,7 +4126,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 373908445}
-        m_MethodName: OnClickOpenServerList
+        m_MethodName: OnClickJoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
