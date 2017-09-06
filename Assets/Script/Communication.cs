@@ -24,6 +24,10 @@ public class Communication : NetworkBehaviour {
             turno = 0;
             players = new NetworkConnection[NetworkServer.connections.Count];
             NetworkServer.connections.CopyTo(players, 0);
+            /*for(int i = 0; i < players.Length; i++)
+            {
+                players[i].RegisterHandler(msg, InizioTurno);
+            }*/
             players[turno].Send(msg, new EmptyMessage());
             Debug.Log("messaggio inviato");
         }
@@ -37,6 +41,7 @@ public class Communication : NetworkBehaviour {
 
     // Update is called once per frame
     void Update () {
-	}
+        
+    }
 
 }
