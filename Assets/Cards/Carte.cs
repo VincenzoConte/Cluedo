@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 
-public class Carte : MonoBehaviour {
+public class Carte : NetworkBehaviour {
+
+	int numPlayers = 0;
 	bool oneStamp = true;
+	public static short msgNum = MsgType.Highest + 11;
+	NetworkConnection[] players;
+
 	// Use this for initialization
 	void Start () {
-
+		if(NetworkServer.active){
+			numPlayers = NetworkServer.connections.Count;
+			players = new NetworkConnection[NetworkServer.connections.Count];
+			NetworkServer.connections.CopyTo(players, 0);
+		}
 	}
 	// Update is called once per frame
 	void Update () {
-		if(oneStamp){
+		if(oneStamp && NetworkServer.active){
 			TestDealerCards ();
 			oneStamp = false;
 		}
@@ -40,7 +51,7 @@ public class Carte : MonoBehaviour {
 			h++;
 		}
 
-		Debug.Log ("Le carte sono: "+cards.Length+"");
+		/*Debug.Log ("Le carte sono: "+cards.Length+"");
 		Debug.Log ("Le carte nascoste sono: ");
 		for(int j=0;j<hiddenCards.Length;j++){
 			Debug.Log (hiddenCards[j]+"");
@@ -48,7 +59,7 @@ public class Carte : MonoBehaviour {
 		Debug.Log ("Le carte da distribuire sono: ");
 		for(int y=0;y<cardsToDeal.Length;y++){
 			Debug.Log (cardsToDeal[y]+"");
-		}
+		}*/
 
 		//carte riordinate randomicamente (mischiate) da distribuire ai gioctori
 		string[] randomlyDealtCards = new string[18];
@@ -62,7 +73,13 @@ public class Carte : MonoBehaviour {
 
 		Debug.Log ("Le carte distribuite radomicamente sono: ");
 		for(int x=0;x<randomlyDealtCards.Length;x++){
-			Debug.Log (randomlyDealtCards[x]+"");
+			//Debug.Log (randomlyDealtCards[x]+"");
+			players [x%numPlayers].Send (msgNum, new StringMessage (randomlyDealtCards [x]));
 		}
+	}
+
+	public static void MsgInvioCarteHandler(NetworkMessage netMsg){
+		StringMessage strMsg = netMsg.ReadMessage<StringMessage> ();
+		Debug.Log (strMsg.value+"");
 	}
 }

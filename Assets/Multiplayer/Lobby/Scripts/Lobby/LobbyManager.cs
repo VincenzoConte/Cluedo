@@ -398,7 +398,8 @@ namespace Prototype.NetworkLobby
             infoPanel.gameObject.SetActive(false);
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
-            conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
+			conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
+			conn.RegisterHandler (Carte.msgNum,Carte.MsgInvioCarteHandler);
 
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)
