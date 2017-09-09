@@ -169,6 +169,7 @@ namespace Prototype.NetworkLobby
 
         public void AddLocalPlayer()
         {
+            Debug.Log("ora");
             TryToAddPlayer();
         }
 
@@ -399,7 +400,7 @@ namespace Prototype.NetworkLobby
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
 			conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
-			conn.RegisterHandler (Carte.msgNum,Carte.MsgInvioCarteHandler);
+            conn.RegisterHandler(Carte.msgNum, Carte.MsgInvioCarteHandler);
 
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)
