@@ -9,7 +9,7 @@ using System;
 public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject card;
 	GameObject[] cards;
-	bool a = true;
+	bool oneTimeDeal = true;
 
 	public GameObject realCard;
 	NetworkConnection[] players;
@@ -41,10 +41,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (a) {
+		if (oneTimeDeal) {
 			Debug.Log ("NumCarte " + cards.Length);
 			DealCards ();
-			a = false;
+			oneTimeDeal = false;
 		}
 
 		if(oneStamp && NetworkServer.active){
@@ -55,8 +55,13 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		if(receivedCards.Contains ("end") && !createdCards){
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
-				instCard = Instantiate (realCard, new Vector3 (-5 + (2 * i), 45, 0), Quaternion.Euler (0, 180, 0));
-				instCard.GetComponent<TextMesh> ().text = receivedCards[i].ToString ();
+				instCard = Instantiate (realCard, new Vector3 (-5 + (1 + i), 45, 0), Quaternion.Euler (0, 180, 0));
+				GameObject[] components = instCard.GetComponentsInChildren<GameObject> ();
+				foreach(GameObject g in components){
+					if(g.name == "NewText"){
+						g.GetComponent<TextMesh>().text = receivedCards[i].ToString ();
+					}
+				}
 			
 			}
 			createdCards = true;
