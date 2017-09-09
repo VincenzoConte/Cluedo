@@ -11,10 +11,12 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	GameObject[] cards;
 	bool a = true;
 
+	public GameObject realCard;
 	NetworkConnection[] players;
 	public static short msgNum = MsgType.Highest + 11;
-	static bool cardArrived = false;
+	static ArrayList receivedCards = new ArrayList();
 	bool oneStamp = true;
+	bool createdCards = false;
 
 	[SyncVar]
 		public int numPlayers = 4;
@@ -29,7 +31,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			y = y + 0.2f;
 		}
 
-		cards = GameObject.FindGameObjectsWithTag ("card");
+		cards = GameObject.FindGameObjectsWithTag ("falseCard");
 		if (NetworkServer.active) {
 			numPlayers = NetworkServer.connections.Count;
 			players = new NetworkConnection[NetworkServer.connections.Count];
@@ -44,15 +46,20 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			DealCards ();
 			a = false;
 		}
+
 		if(oneStamp && NetworkServer.active){
 			TestDealerCards ();
 			oneStamp = false;
 		}
 
-		if(cardArrived){
-			Instantiate (card, new Vector3 (1.8f, 45, 0), Quaternion.Euler (0, 180, 0));
-			cardArrived = false;
-			Debug.Log ("creata carta!");
+		if(receivedCards.Contains ("end") && !createdCards){
+			for (int i = 0; i < receivedCards.Count - 1; i++) {
+				GameObject instCard;
+				instCard = Instantiate (realCard, new Vector3 (-5 + (2 * i), 45, 0), Quaternion.Euler (0, 180, 0));
+				instCard.GetComponent<TextMesh> ().text = receivedCards[i].ToString ();
+			
+			}
+			createdCards = true;
 		}
 	}
 
@@ -194,11 +201,14 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			//Debug.Log (randomlyDealtCards[x]+"");
 			players [x%numPlayers].Send (msgNum, new StringMessage (randomlyDealtCards [x]));
 		}
+		for(int s=0;s<players.Length;s++){
+			players[s].Send (msgNum,new StringMessage("end"));
+		}
 	}
 
 	public static void MsgInvioCarteHandler(NetworkMessage netMsg){
 		StringMessage strMsg = netMsg.ReadMessage<StringMessage> ();
-		cardArrived = true;
-		Debug.Log (strMsg.value+" c: "+cardArrived.ToString ());
+		Debug.Log (strMsg.value+"");
+		receivedCards.Add (strMsg.value);
 	}
 }
