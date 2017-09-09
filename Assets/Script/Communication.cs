@@ -41,7 +41,7 @@ public class Communication : NetworkBehaviour {
     {
         if (NetworkServer.active)
         {
-            turno++;
+            turno = (turno + 1) % NetworkServer.connections.Count;
             players[turno].Send(msg, new EmptyMessage());
         }
     }

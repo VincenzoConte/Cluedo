@@ -7,7 +7,6 @@ public class GamePlayer : NetworkBehaviour {
 
     [SyncVar]
     public Color color;
-    private GameObject manager;
 
     // Use this for initialization
     void Start () {
@@ -19,15 +18,13 @@ public class GamePlayer : NetworkBehaviour {
 		
 	}
 
-    /*public override void OnStartLocalPlayer()
+    public override void OnStartLocalPlayer()
     {
-        Debug.Log("localplayer");
-        manager = GameObject.Find("GameManger");
         GameObject.Find("A*").GetComponent<Pathfinding>().seeker = gameObject.transform;
-    }*/
+    }
 
     [Command]
-    public void CmdFineTurno()
+    public void CmdFineTurno(GameObject manager)
     {
         manager.GetComponent<Communication>().CambioTurno();
     }

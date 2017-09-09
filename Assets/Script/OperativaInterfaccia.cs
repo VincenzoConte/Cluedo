@@ -123,7 +123,7 @@ private dice dado1,dado2;
 		dado1.gameObject.SetActive (true);
 		dado2.gameObject.SetActive (true);
         colliderDadi.gameObject.SetActive(true);
-        //aStar.seeker.GetComponent<GamePlayer>().CmdFineTurno();
+        aStar.seeker.GetComponent<GamePlayer>().CmdFineTurno(gameObject);
 
 	}
 
