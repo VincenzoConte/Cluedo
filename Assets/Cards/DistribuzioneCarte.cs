@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Networking;
+using System;
 
 public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject card;
@@ -41,6 +42,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		int j = 0;
 		float dealTime = 0.8f;
 		Sequence seq = DOTween.Sequence ();
+        seq.OnComplete(InizioPartita);
 		for(j=0;j<cards.Length;j++) {
 			if (numPlayers == 3) {
 				if (dirCardDecider == 0) {
@@ -119,4 +121,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			}
 		}
 	}
+
+    private void InizioPartita()
+    {
+        GameObject.Find("GameManager").GetComponent<Communication>().CambioTurno();
+    }
 }
