@@ -7578,6 +7578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 887891207}
   - component: {fileID: 887891206}
+  - component: {fileID: 887891209}
   - component: {fileID: 887891208}
   m_Layer: 0
   m_Name: CardsDealer
@@ -7597,7 +7598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befa74fb3f457814c8013ae5e65ec291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 1340794980104766, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
+  card: {fileID: 1682640556599438, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
   numPlayers: 6
 --- !u!4 &887891207
 Transform:
@@ -7620,9 +7621,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 887891205}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &887891209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887891205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa8c53d0032993342a3e77586725791e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card: {fileID: 1682640556599438, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
 --- !u!1 &891841757
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
 
 public class Carte : NetworkBehaviour {
+	public GameObject card;
+	static bool cardArrived = false;
 
 	int numPlayers = 0;
 	bool oneStamp = true;
@@ -24,6 +26,10 @@ public class Carte : NetworkBehaviour {
 		if(oneStamp && NetworkServer.active){
 			TestDealerCards ();
 			oneStamp = false;
+		}
+		if(cardArrived){
+			Instantiate (card, new Vector3 (1.8f, 45, 0), Quaternion.Euler (0, 0, 180));
+			cardArrived = false;
 		}
 	}
 
@@ -80,6 +86,7 @@ public class Carte : NetworkBehaviour {
 
 	public static void MsgInvioCarteHandler(NetworkMessage netMsg){
 		StringMessage strMsg = netMsg.ReadMessage<StringMessage> ();
+		cardArrived = true;
 		Debug.Log (strMsg.value+"");
 	}
 }
