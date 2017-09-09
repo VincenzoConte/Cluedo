@@ -387,7 +387,7 @@ namespace Prototype.NetworkLobby
                 }
             }
             ServerChangeScene(playScene);
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
 
         // ----------------- Client callbacks ------------------
