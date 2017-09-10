@@ -55,11 +55,11 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		if(receivedCards.Contains ("end") && !createdCards){
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
-				instCard = Instantiate (realCard, new Vector3 (-5 + (1 + i), 45, 0), Quaternion.Euler (0, 180, 0));
-				GameObject[] components = instCard.GetComponentsInChildren<GameObject> ();
-				foreach(GameObject g in components){
-					if(g.name == "NewText"){
-						g.GetComponent<TextMesh>().text = receivedCards[i].ToString ();
+				instCard = Instantiate (realCard, new Vector3 (-15 + (5*i), 45, 0), Quaternion.Euler (0, 180, 0));
+				Component[] components = instCard.GetComponentsInChildren<Component> ();
+				foreach (Component g in components) {
+					if (g.name == "New Text") {
+						g.GetComponent<TextMesh> ().text = receivedCards [i].ToString ();
 					}
 				}
 			
