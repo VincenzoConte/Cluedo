@@ -53,9 +53,20 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 
 		if(receivedCards.Contains ("end") && !createdCards){
+			float startX = 0;
+			if (receivedCards.Count - 1 == 3)
+				startX = 1.8f - 7.5f;
+			else if (receivedCards.Count - 1 == 4)
+				startX = 1.8f - 11.25f;
+			else if (receivedCards.Count - 1 == 5)
+				startX = 1.8f - 15.0f;
+			else
+				Debug.Log ("Errore numero carte ricevute!");
+			
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
-				instCard = Instantiate (realCard, new Vector3 (-15 + (5*i), 45, 0), Quaternion.Euler (0, 180, 0));
+				Vector3 startPos = new Vector3(startX + (7.5f*i),45,0);
+				instCard = Instantiate (realCard, startPos,Quaternion.Euler (0, 180, 0));
 				Component[] components = instCard.GetComponentsInChildren<Component> ();
 				foreach (Component g in components) {
 					if (g.name == "New Text") {
