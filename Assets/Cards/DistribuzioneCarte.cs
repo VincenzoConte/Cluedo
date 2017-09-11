@@ -50,11 +50,13 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 
 		if(oneStamp && NetworkServer.active){
-			DealerCards ();
+			seq.OnComplete(DealerCards);
 			oneStamp = false;
 		}
 
 		if(receivedCards.Contains ("end") && !createdCards){
+            seq = DOTween.Sequence();
+            seq.OnComplete(InizioPartita);
 			float startX = 0;
 			if (receivedCards.Count - 1 == 3)
 				startX = 1.8f - 7.5f;
@@ -87,7 +89,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 	//metodo per la distribuzione fittizia delle carte in base al numero dei giocatori
 	void FalseDealCards(){
-		seq.OnComplete(InizioPartita);
+		//seq.OnComplete(InizioPartita);
 		int j = 0;
 		float dealTime = 0.8f;
 		for(j=0;j<cards.Length;j++) {
