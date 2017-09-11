@@ -43,12 +43,12 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	void Update () {
 		if (oneTimeDeal) {
 			Debug.Log ("NumCarte " + cards.Length);
-			DealCards ();
+			FalseDealCards ();
 			oneTimeDeal = false;
 		}
 
 		if(oneStamp && NetworkServer.active){
-			TestDealerCards ();
+			DealerCards ();
 			oneStamp = false;
 		}
 
@@ -79,7 +79,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 	}
 
-	void DealCards(){
+	//metodo per la distribuzione fittizia delle carte in base al numero dei giocatori
+	void FalseDealCards(){
 		int j = 0;
 		float dealTime = 0.8f;
 		Sequence seq = DOTween.Sequence ();
@@ -168,7 +169,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
         GameObject.Find("GameManager").GetComponent<Communication>().CambioTurno();
     }
 
-	void TestDealerCards(){
+	//metodo effettivo per la distribuzione delle carte da parte dell'host verso i client tramite Messaggi
+	void DealerCards(){
 		//mazzo di carte riempito di 21 carte (6 pers, 6 armi, 9 stanze)
 		string[] cards = {"Dolphin Rouge","Emma Stacy","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie",
 			"Coltello","Tubo di piombo","Corda","Pistola","Candeliere","Chiave inglese",
@@ -191,16 +193,6 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			}
 			h++;
 		}
-
-		/*Debug.Log ("Le carte sono: "+cards.Length+"");
-		Debug.Log ("Le carte nascoste sono: ");
-		for(int j=0;j<hiddenCards.Length;j++){
-			Debug.Log (hiddenCards[j]+"");
-		}
-		Debug.Log ("Le carte da distribuire sono: ");
-		for(int y=0;y<cardsToDeal.Length;y++){
-			Debug.Log (cardsToDeal[y]+"");
-		}*/
 
 		//carte riordinate randomicamente (mischiate) da distribuire ai gioctori
 		string[] randomlyDealtCards = new string[18];
