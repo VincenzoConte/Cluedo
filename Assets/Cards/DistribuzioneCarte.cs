@@ -7,6 +7,7 @@ using UnityEngine.Networking.NetworkSystem;
 using System;
 
 public class DistribuzioneCarte : NetworkBehaviour {
+	Sequence seq;
 	public GameObject card;
 	GameObject[] cards;
 	bool oneTimeDeal = true;
@@ -24,6 +25,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	int dirCardDecider = 0;
 	// Use this for initialization
 	void Start () {
+		seq = DOTween.Sequence ();
 		int i = 20;
 		float y = 43;
 		for (i = 20; i < 38; i++) {
@@ -62,10 +64,11 @@ public class DistribuzioneCarte : NetworkBehaviour {
 				startX = 1.8f - 15.0f;
 			else
 				Debug.Log ("Errore numero carte ricevute!");
-			
+
+			GameObject[] instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
-				Vector3 startPos = new Vector3(startX + (7.5f*i),45,0);
+				Vector3 startPos = new Vector3(startX + (7.5f*i),-10,0);
 				instCard = Instantiate (realCard, startPos,Quaternion.Euler (0, 180, 0));
 				Component[] components = instCard.GetComponentsInChildren<Component> ();
 				foreach (Component g in components) {
@@ -73,7 +76,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 						g.GetComponent<TextMesh> ().text = receivedCards [i].ToString ();
 					}
 				}
-			
+				instantiatedCards [i] = instCard;
+			}
+			for(int ii = 0; ii<instantiatedCards.Length ; ii++){
+				seq.Append (instantiatedCards[ii].transform.DOMove (new Vector3(instantiatedCards[ii].transform.position.x,45,0),0.7f,false));
 			}
 			createdCards = true;
 		}
@@ -81,10 +87,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 	//metodo per la distribuzione fittizia delle carte in base al numero dei giocatori
 	void FalseDealCards(){
+		seq.OnComplete(InizioPartita);
 		int j = 0;
 		float dealTime = 0.8f;
-		Sequence seq = DOTween.Sequence ();
-        seq.OnComplete(InizioPartita);
 		for(j=0;j<cards.Length;j++) {
 			if (numPlayers == 3) {
 				if (dirCardDecider == 0) {
