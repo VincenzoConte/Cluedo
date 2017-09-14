@@ -70,7 +70,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			GameObject[] instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
-				Vector3 startPos = new Vector3(startX + (7.5f*i),-10,0);
+				Vector3 startPos = new Vector3(startX + (7.5f*i),40,-23);
 				instCard = Instantiate (realCard, startPos,Quaternion.Euler (0, 180, 0));
 				Component[] components = instCard.GetComponentsInChildren<Component> ();
 				foreach (Component g in components) {
