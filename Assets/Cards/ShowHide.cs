@@ -37,12 +37,12 @@ public class ShowHide : MonoBehaviour {
 
 	public void MoveFunction(){
 		if(!isHidden){
-			transform.DOMove (new Vector3 (1.8f, 45, -15), 0.7f, false);
+			transform.DOMove (new Vector3 (1.8f, 45, -15), 0.6f, false);
 			isHidden = true;
 			text.GetComponent<MeshRenderer> ().enabled = false;
 			Debug.Log ("Nascondi");
 		}else{
-			transform.DOMove (initPos, 0.7f, false);
+			transform.DOMove (initPos, 0.6f, false);
 			isHidden = false;
 			text.GetComponent<MeshRenderer> ().enabled = true;
 			Debug.Log ("Mostra");
