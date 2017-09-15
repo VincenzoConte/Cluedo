@@ -169,6 +169,7 @@ namespace Prototype.NetworkLobby
 
         public void AddLocalPlayer()
         {
+            Debug.Log("ora");
             TryToAddPlayer();
         }
 
@@ -386,7 +387,7 @@ namespace Prototype.NetworkLobby
                 }
             }
             ServerChangeScene(playScene);
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
 
         // ----------------- Client callbacks ------------------
@@ -398,7 +399,8 @@ namespace Prototype.NetworkLobby
             infoPanel.gameObject.SetActive(false);
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
-            conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
+			conn.RegisterHandler(Communication.msg, Communication.InizioTurno);
+			conn.RegisterHandler(DistribuzioneCarte.msgNum, DistribuzioneCarte.MsgInvioCarteHandler);
 
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)

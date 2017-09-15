@@ -21,11 +21,13 @@ public class Communication : NetworkBehaviour {
         oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
         if (NetworkServer.active)
         {
-            turno = 0;
+            turno = -1;
             players = new NetworkConnection[NetworkServer.connections.Count];
             NetworkServer.connections.CopyTo(players, 0);
-            players[turno].Send(msg, new EmptyMessage());
-            Debug.Log("messaggio inviato");
+            /*for(int i = 0; i < players.Length; i++)
+            {
+                players[i].RegisterHandler(msg, InizioTurno);
+            }*/
         }
     }
 
@@ -35,8 +37,18 @@ public class Communication : NetworkBehaviour {
         Debug.Log("mio turno");
     }
 
+    public void CambioTurno()
+    {
+        if (NetworkServer.active)
+        {
+            turno = (turno + 1) % NetworkServer.connections.Count;
+            players[turno].Send(msg, new EmptyMessage());
+        }
+    }
+
     // Update is called once per frame
     void Update () {
-	}
+        
+    }
 
 }

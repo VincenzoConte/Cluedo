@@ -17,4 +17,15 @@ public class GamePlayer : NetworkBehaviour {
 	void Update () {
 		
 	}
+
+    public override void OnStartLocalPlayer()
+    {
+        GameObject.Find("A*").GetComponent<Pathfinding>().seeker = gameObject.transform;
+    }
+
+    [Command]
+    public void CmdFineTurno(GameObject manager)
+    {
+        manager.GetComponent<Communication>().CambioTurno();
+    }
 }

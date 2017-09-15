@@ -122,7 +122,8 @@ private dice dado1,dado2;
 		sc.ActiveTopView ();
 		dado1.gameObject.SetActive (true);
 		dado2.gameObject.SetActive (true);
-		colliderDadi.gameObject.SetActive (true);
+        colliderDadi.gameObject.SetActive(true);
+        aStar.seeker.GetComponent<GamePlayer>().CmdFineTurno(gameObject);
 
 	}
 
@@ -160,10 +161,6 @@ private dice dado1,dado2;
 	{
 		miSonoSpostato = true; 
 	}
-
-
-
-
 
 
 }
