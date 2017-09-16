@@ -65,6 +65,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 				startX = 1.8f - 11.25f;
 			else if (receivedCards.Count - 1 == 5)
 				startX = 1.8f - 15.0f;
+			else if(receivedCards.Count - 1 == 6)
+				startX = 1.8f - 18.75f;
 			else
 				Debug.Log ("Errore numero carte ricevute!");
 
@@ -186,8 +188,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	void DealerCards(){
 		//mazzo di carte riempito di 21 carte (6 pers, 6 armi, 9 stanze)
 		string[] cards = {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
-			"Corda","Pistola","Chiave Inglese","Pugnale","Candeliere","Tubo di piombo",
-			"Ingresso","Veranda","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
+			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
+			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
 			"Biblioteca","Studio"};
 
 		//scelta random carte della soluzione
