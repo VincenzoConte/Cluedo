@@ -97,7 +97,7 @@ private dice dado1,dado2;
 
 	public bool findPosition()
 	{
-		Node position = grid.NodeFromWorldPoint(pedina.transform.position);
+		Node position = grid.NodeFromWorldPoint(aStar.seeker.transform.position);
 	    Room stanza= grid.FindRoom(position);
 		if (stanza != null)
 			return true;
@@ -106,7 +106,7 @@ private dice dado1,dado2;
 
 	public string myRoom()
 	{
-		Node position = grid.NodeFromWorldPoint(pedina.transform.position);
+		Node position = grid.NodeFromWorldPoint(aStar.seeker.transform.position);
 	    Room stanza= grid.FindRoom(position);
 	    if(stanza!= null)
 		 return stanza.getNomeStanza ();
