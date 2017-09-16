@@ -15118,7 +15118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Veranda
+  m_Text: Salotto
 --- !u!222 &2082082079
 CanvasRenderer:
   m_ObjectHideFlags: 0

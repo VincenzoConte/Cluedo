@@ -198,6 +198,11 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		hiddenCards [1] = cards [UnityEngine.Random.Range (6, 11)];
 		hiddenCards [2] = cards [UnityEngine.Random.Range (12, 20)];
 
+		Debug.Log ("Le carte della soluzione sono: ");
+		for(int l=0;l<hiddenCards.Length;l++){
+			Debug.Log (l+""+hiddenCards[l]);
+		}
+
 		//restanti carte da mischiare
 		string[] cardsToDeal = new string[18];
 		int h = 0; 
@@ -219,7 +224,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			cardsToDeal [r] = cardsToDeal [z];
 		}
 
-		Debug.Log ("Le carte distribuite radomicamente sono: ");
+		//Debug.Log ("Le carte distribuite radomicamente sono: ");
 		for(int x=0;x<randomlyDealtCards.Length;x++){
 			//Debug.Log (randomlyDealtCards[x]+"");
 			players [x%numPlayers].Send (msgNum, new StringMessage (randomlyDealtCards [x]));
