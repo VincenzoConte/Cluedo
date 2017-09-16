@@ -14,34 +14,53 @@ public Sprite empty;
 private int count;
 public int id;
 public M_Button mb;
+private string[] cards;
 
 	// Use this for initialization
 	void Start () {
 		count = 0;
+
+		cards = new string[] {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
+			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
+			"Ingresso","Veranda","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
+			"Biblioteca","Studio"};
 	}
 
 	public void click ()
 	{
 		GameObject go = GameObject.Find ("GameManager");
-		M_Button mb = (M_Button)go.GetComponent ((typeof(M_Button)));
-	Debug.Log ("cliccato!"+ id);
-		count = (count + 1) % 4;
-		if (count == 0)
-			mb.setIcon(id, empty);
-			else
-			if(count==1)
-				mb.setIcon(id, x);
-				else
-				if(count==2)
-					mb.setIcon(id, check);
-					else
-					if(count == 3)
-						mb.setIcon(id, question);
-
+		mb = (M_Button)go.GetComponent ((typeof(M_Button)));
+		if (count != 4) 
+		{
+			count = (count + 1) % 4;
+			if (count == 0)
+				mb.setIcon (id, empty);
+			else if (count == 1)
+				mb.setIcon (id, x);
+			else if (count == 2)
+				mb.setIcon (id, check);
+			else if (count == 3)
+				mb.setIcon (id, question);
+		}
+		else
+			return;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
+	public void findIDandLock (string name)
+	{
+		for (int i = 0; i < cards.Length ; i++)
+		{
+			if (name.Equals (cards [i+1]))
+				this.lockSelection(i);
+			break;
+		}
+	}
+
+	public void lockSelection(int id)
+	{
+		GameObject go = GameObject.Find ("GameManager");
+		mb = (M_Button)go.GetComponent ((typeof(M_Button)));
+		count = 4;
+		mb.setIcon (id, locked);
 	}
 }

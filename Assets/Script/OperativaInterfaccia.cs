@@ -41,7 +41,7 @@ private dice dado1,dado2;
 	// Update is called once per frame
 	void Update ()
 	{
-        Debug.Log(isMyTurn);
+        //Debug.Log(isMyTurn);				//E' IL MIO TURNO?
         if (isMyTurn) {                   //Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
 			accusa.gameObject.SetActive (true);
 			endTurn.gameObject.SetActive (true);
@@ -55,7 +55,7 @@ private dice dado1,dado2;
 			}
 
 			isInRoom = findPosition ();
-			Debug.Log (myRoom() +"");
+		//	Debug.Log (myRoom() +"");						//IN CHE STANZA MI TROVO?
 			if ((miSonoSpostato  && isInRoom) || usatoBotola) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza// posso avanzare un'ipotesi
 				ipotesi.gameObject.SetActive (true);
 			}
@@ -83,7 +83,7 @@ private dice dado1,dado2;
 			ipotesi.gameObject.SetActive (false);
 		}
 
-		Debug.Log ("mi sono spostato: "+miSonoSpostato);
+		//Debug.Log ("mi sono spostato: "+miSonoSpostato);
 	}
 
 
@@ -149,8 +149,6 @@ private dice dado1,dado2;
 		usatoBotola = true;
 	}
 
-
-
 	public void setTurnoTrue()             //METODO DI TEST PER ACQUISIRE MANUALMENTE IL TURNO. DA CANCELLARE. 
 	{
 	isMyTurn= true;
@@ -162,5 +160,20 @@ private dice dado1,dado2;
 		miSonoSpostato = true; 
 	}
 
+/*	public ButtonInventary findButton(ButtonInventary [] bis, int index)
+	{
 
+		if ( index >=0 && index <= 5)	//la carta è un sospettato
+		{
+				
+		}
+		 else if( index >=6 && index <= 11)	//la carta è un'arma
+		{
+			
+		}
+		else if ( index >= 12 && index <= 20)  //la carta è una stanza
+		{
+			
+		}
+	}*/
 }

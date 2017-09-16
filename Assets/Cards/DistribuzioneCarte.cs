@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
 using System;
+using UnityEngine.UI;
 
 public class DistribuzioneCarte : NetworkBehaviour {
 	Sequence seq;
@@ -78,6 +79,11 @@ public class DistribuzioneCarte : NetworkBehaviour {
 						g.GetComponent<TextMesh> ().text = receivedCards [i].ToString ();
 					}
 				}
+				Button button = GameObject.Find (receivedCards[i].ToString ()).GetComponentInChildren<Button>();
+				ButtonInventary bi = button.GetComponent<ButtonInventary>();
+
+				Debug.Log ("CARTA RICEVUTA :" + receivedCards [i].ToString () +" Button ID : " + bi.id);
+				bi.lockSelection(bi.id);
 				instantiatedCards [i] = instCard;
 			}
 			for(int ii = 0; ii<instantiatedCards.Length ; ii++){
@@ -179,10 +185,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	//metodo effettivo per la distribuzione delle carte da parte dell'host verso i client tramite Messaggi
 	void DealerCards(){
 		//mazzo di carte riempito di 21 carte (6 pers, 6 armi, 9 stanze)
-		string[] cards = {"Dolphin Rouge","Emma Stacy","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie",
-			"Coltello","Tubo di piombo","Corda","Pistola","Candeliere","Chiave inglese",
-			"Cucina","Salotto","Studio","Ingresso","Biblioteca","Sala da biliardo","Sala da ballo",
-			"Serra","Sala da pranzo"};
+		string[] cards = {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
+			"Corda","Pistola","Chiave Inglese","Pugnale","Candeliere","Tubo di piombo",
+			"Ingresso","Veranda","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
+			"Biblioteca","Studio"};
 
 		//scelta random carte della soluzione
 		string[] hiddenCards = new string[3];

@@ -34,7 +34,6 @@ public class Communication : NetworkBehaviour {
     public static void InizioTurno(NetworkMessage netMsg)
     {
         oi.setTurnoTrue();
-        Debug.Log("mio turno");
     }
 
     public void CambioTurno()
