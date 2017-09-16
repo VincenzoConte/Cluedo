@@ -12,7 +12,6 @@ public class SwitchCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ActiveTopView();
 	}
 	
 	// Update is called once per frame
@@ -72,5 +71,11 @@ public class SwitchCamera : MonoBehaviour {
 
 		endTurn3.transform.localPosition = new Vector3(-366f,-116.496f,0);
 		endTurn3.transform.localScale = new Vector3 (0.5492f, 0.5492f, 0.5492f);
+    }
+
+    public void SetPlayerCamera(GameObject cam)
+    {
+        playerView = cam;
+        ActiveTopView();
     }
 }
