@@ -82,10 +82,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 					}
 				}
 				Button button = GameObject.Find (receivedCards[i].ToString ()).GetComponentInChildren<Button>();
-				ButtonInventary bi = button.GetComponent<ButtonInventary>();
+				/*ButtonInventary bi = button.GetComponent<ButtonInventary>();
 
 				Debug.Log ("CARTA RICEVUTA :" + receivedCards [i].ToString () +" Button ID : " + bi.id);
-				bi.lockSelection(bi.id);
+				bi.lockSelection(bi.id);*/
 				instantiatedCards [i] = instCard;
 			}
 			for(int ii = 0; ii<instantiatedCards.Length ; ii++){
