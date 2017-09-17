@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -277,6 +277,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -9800,23 +9814,63 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4073840381313174, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.28416625
+      value: -0.28416622
       objectReference: {fileID: 0}
     - target: {fileID: 4073840381313174, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.7269424
+      value: -0.72694236
       objectReference: {fileID: 0}
     - target: {fileID: 4073840381313174, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.34203392
+      value: -0.3420339
       objectReference: {fileID: 0}
     - target: {fileID: 4073840381313174, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.5232755
+      value: 0.52327543
       objectReference: {fileID: 0}
     - target: {fileID: 4130699504033710, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
       propertyPath: m_LocalPosition.x
       value: -14.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617300417360774, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Cucina_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834818914937078, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: TavoloBiliardo_Model1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393615581889744, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: TavoloBiliardo_Model2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171465262311868, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: SalaDaPranzo_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421932727483562, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Serra_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439301254413254, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Ingresso_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903770206172670, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Biblioteca_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597368565937836, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: SalaBallo_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146636757187216, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Salotto_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166398077262734, guid: 8d53a181d641b99478214d10a292ba26, type: 2}
+      propertyPath: m_Name
+      value: Studio_Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d53a181d641b99478214d10a292ba26, type: 2}

@@ -159,21 +159,4 @@ private dice dado1,dado2;
 	{
 		miSonoSpostato = true; 
 	}
-
-/*	public ButtonInventary findButton(ButtonInventary [] bis, int index)
-	{
-
-		if ( index >=0 && index <= 5)	//la carta è un sospettato
-		{
-				
-		}
-		 else if( index >=6 && index <= 11)	//la carta è un'arma
-		{
-			
-		}
-		else if ( index >= 12 && index <= 20)  //la carta è una stanza
-		{
-			
-		}
-	}*/
 }

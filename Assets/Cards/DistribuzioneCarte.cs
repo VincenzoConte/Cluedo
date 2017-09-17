@@ -81,11 +81,11 @@ public class DistribuzioneCarte : NetworkBehaviour {
 						g.GetComponent<TextMesh> ().text = receivedCards [i].ToString ();
 					}
 				}
-				Button button = GameObject.Find (receivedCards[i].ToString ()).GetComponentInChildren<Button>();
-				/*ButtonInventary bi = button.GetComponent<ButtonInventary>();
-
-				Debug.Log ("CARTA RICEVUTA :" + receivedCards [i].ToString () +" Button ID : " + bi.id);
-				bi.lockSelection(bi.id);*/
+				Button[] button = GameObject.Find (receivedCards[i].ToString ()).GetComponentsInChildren<Button>();
+				Debug.Log ("Grandezza vettore: " + button.Length);
+				ButtonInventary bi = button[0].GetComponent<ButtonInventary>();
+				Debug.Log ("CARTA RICEVUTA :" + receivedCards [i].ToString () +" Button ID : " + bi.id + " Indice : " + i);
+				bi.lockSelection(bi.id);
 				instantiatedCards [i] = instCard;
 			}
 			for(int ii = 0; ii<instantiatedCards.Length ; ii++){
