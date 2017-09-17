@@ -149,7 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  camera: {fileID: 1843610087043430, guid: 1a49970593dffab4e8895d4717815a24, type: 2}
+  playerCamera: {fileID: 1843610087043430, guid: 1a49970593dffab4e8895d4717815a24,
+    type: 2}
 --- !u!136 &136779550316077338
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ namespace Prototype.NetworkLobby
     public class LobbyPlayer : NetworkLobbyPlayer
     {
         static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };
+        static string[] Characters = new string[] { "Dolphin Rouge", "Vincent Count", "Mark Johnson", "Freddie Carneval", "Anne Marie", "Emma Stacy" };
         //used on server to avoid assigning the same color to two player
         static List<int> _colorInUse = new List<int>();
 
@@ -49,7 +50,7 @@ namespace Prototype.NetworkLobby
             if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(1);
 
             LobbyPlayerList._instance.AddPlayer(this);
-            LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
+            //LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
 
             if (isLocalPlayer)
             {
@@ -101,14 +102,14 @@ namespace Prototype.NetworkLobby
 
         void SetupLocalPlayer()
         {
-            nameInput.interactable = true;
+            nameInput.interactable = false;
             remoteIcone.gameObject.SetActive(false);
             localIcone.gameObject.SetActive(true);
 
             CheckRemoveButton();
 
-            if (playerColor == Color.white)
-                CmdColorChange();
+            playerColor = Color.white;
+            CmdColorChange();
 
             ChangeReadyButtonColor(JoinColor);
 
@@ -116,12 +117,12 @@ namespace Prototype.NetworkLobby
             readyButton.interactable = true;
 
             //have to use child count of player prefab already setup as "this.slot" is not set yet
-            if (playerName == "")
-                CmdNameChanged("Player" + (LobbyPlayerList._instance.playerListContentTransform.childCount-1));
+            /*if (playerName == "")
+                CmdNameChanged("Player" + (LobbyPlayerList._instance.playerListContentTransform.childCount-1));*/
 
             //we switch from simple name display to name input
             colorButton.interactable = true;
-            nameInput.interactable = true;
+            nameInput.interactable = false;
 
             nameInput.onEndEdit.RemoveAllListeners();
             nameInput.onEndEdit.AddListener(OnNameChanged);
@@ -172,7 +173,7 @@ namespace Prototype.NetworkLobby
                 textComponent.color = Color.white;
                 readyButton.interactable = isLocalPlayer;
                 colorButton.interactable = isLocalPlayer;
-                nameInput.interactable = isLocalPlayer;
+                nameInput.interactable = false;
             }
         }
 
@@ -283,6 +284,7 @@ namespace Prototype.NetworkLobby
             }
 
             playerColor = Colors[idx];
+            playerName = Characters[idx];
         }
 
         [Command]
