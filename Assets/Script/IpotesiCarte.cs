@@ -24,7 +24,6 @@ public class IpotesiCarte : MonoBehaviour {
 		prevAbutton = this.GetComponent<Button> ();
 		def = button.colors;
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
-		Debug.Log ("START: " + ipotesi [0] +" "+ ipotesi [1] +" "+ ipotesi [2]);
 	}
 	
 	public void selectCard()
@@ -104,7 +103,6 @@ public class IpotesiCarte : MonoBehaviour {
 		{
 			ipotesiEffettivaButton.gameObject.SetActive (false);	
 		}
-		Debug.Log ("Click: "  + ipotesi [0] +" "+ ipotesi [1] +" "+ ipotesi [2]);
 	}
 
 	public void goBack()
@@ -116,7 +114,6 @@ public class IpotesiCarte : MonoBehaviour {
 			ipotesi[i] = null;
 		}
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
-		Debug.Log ("GoBack: " + ipotesi [0] +" "+ ipotesi [1] +" "+ ipotesi [2]);
 		button.colors = def;
 		ipotesiEffettivaButton.gameObject.SetActive (false);
 		gameManagerr.GetComponent<OperativaInterfaccia> ().goBack ();
