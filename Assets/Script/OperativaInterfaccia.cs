@@ -6,24 +6,24 @@ using System;
 
 public class OperativaInterfaccia : MonoBehaviour {
 
-public GameObject dadi, pedina;
+public GameObject dadi;
 public Button accusa, botola, ipotesi, endTurn;
+public GameObject ipotesiPanel;
 private dice dado1,dado2;
+private	bool [] saveState;
 	    GameObject colliderDadi;
-    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
+    	bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
 	    Grid grid;
 	    SwitchCamera sc;
-		
 		Pathfinding aStar;
 		Room room;
-
-
 
 	// Use this for initialization
 	void Start () {
 	    dadi.gameObject.SetActive (true);
 		ipotesi.gameObject.SetActive (false);
 		botola.gameObject.SetActive (false);
+		ipotesiPanel.SetActive (false);
 		grid = GameObject.Find("A*").GetComponent<Grid>();
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
 		//isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
@@ -34,7 +34,7 @@ private dice dado1,dado2;
 		dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
-
+		saveState = new bool[5];
 		aStar = GameObject.Find("A*").GetComponent<Pathfinding>();
 	}
 	
@@ -88,11 +88,15 @@ private dice dado1,dado2;
 
 
 
-	public void LanciaDadi(){
-
-	dado1.RollTheDice ();
-	dado2.RollTheDice ();
-	lanciatoDadi = true;
+	public void LanciaDadi()
+	{
+		accusa.gameObject.SetActive (false);
+		endTurn.gameObject.SetActive (false);
+		dado1.RollTheDice ();
+		dado2.RollTheDice ();
+		lanciatoDadi = true;
+		accusa.gameObject.SetActive (true);
+		endTurn.gameObject.SetActive (true);
 	}
 
 	public bool findPosition()
@@ -158,5 +162,32 @@ private dice dado1,dado2;
 	public void setMiSonoSpostato()
 	{
 		miSonoSpostato = true; 
+	}
+
+	public void showIpotesiPanel()
+	{
+		saveState[0] = dadi.activeSelf;					//Mi salvo il valore dei pulsanti visibili e non sull'interfaccia
+		saveState[1] = botola.gameObject.activeSelf;
+		saveState[2] = ipotesi.gameObject.activeSelf;
+		saveState[3] = accusa.gameObject.activeSelf;
+		saveState[4] = endTurn.gameObject.activeSelf;
+
+		ipotesiPanel.SetActive (true);
+		dadi.SetActive (false);
+		botola.gameObject.SetActive (false);
+		ipotesi.gameObject.SetActive (false);
+		accusa.gameObject.SetActive (false);
+		endTurn.gameObject.SetActive (false);
+	}
+
+	public void goBack()
+	{
+		dadi.SetActive (saveState [0]);
+		botola.gameObject.SetActive (saveState [1]);
+		ipotesi.gameObject.SetActive (saveState [2]);
+		accusa.gameObject.SetActive (saveState [3]);
+		endTurn.gameObject.SetActive (saveState [4]);	
+
+		ipotesiPanel.SetActive (false);
 	}
 }
