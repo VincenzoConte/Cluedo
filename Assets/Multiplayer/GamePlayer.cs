@@ -9,6 +9,8 @@ public class GamePlayer : NetworkBehaviour {
     public Color color;
     [SyncVar]
     public string character;
+    public Sprite image;
+
     public GameObject playerCamera;
 
     // Use this for initialization

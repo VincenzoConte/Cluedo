@@ -21,15 +21,19 @@ namespace Prototype.NetworkLobby
         public Button readyButton;
         public Button waitingPlayerButton;
         public Button removePlayerButton;
+        public Image image;
 
         public GameObject localIcone;
         public GameObject remoteIcone;
+
+        public Sprite vincent, mark, dolphin, freddie, anne, emma;
 
         //OnMyName function will be invoked on clients when server change the value of playerName
         [SyncVar(hook = "OnMyName")]
         public string playerName = "";
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.white;
+        public Sprite playerImage = null;
 
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -41,7 +45,6 @@ namespace Prototype.NetworkLobby
 
         //static Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         //static Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
-
 
         public override void OnClientEnterLobby()
         {
@@ -61,10 +64,11 @@ namespace Prototype.NetworkLobby
                 SetupOtherPlayer();
             }
 
-            //setup the player data on UI. The value are SyncVar so the player
-            //will be created with the right value currently on server
             OnMyName(playerName);
             OnMyColor(playerColor);
+
+            //setup the player data on UI. The value are SyncVar so the player
+            //will be created with the right value currently on server
         }
 
         public override void OnStartAuthority()
@@ -122,10 +126,6 @@ namespace Prototype.NetworkLobby
 
             //we switch from simple name display to name input
             colorButton.interactable = true;
-            nameInput.interactable = false;
-
-            nameInput.onEndEdit.RemoveAllListeners();
-            nameInput.onEndEdit.AddListener(OnNameChanged);
 
             colorButton.onClick.RemoveAllListeners();
             colorButton.onClick.AddListener(OnColorClicked);
@@ -188,6 +188,32 @@ namespace Prototype.NetworkLobby
         {
             playerName = newName;
             nameInput.text = playerName;
+            switch (newName)
+            {
+                case "Vincent Count":
+                    playerImage = vincent;
+                    break;
+                case "Mark Johnson":
+                    playerImage = mark;
+                    break;
+                case "Emma Stacy":
+                    playerImage = emma;
+                    break;
+                case "Dolphin Rouge":
+                    playerImage = dolphin;
+                    break;
+                case "Anne Marie":
+                    playerImage = anne;
+                    break;
+                case "Freddie Carneval":
+                    playerImage = freddie;
+                    break;
+                default:
+                    Debug.Log("nome errato");
+                    break;
+            }
+            image.sprite = playerImage;
+            //Debug.Log(image.sprite);
         }
 
         public void OnMyColor(Color newColor)

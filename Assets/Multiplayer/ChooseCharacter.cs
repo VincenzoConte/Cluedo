@@ -15,6 +15,7 @@ namespace Prototype.NetworkLobby
             LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
             player.color = lobby.playerColor;
             player.character = lobby.playerName;
+            player.image = lobby.playerImage;
         }
     }
 }
