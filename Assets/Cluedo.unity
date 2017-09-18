@@ -318,7 +318,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Candeliere
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &24004609
 GameObject:
@@ -1883,7 +1884,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Corda
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &129201319
 GameObject:
@@ -4771,7 +4773,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Chiave inglese
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &396373450
 GameObject:
@@ -6028,6 +6031,7 @@ MonoBehaviour:
   categoria: 
   nome: 
   txt: {fileID: 696770329}
+  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &523425857
@@ -7637,7 +7641,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Dolphin Rogue
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &736713160
 GameObject:
@@ -8324,6 +8329,7 @@ GameObject:
   - component: {fileID: 846339291}
   - component: {fileID: 846339293}
   - component: {fileID: 846339292}
+  - component: {fileID: 846339294}
   m_Layer: 5
   m_Name: IpotesiPanel
   m_TagString: Untagged
@@ -8399,6 +8405,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 846339290}
+--- !u!114 &846339294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846339290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfca876a18527f41b858eea6ff14c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoria: 
+  nome: 
+  txt: {fileID: 696770329}
+  button: {fileID: 736197500}
+  gameManagerr: {fileID: 2070918628}
+  ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &870309095
 GameObject:
   m_ObjectHideFlags: 0
@@ -9832,7 +9855,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Tubo di piombo
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1175419754
 GameObject:
@@ -12275,7 +12299,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Pugnale
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1458789944
 GameObject:
@@ -12702,7 +12727,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Mark Johnson
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1496560952
 GameObject:
@@ -14892,7 +14918,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Anne Marie
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1740220894
 GameObject:
@@ -15277,7 +15304,8 @@ MonoBehaviour:
   categoria: Arma
   nome: Pistola
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1775280855
 GameObject:
@@ -16614,7 +16642,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Freddie Carnival
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &1977313977
 GameObject:
@@ -16964,7 +16993,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Vincent Count
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &2033295476
 GameObject:
@@ -17976,7 +18006,8 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Emma Stacy
   txt: {fileID: 696770329}
-  gameManagerr: {fileID: 0}
+  button: {fileID: 0}
+  gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
 --- !u!1 &2099230371
 GameObject:

@@ -10,24 +10,28 @@ public class IpotesiCarte : MonoBehaviour {
 	public Text txt;
 	private ColorBlock cb;
 	private static ColorBlock def;
-	private Button button;
+	public Button button;
 	private static Button prevSbutton, prevAbutton;
 	public GameObject gameManagerr;
 	public Button ipotesiEffettivaButton;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		ipotesi = new string[3];
 		ipotesiEffettivaButton.gameObject.SetActive (false);
-		button = this.GetComponent<Button> ();
-		prevSbutton = this.GetComponent<Button> ();
-		prevAbutton = this.GetComponent<Button> ();
+
+		if(button==null)
+			button = this.GetComponent<Button> ();		
+		prevSbutton = button; //this.GetComponent<Button> ();
+		prevAbutton = button; //this.GetComponent<Button> ();
 		def = button.colors;
-		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
+		ipotesi [2] = gameManagerr.GetComponent<OperativaInterfaccia> ().myRoom ();
+		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 	}
 	
 	public void selectCard()
 	{
+		ipotesi [2] = gameManagerr.GetComponent<OperativaInterfaccia> ().myRoom ();
 		if (this.categoria == "Sospetto")
 		{
 			if (this.nome == ipotesi [0])			//Sto deselezionando la carta Sospetto
@@ -36,11 +40,11 @@ public class IpotesiCarte : MonoBehaviour {
 				ipotesi [0] = null; 
 				if (ipotesi [1]!= null)
 				{
-					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in ---";
+					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
 				else
 				{
-					txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
+					txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 				}
 			}else								//Sto selezionando la carta Sospetto
 			{
@@ -53,11 +57,11 @@ public class IpotesiCarte : MonoBehaviour {
 				ipotesi [0] = this.nome;
 				if (ipotesi [1]!= null)	
 				{
-					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in ---";
+					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
 				else
 				{
-					txt.text = "Secondo me è stato "+ ipotesi[0] +" con (scegli arma) in ---";
+					txt.text = "Secondo me è stato "+ ipotesi[0] +" con (scegli arma) in "+ ipotesi[2];
 				}
 				prevSbutton = button;
 			}
@@ -70,11 +74,11 @@ public class IpotesiCarte : MonoBehaviour {
 				ipotesi [1] = null; 
 				if (ipotesi [0]!= null)
 				{
-					txt.text= "Secondo me è stato "+ ipotesi[0] + " con (scegli arma) in ---";
+					txt.text= "Secondo me è stato "+ ipotesi[0] + " con (scegli arma) in "+ ipotesi[2];
 				}
 				else
 				{
-					txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
+					txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 				}
 			}else							//Sto selezionando la carta Arma
 			{
@@ -86,11 +90,11 @@ public class IpotesiCarte : MonoBehaviour {
 				ipotesi [1] = this.nome;
 				if (ipotesi [0]!= null)
 				{
-					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in ---";
+					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
 				else
 				{
-					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in ---";
+					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
 				prevAbutton = button;
 			}
@@ -113,9 +117,15 @@ public class IpotesiCarte : MonoBehaviour {
 		{
 			ipotesi[i] = null;
 		}
-		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in ---";
+		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 		button.colors = def;
 		ipotesiEffettivaButton.gameObject.SetActive (false);
 		gameManagerr.GetComponent<OperativaInterfaccia> ().goBack ();
+
+	}
+
+	public void doIpotesi()
+	{
+		
 	}
 }

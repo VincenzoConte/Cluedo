@@ -173,11 +173,13 @@ private	bool [] saveState;
 		saveState[4] = endTurn.gameObject.activeSelf;
 
 		ipotesiPanel.SetActive (true);
+		ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
 		dadi.SetActive (false);
 		botola.gameObject.SetActive (false);
 		ipotesi.gameObject.SetActive (false);
 		accusa.gameObject.SetActive (false);
 		endTurn.gameObject.SetActive (false);
+
 	}
 
 	public void goBack()
