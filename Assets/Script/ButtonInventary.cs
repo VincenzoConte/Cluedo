@@ -46,16 +46,6 @@ private string[] cards;
 			return;
 	}
 
-	public void findIDandLock (string name)
-	{
-		for (int i = 0; i < cards.Length ; i++)
-		{
-			if (name.Equals (cards [i+1]))
-				this.lockSelection(i);
-			break;
-		}
-	}
-
 	public void lockSelection(int id)
 	{
 		GameObject go = GameObject.Find ("GameManager");

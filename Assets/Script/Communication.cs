@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
+using UnityEngine.UI;
 
 public class Communication : NetworkBehaviour {
 
@@ -34,6 +35,7 @@ public class Communication : NetworkBehaviour {
     public static void InizioTurno(NetworkMessage netMsg)
     {
         oi.setTurnoTrue();
+
     }
 
     public void CambioTurno()
