@@ -8,6 +8,7 @@ TagManager:
   - card
   - falseCard
   - TopViewCamera
+  - Avatar
   layers:
   - Default
   - TransparentFX

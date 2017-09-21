@@ -14,6 +14,8 @@ public class IpotesiCarte : MonoBehaviour {
 	private static Button prevSbutton, prevAbutton;
 	public GameObject gameManagerr;
 	public Button ipotesiEffettivaButton;
+	public Image avatar;
+	private GamePlayer player;
 
 	// Use this for initialization
 	public void Start () {
@@ -26,6 +28,7 @@ public class IpotesiCarte : MonoBehaviour {
 		prevAbutton = button; //this.GetComponent<Button> ();
 		def = button.colors;
 		ipotesi [2] = gameManagerr.GetComponent<OperativaInterfaccia> ().myRoom ();
+		avatar = gameManagerr.GetComponent<OperativaInterfaccia> ().avatar1;
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 	}
 	

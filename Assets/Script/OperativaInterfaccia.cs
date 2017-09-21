@@ -9,6 +9,8 @@ public class OperativaInterfaccia : MonoBehaviour {
 public GameObject dadi;
 public Button accusa, botola, ipotesi, endTurn;
 public GameObject ipotesiPanel;
+	public Image avatar1;
+public Text messaggioUI;
 private dice dado1,dado2;
 private	bool [] saveState;
 	    GameObject colliderDadi;
@@ -200,6 +202,8 @@ private	bool [] saveState;
         if (!isMyTurn)
         {
             GamePlayer p = player.GetComponent<GamePlayer>();
+			avatar1.sprite = p.image;
+			messaggioUI.text = "E' il turno di "+ p.name;
         }
     }
 }
