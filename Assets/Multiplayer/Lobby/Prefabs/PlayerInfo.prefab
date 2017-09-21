@@ -450,6 +450,7 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &11437878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -984,7 +985,7 @@ MonoBehaviour:
   remoteIcone: {fileID: 189178}
   vincent: {fileID: 21300000, guid: 3b34a6dda3c048740bc72ed65359da4b, type: 3}
   mark: {fileID: 21300000, guid: 738c3d281425bba40aab093c4f5dd68e, type: 3}
-  dolphin: {fileID: 0}
+  dolphin: {fileID: 21300000, guid: 227e5dc63f29dfd49856b02dc52ed165, type: 3}
   freddie: {fileID: 0}
   anne: {fileID: 0}
   emma: {fileID: 21300000, guid: 074f091d7c603ed40a218116367e5c00, type: 3}
