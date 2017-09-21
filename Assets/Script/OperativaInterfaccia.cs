@@ -155,8 +155,10 @@ private	bool [] saveState;
 
 	public void setTurnoTrue()             //METODO DI TEST PER ACQUISIRE MANUALMENTE IL TURNO. DA CANCELLARE. 
 	{
-	isMyTurn= true;
-	lanciatoDadi = false;
+	    isMyTurn= true;
+	    lanciatoDadi = false;
+        GamePlayer player = aStar.seeker.GetComponent<GamePlayer>();
+        player.CmdGiocatoreAttivo(player.gameObject);
 	}
 
 	public void setMiSonoSpostato()
@@ -192,4 +194,12 @@ private	bool [] saveState;
 
 		ipotesiPanel.SetActive (false);
 	}
+
+    public void AggiornaInterfaccia(GameObject player)
+    {
+        if (!isMyTurn)
+        {
+            GamePlayer p = player.GetComponent<GamePlayer>();
+        }
+    }
 }

@@ -37,4 +37,16 @@ public class GamePlayer : NetworkBehaviour {
     {
         manager.GetComponent<Communication>().CambioTurno();
     }
+
+    [Command]
+    public void CmdGiocatoreAttivo(GameObject player)
+    {
+        RpcAggiornaInterfaccia(player);
+    }
+
+    [ClientRpc]
+    public void RpcAggiornaInterfaccia(GameObject player)
+    {
+        GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>().AggiornaInterfaccia(player);
+    }
 }
