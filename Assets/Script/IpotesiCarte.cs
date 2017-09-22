@@ -129,6 +129,6 @@ public class IpotesiCarte : MonoBehaviour {
 
 	public void doIpotesi()
 	{
-		
+		GameObject.Find ("A*").GetComponent<Pathfinding> ().seeker.GetComponent<GamePlayer> ().CmdIpotesi (ipotesi);
 	}
 }

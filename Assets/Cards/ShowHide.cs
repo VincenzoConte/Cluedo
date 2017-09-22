@@ -40,7 +40,6 @@ public class ShowHide : MonoBehaviour {
 			transform.DOMove (new Vector3 (1.8f, 45, -15), 0.6f, false);
 			isHidden = true;
 			texto.GetComponent<MeshRenderer> ().enabled = false;
-			Debug.Log ("Nascondi");
 		}else{
 			transform.DOMove (initPos, 0.6f, false);
 			isHidden = false;

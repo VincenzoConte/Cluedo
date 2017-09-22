@@ -44,6 +44,16 @@ public class GamePlayer : NetworkBehaviour {
         RpcAggiornaInterfaccia(player);
     }
 
+	[Command]
+	public void CmdIpotesi(string[] i){
+		RpcIpotesi (i);
+	}
+
+	[ClientRpc]
+	public void RpcIpotesi(string[] i){
+		Debug.Log (i[0]+i[1]+i[2]+"");
+	}
+
     [ClientRpc]
     public void RpcAggiornaInterfaccia(GameObject player)
     {

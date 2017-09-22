@@ -199,11 +199,9 @@ private	bool [] saveState;
 
     public void AggiornaInterfaccia(GameObject player)
     {
-        if (!isMyTurn)
-        {
-            GamePlayer p = player.GetComponent<GamePlayer>();
-			avatar1.sprite = p.image;
-			messaggioUI.text = "E' il turno di "+ p.name;
-        }
+        GamePlayer p = player.GetComponent<GamePlayer>();
+		avatar1.sprite = p.image;
+		messaggioUI.text = "E' il turno di "+ p.character;
+		Debug.Log (""+p.image);
     }
 }
