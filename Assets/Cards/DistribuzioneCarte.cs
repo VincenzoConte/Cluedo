@@ -13,6 +13,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	GameObject[] cards;
 	bool oneTimeDeal = true;
 
+	GameObject[] instantiatedCards;
+
 	public GameObject realCard;
 	NetworkConnection[] players;
 	public static short msgNum = MsgType.Highest + 11;
@@ -70,7 +72,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			else
 				Debug.Log ("Errore numero carte ricevute!");
 
-			GameObject[] instantiatedCards = new GameObject[receivedCards.Count - 1];
+			instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard;
 				Vector3 startPos = new Vector3(startX + (7.5f*i),40,-23);
@@ -181,6 +183,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
     private void InizioPartita()
     {
         GameObject.Find("GameManager").GetComponent<Communication>().CambioTurno();
+		for(int i = 0; i<instantiatedCards.Length ; i++){
+			instantiatedCards [i].GetComponent<ShowHide> ().enabled = true;
+		}
     }
 
 	//metodo effettivo per la distribuzione delle carte da parte dell'host verso i client tramite Messaggi
