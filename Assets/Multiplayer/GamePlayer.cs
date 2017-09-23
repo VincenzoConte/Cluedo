@@ -9,14 +9,38 @@ public class GamePlayer : NetworkBehaviour {
     public Color color;
     [SyncVar]
     public string character;
-    public Sprite image;
+    public Sprite playerImage;
 
     public GameObject playerCamera;
 
     // Use this for initialization
     void Start () {
         GetComponent<Renderer>().material.color = color;
-	}
+        switch (character)
+        {
+            case "Vincent Count":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Vincent");
+                break;
+            case "Mark Johnson":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Mark");
+                break;
+            case "Emma Stacy":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Emma");
+                break;
+            case "Dolphin Rouge":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Dolphin");
+                break;
+            case "Anne Marie":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Anne");
+                break;
+            case "Freddie Carneval":
+                playerImage = Resources.Load<Sprite>("Immagini/PG/Freddie");
+                break;
+            default:
+                playerImage = null;
+                break;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

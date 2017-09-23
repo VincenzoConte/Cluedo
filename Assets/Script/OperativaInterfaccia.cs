@@ -200,8 +200,8 @@ private	bool [] saveState;
     public void AggiornaInterfaccia(GameObject player)
     {
         GamePlayer p = player.GetComponent<GamePlayer>();
-		avatar1.sprite = p.image;
+		avatar1.sprite = p.playerImage;
 		messaggioUI.text = "E' il turno di "+ p.character;
-		Debug.Log (""+p.image);
+		Debug.Log (""+p.playerImage);
     }
 }

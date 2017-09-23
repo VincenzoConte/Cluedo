@@ -12,7 +12,7 @@ public class Pathfinding : MonoBehaviour {
 	GameObject colliderr;
 	OperativaInterfaccia oi;
 
-	void Awake() {
+	void OnEnable() {
         changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
         grid = GetComponent<Grid> ();
         dado1 = GameObject.Find("dado").GetComponent<dice>();
@@ -24,7 +24,6 @@ public class Pathfinding : MonoBehaviour {
 	void Update() {
         if (dado1.value > 0 && dado2.value > 0)
         {
-         //   Debug.Log(dado1.value + dado2.value);
             FindTargets(seeker.position, dado1.value + dado2.value);
             changeView.ActivePlayerView();
             dado1.value = 0;

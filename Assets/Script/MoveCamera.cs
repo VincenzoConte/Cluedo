@@ -36,7 +36,12 @@ public class MoveCamera : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyCode.Space))
-            gameObject.transform.localPosition = pos;
+            InitialPosition();
+    }
+
+    public void InitialPosition()
+    {
+        gameObject.transform.localPosition = pos;
     }
 
     public void ZoomIn()

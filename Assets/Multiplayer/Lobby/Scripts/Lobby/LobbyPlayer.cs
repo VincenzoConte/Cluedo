@@ -33,7 +33,6 @@ namespace Prototype.NetworkLobby
         public string playerName = "";
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.white;
-        public Sprite playerImage = null;
 
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -188,6 +187,7 @@ namespace Prototype.NetworkLobby
         {
             playerName = newName;
             nameInput.text = playerName;
+            Sprite playerImage;
             switch (newName)
             {
                 case "Vincent Count":
@@ -209,7 +209,7 @@ namespace Prototype.NetworkLobby
                     playerImage = freddie;
                     break;
                 default:
-                    Debug.Log("nome errato");
+                    playerImage = null;
                     break;
             }
             image.sprite = playerImage;
