@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour {
 
-    public const int max = 120, min = 10;
-    public const float zoomSpeed = 40f, moveSpeed=40f;
+    public const int max = 30, min = 5;
+    public const float moveSpeed = 45f;
     private Vector3 pos;
     private Camera cam;
 
@@ -46,19 +46,18 @@ public class MoveCamera : MonoBehaviour {
 
     public void ZoomIn()
     {
-        cam.fieldOfView -= zoomSpeed/8;
-        if (cam.fieldOfView < min)
-        {
-            cam.fieldOfView = min;
-        }
+        float y = cam.gameObject.transform.position.y - 1;
+        if (y < min)
+            y = min;
+        cam.gameObject.transform.position = new Vector3(cam.gameObject.transform.position.x, y, cam.gameObject.transform.position.z);
+
     }
 
     public void ZoomOut()
     {
-        cam.fieldOfView += zoomSpeed / 8;
-        if (cam.fieldOfView > max)
-        {
-            cam.fieldOfView = max;
-        }
+        float y = cam.gameObject.transform.position.y + 1;
+        if (y > max)
+            y = max;
+        cam.gameObject.transform.position = new Vector3(cam.gameObject.transform.position.x, y, cam.gameObject.transform.position.z);
     }
 }
