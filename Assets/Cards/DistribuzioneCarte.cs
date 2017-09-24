@@ -183,8 +183,14 @@ public class DistribuzioneCarte : NetworkBehaviour {
     private void InizioPartita()
     {
         GameObject.Find("GameManager").GetComponent<Communication>().CambioTurno();
+
 		for(int i = 0; i<instantiatedCards.Length ; i++){
 			instantiatedCards [i].GetComponent<ShowHide> ().enabled = true;
+		}
+
+		GameObject[] cardsToDestroy = GameObject.FindGameObjectsWithTag ("falseCard");
+		foreach(GameObject go in cardsToDestroy){
+			Destroy (go);
 		}
     }
 
