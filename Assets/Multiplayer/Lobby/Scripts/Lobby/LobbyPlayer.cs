@@ -263,6 +263,7 @@ namespace Prototype.NetworkLobby
         {
             LobbyManager.s_Singleton.countdownPanel.UIText.text = "Match Starting in " + countdown;
             LobbyManager.s_Singleton.countdownPanel.gameObject.SetActive(countdown != 0);
+			LobbyManager.s_Singleton.backPanel.gameObject.SetActive (false);
         }
 
         [ClientRpc]

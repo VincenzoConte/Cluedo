@@ -131,7 +131,7 @@ namespace Prototype.NetworkLobby
 
             currentPanel = newPanel;
 
-            if (currentPanel != mainMenuPanel)
+			if (currentPanel != mainMenuPanel && currentPanel != null)
             {
                 backPanel.gameObject.SetActive(true);
             }
@@ -350,7 +350,7 @@ namespace Prototype.NetworkLobby
             }
         }
 
-        public IEnumerator ServerCountdownCoroutine()
+		public IEnumerator ServerCountdownCoroutine()
         {
             float remainingTime = prematchCountdown;
             int floorTime = Mathf.FloorToInt(remainingTime);
