@@ -29,7 +29,6 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		receivedCards = new ArrayList();
-
 		seq = DOTween.Sequence ();
 		int i = 20;
 		float y = 43;
