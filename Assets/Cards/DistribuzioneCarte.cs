@@ -18,7 +18,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject realCard;
 	NetworkConnection[] players;
 	public static short msgNum = MsgType.Highest + 11;
-	static ArrayList receivedCards = new ArrayList();
+	static ArrayList receivedCards;
 	bool oneStamp = true;
 	bool createdCards = false;
 
@@ -28,6 +28,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	int dirCardDecider = 0;
 	// Use this for initialization
 	void Start () {
+		receivedCards = new ArrayList();
+
 		seq = DOTween.Sequence ();
 		int i = 20;
 		float y = 43;
@@ -97,7 +99,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 	//metodo per la distribuzione fittizia delle carte in base al numero dei giocatori
 	void FalseDealCards(){
-		//seq.OnComplete(InizioPartita);
+		
 		int j = 0;
 		float dealTime = 0.5f;
 		for(j=0;j<cards.Length;j++) {
