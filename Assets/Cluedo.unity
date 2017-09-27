@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -318,10 +318,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Candeliere
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &24004609
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +613,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1882,10 +1895,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Corda
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &129201319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,10 +4784,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Chiave inglese
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &396373450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6105,7 +6116,6 @@ MonoBehaviour:
   categoria: 
   nome: 
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
   avatar: {fileID: 0}
@@ -7717,10 +7727,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Dolphin Rogue
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &736713160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8413,7 +8422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &846339291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8496,10 +8505,9 @@ MonoBehaviour:
   categoria: 
   nome: 
   txt: {fileID: 696770329}
-  button: {fileID: 736197500}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &870309095
 GameObject:
   m_ObjectHideFlags: 0
@@ -8942,6 +8950,88 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 938861333}
+--- !u!1 &943491139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 943491140}
+  - component: {fileID: 943491143}
+  - component: {fileID: 943491142}
+  - component: {fileID: 943491141}
+  m_Layer: 5
+  m_Name: Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &943491140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943491139}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.29705462, y: 1.8289304, z: 1.5026869}
+  m_Children:
+  - {fileID: 1225943725}
+  m_Father: {fileID: 1297304373}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -42.5, y: -3}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &943491141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943491139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &943491142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943491139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 7efb1ffff68692d48acd3d8eea83b1dc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &943491143
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943491139}
 --- !u!1 &948188780
 GameObject:
   m_ObjectHideFlags: 0
@@ -10085,10 +10175,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Tubo di piombo
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1175419754
 GameObject:
   m_ObjectHideFlags: 0
@@ -10618,15 +10707,15 @@ RectTransform:
   m_GameObject: {fileID: 1225943724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2740871, y: 1.687522, z: 1.3865029}
+  m_LocalScale: {x: 0.92268246, y: 0.9226826, z: 0.92268246}
   m_Children:
   - {fileID: 696770328}
-  m_Father: {fileID: 1297304373}
+  m_Father: {fileID: 943491140}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.578186, y: 0.26159668}
+  m_AnchoredPosition: {x: -0.26319122, y: 0.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225943726
@@ -11031,7 +11120,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.7066426, y: 0.7644522, z: 0.93042}
   m_Children:
-  - {fileID: 1225943725}
+  - {fileID: 1893450888}
+  - {fileID: 943491140}
   m_Father: {fileID: 846339291}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12598,10 +12688,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Pugnale
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1458789944
 GameObject:
   m_ObjectHideFlags: 0
@@ -13027,10 +13116,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Mark Johnson
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1496560952
 GameObject:
   m_ObjectHideFlags: 0
@@ -15219,10 +15307,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Anne Marie
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1740220894
 GameObject:
   m_ObjectHideFlags: 0
@@ -15606,10 +15693,9 @@ MonoBehaviour:
   categoria: Arma
   nome: Pistola
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1775280855
 GameObject:
   m_ObjectHideFlags: 0
@@ -16294,6 +16380,80 @@ MonoBehaviour:
   m_Script: {fileID: -1050975500, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1893450887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1893450888}
+  - component: {fileID: 1893450890}
+  - component: {fileID: 1893450889}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1893450888
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893450887}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.29705462, y: 1.8289304, z: 1.5026867}
+  m_Children: []
+  m_Father: {fileID: 1297304373}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 9.24, y: 0.86}
+  m_SizeDelta: {x: 255.34, y: 49.67}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1893450889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893450887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Secondo me \xE8 stato (scegli sospetto) con (scegli arma) in (stanza)"
+--- !u!222 &1893450890
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893450887}
 --- !u!1 &1894565374
 GameObject:
   m_ObjectHideFlags: 0
@@ -16945,10 +17105,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Freddie Carnival
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &1977313977
 GameObject:
   m_ObjectHideFlags: 0
@@ -17297,10 +17456,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Vincent Count
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &2033295476
 GameObject:
   m_ObjectHideFlags: 0
@@ -18313,10 +18471,9 @@ MonoBehaviour:
   categoria: Sospetto
   nome: Emma Stacy
   txt: {fileID: 696770329}
-  button: {fileID: 0}
   gameManagerr: {fileID: 2070918628}
   ipotesiEffettivaButton: {fileID: 26494472}
-  avatar: {fileID: 0}
+  avatar: {fileID: 1225943726}
 --- !u!1 &2099230371
 GameObject:
   m_ObjectHideFlags: 0

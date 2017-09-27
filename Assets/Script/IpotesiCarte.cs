@@ -9,8 +9,8 @@ public class IpotesiCarte : MonoBehaviour {
 	private static string[] ipotesi;
 	public Text txt;
 	private ColorBlock cb;
-	private static ColorBlock def;
-	public Button button;
+	private static ColorBlock defS, defA;
+	public Button buttonS, buttonA;
 	private static Button prevSbutton, prevAbutton;
 	public GameObject gameManagerr;
 	public Button ipotesiEffettivaButton;
@@ -18,17 +18,20 @@ public class IpotesiCarte : MonoBehaviour {
 	private GamePlayer player;
 
 	// Use this for initialization
-	public void Start () {
+	public void OnEnable () {
 		ipotesi = new string[3];
 		ipotesiEffettivaButton.gameObject.SetActive (false);
-
-		if(button==null)
-			button = this.GetComponent<Button> ();		
-		prevSbutton = button; //this.GetComponent<Button> ();
-		prevAbutton = button; //this.GetComponent<Button> ();
-		def = button.colors;
+		Debug.Log ("ENABLED");
+		if(buttonS==null)
+			buttonS = this.GetComponent<Button> ();		
+		if(buttonA==null)
+			buttonA = this.GetComponent<Button> ();	
+		prevSbutton = buttonS; //this.GetComponent<Button> ();
+		prevAbutton = buttonA; //this.GetComponent<Button> ();
+		defS = buttonS.colors;
+		defA = buttonA.colors;
 		ipotesi [2] = gameManagerr.GetComponent<OperativaInterfaccia> ().myRoom ();
-		avatar = gameManagerr.GetComponent<OperativaInterfaccia> ().avatar1;
+		avatar.sprite = gameManagerr.GetComponent<OperativaInterfaccia> ().avatar1.sprite;
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 	}
 	
@@ -39,7 +42,7 @@ public class IpotesiCarte : MonoBehaviour {
 		{
 			if (this.nome == ipotesi [0])			//Sto deselezionando la carta Sospetto
 			{
-				button.colors = def;
+				buttonS.colors = defS;
 				ipotesi [0] = null; 
 				if (ipotesi [1]!= null)
 				{
@@ -52,11 +55,11 @@ public class IpotesiCarte : MonoBehaviour {
 			}else								//Sto selezionando la carta Sospetto
 			{
 				ipotesi [0] = this.nome;
-				prevSbutton.colors = def;
-				cb = button.colors;
+				prevSbutton.colors = defS;
+				cb = buttonS.colors;
 				cb.normalColor = new Color (0.118f, 1f, 0f, 1.0f);
-				button.colors = cb;
-				prevSbutton.colors = def;
+				buttonS.colors = cb;
+				prevSbutton.colors = defS;
 				ipotesi [0] = this.nome;
 				if (ipotesi [1]!= null)	
 				{
@@ -66,14 +69,14 @@ public class IpotesiCarte : MonoBehaviour {
 				{
 					txt.text = "Secondo me è stato "+ ipotesi[0] +" con (scegli arma) in "+ ipotesi[2];
 				}
-				prevSbutton = button;
+				prevSbutton = buttonS;
 			}
 		}
 		else if(this.categoria == "Arma")
 		{
 			if (this.nome == ipotesi [1])			//Sto deselezionando la carta Arma
 			{
-				button.colors = def;
+				buttonA.colors = defA;
 				ipotesi [1] = null; 
 				if (ipotesi [0]!= null)
 				{
@@ -85,11 +88,11 @@ public class IpotesiCarte : MonoBehaviour {
 				}
 			}else							//Sto selezionando la carta Arma
 			{
-				prevAbutton.colors = def;
-				cb = button.colors;
+				prevAbutton.colors = defA;
+				cb = buttonA.colors;
 				cb.normalColor = new Color (0f, 0.545f, 1.0f, 1.0f);
-				button.colors = cb;
-				prevAbutton.colors = def;
+				buttonA.colors = cb;
+				prevAbutton.colors = defA;
 				ipotesi [1] = this.nome;
 				if (ipotesi [0]!= null)
 				{
@@ -99,7 +102,7 @@ public class IpotesiCarte : MonoBehaviour {
 				{
 					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
-				prevAbutton = button;
+				prevAbutton = buttonA;
 			}
 		}
 		if((ipotesi[0]!=null) && (ipotesi[1]!= null))
@@ -114,14 +117,15 @@ public class IpotesiCarte : MonoBehaviour {
 
 	public void goBack()
 	{
-		prevAbutton.colors = def;
-		prevSbutton.colors = def;
+		prevAbutton.colors = defA;
+		prevSbutton.colors = defS;
 		for(int i = 0; i<ipotesi.Length; i++)
 		{
 			ipotesi[i] = null;
 		}
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
-		button.colors = def;
+		buttonS.colors = defS;
+		buttonA.colors = defA;
 		ipotesiEffettivaButton.gameObject.SetActive (false);
 		gameManagerr.GetComponent<OperativaInterfaccia> ().goBack ();
 

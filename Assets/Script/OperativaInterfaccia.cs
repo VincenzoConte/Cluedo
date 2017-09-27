@@ -9,7 +9,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 public GameObject dadi;
 public Button accusa, botola, ipotesi, endTurn;
 public GameObject ipotesiPanel;
-	public Image avatar1;
+public Image avatar1;
 public Text messaggioUI;
 private dice dado1,dado2;
 private	bool [] saveState;
@@ -177,7 +177,7 @@ private	bool [] saveState;
 		saveState[4] = endTurn.gameObject.activeSelf;
 
 		ipotesiPanel.SetActive (true);
-		ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
+		//ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
 		dadi.SetActive (false);
 		botola.gameObject.SetActive (false);
 		ipotesi.gameObject.SetActive (false);
