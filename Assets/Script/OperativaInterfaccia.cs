@@ -6,27 +6,27 @@ using System;
 
 public class OperativaInterfaccia : MonoBehaviour {
 
-public GameObject dadi;
-public Button accusa, botola, ipotesi, endTurn;
-public GameObject ipotesiPanel;
-public Image avatar1;
-public Text messaggioUI;
-private dice dado1,dado2;
-private	bool [] saveState;
+	public GameObject dadi;
+	public Button accusa, botola, ipotesi, endTurn;
+	public GameObject ipotesiPanel;
+	public Image avatar1;
+	public Text messaggioUI;
+	private dice dado1,dado2;
+	private	bool [] saveState;
 	    GameObject colliderDadi;
     	bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
-	    Grid grid;
+		Grid grid;
 	    SwitchCamera sc;
 		Pathfinding aStar;
 		Room room;
-
+	public GameObject a;
 	// Use this for initialization
 	void Start () {
 	    dadi.gameObject.SetActive (true);
 		ipotesi.gameObject.SetActive (false);
 		botola.gameObject.SetActive (false);
 		ipotesiPanel.SetActive (false);
-		grid = GameObject.Find("A*").GetComponent<Grid>();
+		grid = a.GetComponent<Grid>();
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
 		//isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
 		isInRoom = false;
@@ -37,7 +37,7 @@ private	bool [] saveState;
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
 		saveState = new bool[5];
-		aStar = GameObject.Find("A*").GetComponent<Pathfinding>();
+		aStar = a.GetComponent<Pathfinding>();
 	}
 	
 	// Update is called once per frame
@@ -113,6 +113,7 @@ private	bool [] saveState;
 	public string myRoom()
 	{
 		Node position = grid.NodeFromWorldPoint(aStar.seeker.transform.position);
+		Debug.Log (aStar.seeker+"");
 	    Room stanza= grid.FindRoom(position);
 	    if(stanza!= null)
 		 return stanza.getNomeStanza ();

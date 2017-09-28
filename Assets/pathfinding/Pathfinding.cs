@@ -11,13 +11,14 @@ public class Pathfinding : MonoBehaviour {
 	Grid grid;
 	GameObject colliderr;
 	OperativaInterfaccia oi;
+	public GameObject gm;
 
 	void OnEnable() {
         changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
         grid = GetComponent<Grid> ();
         dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
-		oi = GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ();
+		oi = gm.GetComponent<OperativaInterfaccia> ();
 		colliderr = GameObject.Find ("ColliderDadi");
     }
 

@@ -59,7 +59,6 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 
 		if(receivedCards.Contains ("end") && !createdCards){
-			Instantiate (Resources.Load ("Immagini/Carte/candeliere"),new Vector3(0,50,0),Quaternion.Euler (0,0,0));
             seq = DOTween.Sequence();
             seq.OnComplete(InizioPartita);
 			float startX = 0;
