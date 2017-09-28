@@ -450,6 +450,7 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &11437878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,12 +986,11 @@ MonoBehaviour:
   vincent: {fileID: 21300000, guid: 3b34a6dda3c048740bc72ed65359da4b, type: 3}
   mark: {fileID: 21300000, guid: 738c3d281425bba40aab093c4f5dd68e, type: 3}
   dolphin: {fileID: 21300000, guid: 227e5dc63f29dfd49856b02dc52ed165, type: 3}
-  freddie: {fileID: 0}
-  anne: {fileID: 0}
+  freddie: {fileID: 21300000, guid: b30a4d1142ad0f0418791904300e0b34, type: 3}
+  anne: {fileID: 21300000, guid: 51121ed9e06786d49b28b889be8c18a2, type: 3}
   emma: {fileID: 21300000, guid: 074f091d7c603ed40a218116367e5c00, type: 3}
   playerName: 
   playerColor: {r: 1, g: 1, b: 1, a: 1}
-  playerImage: {fileID: 0}
   OddRowColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   EvenRowColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
 --- !u!114 &11487112

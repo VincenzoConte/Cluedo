@@ -5,7 +5,6 @@ using  UnityEngine.UI;
 
 public class IpotesiCarte : MonoBehaviour {
 
-	public string categoria, nome;
 	private static string[] ipotesi;
 	public Text txt;
 	private ColorBlock cb;
@@ -35,14 +34,31 @@ public class IpotesiCarte : MonoBehaviour {
 		txt.text = "Secondo me è stato (scegli sospetto) con (scegli arma) in "+ ipotesi[2];
 	}
 	
-	public void selectCard()
+
+
+	public void goBack()
+	{
+		ripristina ();
+		gameManagerr.GetComponent<OperativaInterfaccia> ().goBack ();
+
+	}
+
+	public void doIpotesi()
+	{
+		GameObject.Find ("A*").GetComponent<Pathfinding> ().seeker.GetComponent<GamePlayer> ().CmdIpotesi (ipotesi);
+		ripristina ();
+		gameManagerr.GetComponent<OperativaInterfaccia> ().DoIpotesiEffettiva ();
+	}
+
+
+	public void selectedCard(string category, string nameCard, Button b)
 	{
 		ipotesi [2] = gameManagerr.GetComponent<OperativaInterfaccia> ().myRoom ();
-		if (this.categoria == "Sospetto")
+		if (category == "Sospetto")
 		{
-			if (this.nome == ipotesi [0])			//Sto deselezionando la carta Sospetto
+			if (nameCard == ipotesi [0])			//Sto deselezionando la carta Sospetto
 			{
-				buttonS.colors = defS;
+				b.colors = defS;
 				ipotesi [0] = null; 
 				if (ipotesi [1]!= null)
 				{
@@ -54,13 +70,12 @@ public class IpotesiCarte : MonoBehaviour {
 				}
 			}else								//Sto selezionando la carta Sospetto
 			{
-				ipotesi [0] = this.nome;
+				ipotesi [0] = nameCard;
 				prevSbutton.colors = defS;
-				cb = buttonS.colors;
+				cb = b.colors;
 				cb.normalColor = new Color (0.118f, 1f, 0f, 1.0f);
-				buttonS.colors = cb;
-				prevSbutton.colors = defS;
-				ipotesi [0] = this.nome;
+				b.colors = cb;
+				ipotesi [0] = nameCard;
 				if (ipotesi [1]!= null)	
 				{
 					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
@@ -69,14 +84,14 @@ public class IpotesiCarte : MonoBehaviour {
 				{
 					txt.text = "Secondo me è stato "+ ipotesi[0] +" con (scegli arma) in "+ ipotesi[2];
 				}
-				prevSbutton = buttonS;
+				prevSbutton = b;
 			}
 		}
-		else if(this.categoria == "Arma")
+		else if(category == "Arma")
 		{
-			if (this.nome == ipotesi [1])			//Sto deselezionando la carta Arma
+			if (nameCard == ipotesi [1])			//Sto deselezionando la carta Arma
 			{
-				buttonA.colors = defA;
+				b.colors = defA;
 				ipotesi [1] = null; 
 				if (ipotesi [0]!= null)
 				{
@@ -89,11 +104,11 @@ public class IpotesiCarte : MonoBehaviour {
 			}else							//Sto selezionando la carta Arma
 			{
 				prevAbutton.colors = defA;
-				cb = buttonA.colors;
+				cb = b.colors;
 				cb.normalColor = new Color (0f, 0.545f, 1.0f, 1.0f);
-				buttonA.colors = cb;
+				b.colors = cb;
 				prevAbutton.colors = defA;
-				ipotesi [1] = this.nome;
+				ipotesi [1] = nameCard;
 				if (ipotesi [0]!= null)
 				{
 					txt.text= "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
@@ -102,7 +117,7 @@ public class IpotesiCarte : MonoBehaviour {
 				{
 					txt.text= "Secondo me è stato (scegli sospetto) con "+ ipotesi[1] + " in "+ ipotesi[2];
 				}
-				prevAbutton = buttonA;
+				prevAbutton = b;
 			}
 		}
 		if((ipotesi[0]!=null) && (ipotesi[1]!= null))
@@ -113,9 +128,10 @@ public class IpotesiCarte : MonoBehaviour {
 		{
 			ipotesiEffettivaButton.gameObject.SetActive (false);	
 		}
+		Debug.Log ("Testo dell'ipotesi: "+ ipotesi[0] + " "+ ipotesi[1] + " " + ipotesi[2]);
 	}
 
-	public void goBack()
+	public void ripristina()
 	{
 		prevAbutton.colors = defA;
 		prevSbutton.colors = defS;
@@ -127,12 +143,5 @@ public class IpotesiCarte : MonoBehaviour {
 		buttonS.colors = defS;
 		buttonA.colors = defA;
 		ipotesiEffettivaButton.gameObject.SetActive (false);
-		gameManagerr.GetComponent<OperativaInterfaccia> ().goBack ();
-
-	}
-
-	public void doIpotesi()
-	{
-		GameObject.Find ("A*").GetComponent<Pathfinding> ().seeker.GetComponent<GamePlayer> ().CmdIpotesi (ipotesi);
 	}
 }

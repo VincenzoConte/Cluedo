@@ -14,12 +14,13 @@ public class OperativaInterfaccia : MonoBehaviour {
 	private dice dado1,dado2;
 	private	bool [] saveState;
 	    GameObject colliderDadi;
-    	bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato;
+    	bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi;
 		Grid grid;
 	    SwitchCamera sc;
 		Pathfinding aStar;
 		Room room;
 	public GameObject a;
+
 	// Use this for initialization
 	void Start () {
 	    dadi.gameObject.SetActive (true);
@@ -33,6 +34,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		usatoBotola = false;
 		lanciatoDadi = false;
 		miSonoSpostato = false;
+		fattoIpotesi = false;
 		dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
@@ -44,7 +46,8 @@ public class OperativaInterfaccia : MonoBehaviour {
 	void Update ()
 	{
         //Debug.Log(isMyTurn);				//E' IL MIO TURNO?
-        if (isMyTurn) {                   //Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
+        if (isMyTurn) 
+		{                   //Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
 			accusa.gameObject.SetActive (true);
 			endTurn.gameObject.SetActive (true);
 			ipotesi.gameObject.SetActive (false);
@@ -58,11 +61,12 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 			isInRoom = findPosition ();
 		//	Debug.Log (myRoom() +"");						//IN CHE STANZA MI TROVO?
-			if ((miSonoSpostato  && isInRoom) || usatoBotola) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza// posso avanzare un'ipotesi
+			if (((miSonoSpostato  && isInRoom) || usatoBotola ) && fattoIpotesi == false) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
 				ipotesi.gameObject.SetActive (true);
 			}
 
-			if ((!lanciatoDadi) && isInRoom) {
+			if ((!lanciatoDadi) && isInRoom) 
+			{
 			string myStanza = myRoom ();
 			if (myStanza.Equals ("cucina") || myStanza.Equals ("serra") || myStanza.Equals ("studio") || myStanza.Equals ("salotto")) {   //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
 				botola.gameObject.SetActive (true);                 //posso utilizzarla
@@ -73,7 +77,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		        dadi.gameObject.SetActive (false);
 			}
 
-		}
+			}
 		}
 
 		else                                                               //Se non è il mio turno, non posso fare nulla 
@@ -113,7 +117,6 @@ public class OperativaInterfaccia : MonoBehaviour {
 	public string myRoom()
 	{
 		Node position = grid.NodeFromWorldPoint(aStar.seeker.transform.position);
-		Debug.Log (aStar.seeker+"");
 	    Room stanza= grid.FindRoom(position);
 	    if(stanza!= null)
 		 return stanza.getNomeStanza ();
@@ -126,6 +129,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		isMyTurn = false;
 		usatoBotola = false;
 		miSonoSpostato = false;
+		fattoIpotesi = false;
 		sc.ActiveTopView ();
 		dado1.gameObject.SetActive (true);
 		dado2.gameObject.SetActive (true);
@@ -205,4 +209,10 @@ public class OperativaInterfaccia : MonoBehaviour {
 		messaggioUI.text = "E' il turno di "+ p.character;
 		Debug.Log (""+p.playerImage);
     }
+
+	public void DoIpotesiEffettiva ()
+	{
+		fattoIpotesi = true;
+		ipotesiPanel.gameObject.SetActive (false);
+	}
 }
