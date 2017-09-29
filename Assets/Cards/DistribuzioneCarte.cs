@@ -23,13 +23,14 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	bool createdCards = false;
 
 	[SyncVar]
-		public int numPlayers = 4;
+	int numPlayers = -1;
 
 	int dirCardDecider = 0;
 	// Use this for initialization
 	void Start () {
         receivedCards = new ArrayList();
 		seq = DOTween.Sequence ();
+        seq.Pause();
 		int i = 20;
 		float y = 43;
 		for (i = 20; i < 38; i++) {
@@ -47,7 +48,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (oneTimeDeal) {
+		if (oneTimeDeal && (numPlayers != -1) ) {
 			FalseDealCards ();
 			oneTimeDeal = false;
 		}
@@ -100,8 +101,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		
 		int j = 0;
 		float dealTime = 0.5f;
-		for(j=0;j<cards.Length;j++) {
-			if (numPlayers == 3) {
+        for (j=0;j<cards.Length;j++) {
+            if (numPlayers == 3) {
 				if (dirCardDecider == 0) {
 					seq.Append (cards[j].transform.DOMove (new Vector3 (1.8f, cards[j].transform.position.y, -50), dealTime, false));
 				}
@@ -111,7 +112,6 @@ public class DistribuzioneCarte : NetworkBehaviour {
 				if (dirCardDecider == 2) {
 					seq.Append (cards[j].transform.DOMove (new Vector3 (45, cards[j].transform.position.y, 50), dealTime, false));
 				}
-
 				dirCardDecider = (dirCardDecider + 1) % numPlayers;
 
 			} else if (numPlayers == 4) {
@@ -177,6 +177,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 				Debug.Log ("Errore in numPlayers");
 			}
 		}
+        seq.Play();
 	}
 
     private void InizioPartita()
