@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -611,20 +611,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -7511,7 +7497,7 @@ MonoBehaviour:
   sideValues: 
   forceAmount: 20
   torqueAmount: 50
-  forceMode: 2
+  forceMode: 1
   value: 0
 --- !u!23 &735541053
 MeshRenderer:
@@ -8668,7 +8654,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 1501029415839228, guid: 3343b7ab39886e640b623b0c78e648d2, type: 2}
   realCard: {fileID: 1482715865463080, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
-  numPlayers: 6
 --- !u!4 &887891207
 Transform:
   m_ObjectHideFlags: 0
@@ -8882,7 +8867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.237, y: -124.88}
+  m_AnchoredPosition: {x: -31.237, y: -124.880005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938861335
@@ -9581,9 +9566,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directions: []
   sideValues: 
-  forceAmount: 20
-  torqueAmount: 50
-  forceMode: 2
+  forceAmount: 30
+  torqueAmount: 60
+  forceMode: 1
   value: 0
 --- !u!54 &1101727895
 Rigidbody:
@@ -13932,7 +13917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seeker: {fileID: 0}
-  gm: {fileID: 2070918628}
+  dado1: {fileID: 735541052}
+  dado2: {fileID: 1101727894}
+  oi: {fileID: 2070918631}
 --- !u!1 &1606665528
 GameObject:
   m_ObjectHideFlags: 0
@@ -16968,7 +16955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -53.8, y: 166}
+  m_AnchoredPosition: {x: -53.800003, y: 166}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1975192702
@@ -17955,7 +17942,8 @@ MonoBehaviour:
   ipotesiPanel: {fileID: 846339290}
   avatar1: {fileID: 1257216230}
   messaggioUI: {fileID: 430868225}
-  a: {fileID: 1601999532}
+  grid: {fileID: 1601999533}
+  aStar: {fileID: 1601999535}
 --- !u!114 &2070918632
 MonoBehaviour:
   m_ObjectHideFlags: 0

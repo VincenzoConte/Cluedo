@@ -6,8 +6,8 @@
  
     public List<Vector3> directions;
     public List<int> sideValues;
-    public float forceAmount = 20.0f;
-    public float torqueAmount = 50.0f;
+    public float forceAmount = 40.0f;
+    public float torqueAmount = 100.0f;
     public ForceMode forceMode;
     public int value;
     SwitchCamera changeView;

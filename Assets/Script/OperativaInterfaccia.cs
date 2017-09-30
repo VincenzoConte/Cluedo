@@ -13,21 +13,19 @@ public class OperativaInterfaccia : MonoBehaviour {
 	public Text messaggioUI;
 	private dice dado1,dado2;
 	private	bool [] saveState;
-	    GameObject colliderDadi;
-    	bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi;
-		Grid grid;
-	    SwitchCamera sc;
-		Pathfinding aStar;
-		Room room;
-	public GameObject a;
+	GameObject colliderDadi;
+    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi;
+	public Grid grid;
+	SwitchCamera sc;
+	public Pathfinding aStar;
+	Room room;
 
 	// Use this for initialization
 	void Start () {
 	    dadi.gameObject.SetActive (true);
 		ipotesi.gameObject.SetActive (false);
 		botola.gameObject.SetActive (false);
-		ipotesiPanel.SetActive (false);
-		grid = a.GetComponent<Grid>();
+        ipotesiPanel.SetActive(false);
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
 		//isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
 		isInRoom = false;
@@ -39,7 +37,6 @@ public class OperativaInterfaccia : MonoBehaviour {
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
 		saveState = new bool[5];
-		aStar = a.GetComponent<Pathfinding>();
 	}
 	
 	// Update is called once per frame

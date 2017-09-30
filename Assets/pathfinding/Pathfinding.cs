@@ -7,18 +7,14 @@ public class Pathfinding : MonoBehaviour {
 
 	public Transform seeker;
     SwitchCamera changeView;
-    dice dado1, dado2;
+    public dice dado1, dado2;
 	Grid grid;
 	GameObject colliderr;
-	OperativaInterfaccia oi;
-	public GameObject gm;
+	public OperativaInterfaccia oi;
 
 	void OnEnable() {
         changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
         grid = GetComponent<Grid> ();
-        dado1 = GameObject.Find("dado").GetComponent<dice>();
-        dado2 = GameObject.Find("dado 2").GetComponent<dice>();
-		oi = gm.GetComponent<OperativaInterfaccia> ();
 		colliderr = GameObject.Find ("ColliderDadi");
     }
 
