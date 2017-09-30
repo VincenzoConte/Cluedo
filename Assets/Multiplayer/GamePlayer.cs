@@ -10,7 +10,6 @@ public class GamePlayer : NetworkBehaviour {
     [SyncVar]
     public string character;
     public Sprite playerImage;
-
     public GameObject playerCamera;
 
     // Use this for initialization
