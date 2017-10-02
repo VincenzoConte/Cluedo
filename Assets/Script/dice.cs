@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
- using System.Collections;
- using System.Collections.Generic;
- 
- public class dice : MonoBehaviour {
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Networking;
+
+public class dice : NetworkBehaviour {
  
     public List<Vector3> directions;
     public List<int> sideValues;
     public float forceAmount = 40.0f;
     public float torqueAmount = 100.0f;
     public ForceMode forceMode;
+    [SyncVar]
     public int value;
     SwitchCamera changeView;
     Rigidbody rb;

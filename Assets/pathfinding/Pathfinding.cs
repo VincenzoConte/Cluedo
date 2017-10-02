@@ -21,14 +21,17 @@ public class Pathfinding : MonoBehaviour {
 	void Update() {
         if (dado1.value > 0 && dado2.value > 0)
         {
-            FindTargets(seeker.position, dado1.value + dado2.value);
-            changeView.ActivePlayerView();
+            if (oi.IsMyTurn())
+            {
+                FindTargets(seeker.position, dado1.value + dado2.value);
+                changeView.ActivePlayerView();
+                //Setto invisibili i dadi e collider
+                dado1.gameObject.SetActive(false);
+                dado2.gameObject.SetActive(false);
+                colliderr.gameObject.SetActive(false);
+            }
             dado1.value = 0;
             dado2.value = 0;
-            //Setto invisibili i dadi e collider
-            dado1.gameObject.SetActive (false);
-            dado2.gameObject.SetActive (false);
-            colliderr.gameObject.SetActive (false);
         }
 	}
 

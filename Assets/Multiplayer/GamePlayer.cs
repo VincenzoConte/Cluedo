@@ -72,6 +72,13 @@ public class GamePlayer : NetworkBehaviour {
 		RpcIpotesi (i);
 	}
 
+    [Command]
+    public void CmdLanciaDadi(GameObject dado1, GameObject dado2)
+    {
+        dado1.GetComponent<dice>().RollTheDice();
+        dado2.GetComponent<dice>().RollTheDice();
+    }
+
 	[ClientRpc]
 	public void RpcIpotesi(string[] i){
 		Debug.Log (i[0]+i[1]+i[2]+"");

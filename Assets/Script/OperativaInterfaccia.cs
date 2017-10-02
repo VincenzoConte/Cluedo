@@ -27,7 +27,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		botola.gameObject.SetActive (false);
         ipotesiPanel.SetActive(false);
 		sc = GameObject.Find ("Gestione camera").GetComponent <SwitchCamera> ();
-		//isMyTurn = false;                           //Al MOMENTO IL PRIMO TURNO è SEMPRE DEL GIOCATORE LOCALE
+		isMyTurn = false;
 		isInRoom = false;
 		usatoBotola = false;
 		lanciatoDadi = false;
@@ -95,8 +95,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 	{
 		accusa.gameObject.SetActive (false);
 		endTurn.gameObject.SetActive (false);
-		dado1.RollTheDice ();
-		dado2.RollTheDice ();
+        aStar.seeker.GetComponent<GamePlayer>().CmdLanciaDadi(dado1.gameObject, dado2.gameObject);
 		lanciatoDadi = true;
 		accusa.gameObject.SetActive (true);
 		endTurn.gameObject.SetActive (true);
@@ -123,7 +122,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void fineTurno()
 	{
-		isMyTurn = false;
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
+            GameObject.Destroy(t, 0f);
+        isMyTurn = false;
 		usatoBotola = false;
 		miSonoSpostato = false;
 		fattoIpotesi = false;
@@ -212,4 +213,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 		fattoIpotesi = true;
 		ipotesiPanel.gameObject.SetActive (false);
 	}
+
+    public bool IsMyTurn()
+    {
+        return isMyTurn;
+    }
 }
