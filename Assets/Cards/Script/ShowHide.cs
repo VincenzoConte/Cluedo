@@ -7,19 +7,12 @@ public class ShowHide : MonoBehaviour {
 	Vector3 initPos;
 	bool positionChosed = false;
 	public bool isHidden = false;
-	Component[] components;
 	Component texto;
 	GameObject[] cards;
 	// Use this for initialization
 	void Start () {
 		cards = GameObject.FindGameObjectsWithTag ("card");
 		initPos = transform.position;
-		components = GetComponentsInChildren<Component> ();
-		foreach (Component c in components) {
-			if (c.name == "New Text") {
-				texto = c;
-			}
-		}
 	}
 	
 	// Update is called once per frame
@@ -39,11 +32,9 @@ public class ShowHide : MonoBehaviour {
 		if(!isHidden){
 			transform.DOMove (new Vector3 (1.8f, 45, -40), 0.6f, false);
 			isHidden = true;
-			texto.GetComponent<MeshRenderer> ().enabled = false;
 		}else{
 			transform.DOMove (initPos, 0.6f, false);
 			isHidden = false;
-			texto.GetComponent<MeshRenderer> ().enabled = true;
 			Debug.Log ("Mostra");
 		}
 	}

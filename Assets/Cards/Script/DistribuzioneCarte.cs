@@ -22,6 +22,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	bool oneStamp = true;
 	bool createdCards = false;
 
+	public GameObject[] cardPrefabs;  
+
 	[SyncVar]
 	int numPlayers = -1;
 
@@ -75,15 +77,15 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 			instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
-				GameObject instCard;
+				GameObject instCard = null;
 				Vector3 startPos = new Vector3(startX + (17f*i),40,-50);
-				instCard = Instantiate (realCard, startPos,Quaternion.Euler (0, 180, 0));
-				Component[] components = instCard.GetComponentsInChildren<Component> ();
-				foreach (Component g in components) {
-					if (g.name == "New Text") {
-						g.GetComponent<TextMesh> ().text = receivedCards [i].ToString ();
+
+				foreach(GameObject go in cardPrefabs){
+					if(go.name.Equals (receivedCards[i])){
+						instCard = Instantiate (go, startPos,Quaternion.Euler (0, 180, 0));
 					}
 				}
+
 				Button[] button = GameObject.Find (receivedCards[i].ToString ()).GetComponentsInChildren<Button>();
 				ButtonInventary bi = button[0].GetComponent<ButtonInventary>();
 				bi.lockSelection(bi.id);

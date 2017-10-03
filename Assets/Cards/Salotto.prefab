@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33112429786627882}
   - component: {fileID: 64558759729571008}
   - component: {fileID: 23943002760810820}
+  - component: {fileID: 114833936892867532}
   m_Layer: 0
   m_Name: Salotto
-  m_TagString: Untagged
+  m_TagString: card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,3 +96,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114833936892867532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900134635214262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38360d495287e2d42a51c728731b6f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHidden: 0

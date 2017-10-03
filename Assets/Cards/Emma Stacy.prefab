@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33971730559312622}
   - component: {fileID: 64404760708310130}
   - component: {fileID: 23478420562789354}
+  - component: {fileID: 114870301609296204}
   m_Layer: 0
   m_Name: Emma Stacy
-  m_TagString: Untagged
+  m_TagString: card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,3 +96,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114870301609296204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755605932739134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38360d495287e2d42a51c728731b6f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHidden: 0
