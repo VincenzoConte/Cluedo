@@ -64,21 +64,24 @@ public class DistribuzioneCarte : NetworkBehaviour {
             seq = DOTween.Sequence();
             seq.OnComplete(InizioPartita);
 			float startX = 0;
-			if (receivedCards.Count - 1 == 3)
+			int mod = receivedCards.Count - 1;
+			if (mod == 3)
 				startX = -24.5f;
-			else if (receivedCards.Count - 1 == 4)
+			else if (mod == 4)
 				startX = -33f;
-			else if (receivedCards.Count - 1 == 5)
+			else if (mod == 5)
 				startX = -41.5f;
-			else if(receivedCards.Count - 1 == 6)
-				startX = -50f;
+			else if (mod == 6) {
+				startX = -24.5f;
+				mod = 3;
+			}
 			else
 				Debug.Log ("Errore numero carte ricevute!");
 
 			instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard = null;
-				Vector3 startPos = new Vector3(startX + (17f*i),40,-50);
+				Vector3 startPos = new Vector3(startX + (17f*(i%mod)),40,-50);
 
 				foreach(GameObject go in cardPrefabs){
 					if(go.name.Equals (receivedCards[i])){
@@ -91,8 +94,19 @@ public class DistribuzioneCarte : NetworkBehaviour {
 				bi.lockSelection(bi.id);
 				instantiatedCards [i] = instCard;
 			}
-			for(int ii = 0; ii<instantiatedCards.Length ; ii++){
-				seq.Append (instantiatedCards[ii].transform.DOMove (new Vector3(instantiatedCards[ii].transform.position.x,45,0),0.7f,false));
+			if (receivedCards.Count - 1 == 6) {
+				int initZ = 13;
+				seq.Append (instantiatedCards [0].transform.DOMove (new Vector3 (instantiatedCards [0].transform.position.x, 45, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [1].transform.DOMove (new Vector3 (instantiatedCards [1].transform.position.x, 45, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [2].transform.DOMove (new Vector3 (instantiatedCards [2].transform.position.x, 45, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [3].transform.DOMove (new Vector3 (instantiatedCards [3].transform.position.x, 45, initZ), 0.7f, false));
+				seq.Append (instantiatedCards [4].transform.DOMove (new Vector3 (instantiatedCards [4].transform.position.x, 45, initZ), 0.7f, false));
+				seq.Append (instantiatedCards [5].transform.DOMove (new Vector3 (instantiatedCards [5].transform.position.x, 45, initZ), 0.7f, false));
+					
+			} else {
+				for (int ii = 0; ii < instantiatedCards.Length; ii++) {
+					seq.Append (instantiatedCards [ii].transform.DOMove (new Vector3 (instantiatedCards [ii].transform.position.x, 45, 0), 0.7f, false));
+				}
 			}
 			createdCards = true;
 		}
