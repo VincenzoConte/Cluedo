@@ -9,6 +9,7 @@ TagManager:
   - falseCard
   - TopViewCamera
   - Avatar
+  - GameManager
   layers:
   - Default
   - TransparentFX

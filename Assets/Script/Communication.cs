@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Communication : NetworkBehaviour {
 
     NetworkConnection[] players;
-    int turno;
+    public int turno;
     public static short msg = MsgType.Highest + 2;
     static OperativaInterfaccia oi;
 

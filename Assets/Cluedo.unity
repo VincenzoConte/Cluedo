@@ -520,7 +520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -474.1, y: -20.8}
+  m_AnchoredPosition: {x: -260, y: -96}
   m_SizeDelta: {x: 205.17, y: 90.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26799152
@@ -721,7 +721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &37792972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3868,7 +3868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -586.04004, y: 92.817}
+  m_AnchoredPosition: {x: -372, y: 18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307159897
@@ -5366,7 +5366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: E' il turno di -
+  m_Text: '...'
 --- !u!222 &430868226
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5780,7 +5780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &504917723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8026,7 +8026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &782626473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9243,7 +9243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &965739083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13397,7 +13397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1513648996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16870,7 +16870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -473.09998, y: -25.419998}
+  m_AnchoredPosition: {x: -259, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912933972
@@ -18098,7 +18098,7 @@ GameObject:
   - component: {fileID: 2070918633}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18166,8 +18166,10 @@ MonoBehaviour:
   ipotesi: {fileID: 782626474}
   endTurn: {fileID: 504917724}
   ipotesiPanel: {fileID: 846339290}
+  infoPanel: {fileID: 1463483118}
   avatar1: {fileID: 1257216230}
   messaggioUI: {fileID: 430868225}
+  messaggioInfoPanel: {fileID: 26799152}
   grid: {fileID: 1601999533}
   aStar: {fileID: 1601999535}
 --- !u!114 &2070918632
@@ -18181,6 +18183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9413e46a0008a428e9720051cc2a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turno: 0
 --- !u!114 &2070918633
 MonoBehaviour:
   m_ObjectHideFlags: 0
