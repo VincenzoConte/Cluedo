@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Grid : MonoBehaviour {
 
 	public LayerMask unwalkableMask;
-	Vector2 gridWorldSize;
 	public float nodeRadius;
 	Node[,] grid;
     public Transform bottomRight;
@@ -32,7 +31,6 @@ public class Grid : MonoBehaviour {
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;
 		gridSizeY = 25;
-        gridWorldSize = new Vector2(24 * nodeDiameter, 25 * nodeDiameter);
 		CreateGrid();
 	}
 

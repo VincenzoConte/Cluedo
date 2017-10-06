@@ -11,7 +11,7 @@ public class GamePlayer : NetworkBehaviour {
     public string character;
     public Sprite playerImage;
     public GameObject playerCamera;
-	int idPlayerQuestioned;
+	static int idPlayerQuestioned;
 	NetworkConnection[] players;
     // Use this for initialization
     void Start () {
@@ -108,9 +108,9 @@ public class GamePlayer : NetworkBehaviour {
     }
 
 	[TargetRpc]
-	public void TargetChiediCarta(NetworkConnection target, int extra,string[] ipotesi) {
-		CmdMostraCarta ("Gianni",null,ipotesi);
-		Debug.Log (isLocalPlayer);
+	public void TargetChiediCarta(NetworkConnection target, int extra, string[] ipotesi) {
+        GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
+        localPlayer.CmdMostraCarta(localPlayer.character, null, ipotesi);
 	}
 
 	[ClientRpc]
