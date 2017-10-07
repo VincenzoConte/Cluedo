@@ -8,7 +8,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
-	public GameObject ipotesiPanel, infoPanel;
+	public GameObject ipotesiPanel, infoPanel, mostraCartaPanel;
 	public Image avatar1;
 	public Text messaggioUI, messaggioInfoPanel;
 	private dice dado1,dado2;
@@ -203,7 +203,6 @@ public class OperativaInterfaccia : MonoBehaviour {
         GamePlayer p = player.GetComponent<GamePlayer>();
 		avatar1.sprite = p.playerImage;
 		messaggioUI.text = "E' il turno di "+ p.character;
-		Debug.Log (""+p.playerImage);
     }
 
 	public void DoIpotesiEffettiva ()

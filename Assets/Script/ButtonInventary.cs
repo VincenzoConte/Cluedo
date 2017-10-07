@@ -22,7 +22,7 @@ private string[] cards;
 
 		cards = new string[] {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
 			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
-			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
+			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala del biliardo",
 			"Biblioteca","Studio"};
 	}
 

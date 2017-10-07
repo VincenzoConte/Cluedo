@@ -9,12 +9,13 @@ public class GamePlayer : NetworkBehaviour {
     public Color color;
     [SyncVar]
     public string character;
+	public string [] carteInMano;
     public Sprite playerImage;
     public GameObject playerCamera;
 	static int idPlayerQuestioned;
 	NetworkConnection[] players;
     // Use this for initialization
-    void Start () {
+    void Start () { 
         GetComponent<Renderer>().material.color = color;
 		if(NetworkServer.active){
 			players = new NetworkConnection[NetworkServer.connections.Count];
@@ -79,12 +80,14 @@ public class GamePlayer : NetworkBehaviour {
 	[Command]
 	public void CmdMostraCarta(string nomePlayer, string carta, string[] ipotesi){
 		if(carta == null || carta == ""){
-			Debug.Log ("la carta è null");
 			idPlayerQuestioned = (idPlayerQuestioned + 1)%players.Length;
 			if (idPlayerQuestioned == (GameObject.Find ("GameManager").GetComponent<Communication> ().turno)) {
 				//po verimm
 			} else
 				TargetChiediCarta (players [idPlayerQuestioned], 0, ipotesi);
+		}else
+		{
+			Debug.Log (" Il giocatore: " + nomePlayer + " mi ha mostrato la carta: " + carta);
 		}
 		RpcNotificaCarteIp (nomePlayer,carta);
 	}
@@ -97,20 +100,22 @@ public class GamePlayer : NetworkBehaviour {
 
 	[ClientRpc]
 	public void RpcIpotesi(string[] ipotesi) {
-		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ()
-			.messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
 	}
 
     [ClientRpc]
     public void RpcAggiornaInterfaccia(GameObject player) {
-		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ()
-			.AggiornaInterfaccia(player);
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().AggiornaInterfaccia(player);
     }
 
 	[TargetRpc]
 	public void TargetChiediCarta(NetworkConnection target, int extra, string[] ipotesi) {
         GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
-        localPlayer.CmdMostraCarta(localPlayer.character, null, ipotesi);
+
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().mostraCartaPanel.SetActive (true);
+		MostraCartaScript mc = GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().mostraCartaPanel.GetComponent<MostraCartaScript> ();
+		mc.ShowCardsOnPanel (ipotesi, localPlayer.carteInMano);
+       // localPlayer.CmdMostraCarta(localPlayer.character, null, ipotesi);
 	}
 
 	[ClientRpc]

@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1782510507742314}
+  m_RootGameObject: {fileID: 1605813289354874}
   m_IsPrefabParent: 1
---- !u!1 &1782510507742314
+--- !u!1 &1605813289354874
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4699584639294734}
-  - component: {fileID: 33357385396100942}
-  - component: {fileID: 64399891213836078}
-  - component: {fileID: 23042067238566214}
-  - component: {fileID: 114505608100750562}
+  - component: {fileID: 4080521804133694}
+  - component: {fileID: 33025820314886808}
+  - component: {fileID: 64224126884780400}
+  - component: {fileID: 23238895186393932}
+  - component: {fileID: 114158244195681696}
   m_Layer: 0
   m_Name: Sala da pranzo
   m_TagString: card
@@ -30,25 +30,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4699584639294734
+--- !u!4 &4080521804133694
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782510507742314}
+  m_GameObject: {fileID: 1605813289354874}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -491.4, y: 130.50108, z: -1425.375}
+  m_LocalPosition: {x: 639.26636, y: 492.14, z: -843.73987}
   m_LocalScale: {x: 1.5, y: 0.05, z: 2.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!23 &23042067238566214
+--- !u!23 &23238895186393932
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782510507742314}
+  m_GameObject: {fileID: 1605813289354874}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f00b201407f6dac4e9effa313186c289, type: 2}
+  - {fileID: 2100000, guid: dee270a1e2fe64148aeb337949ec1f92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,19 +75,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33357385396100942
+--- !u!33 &33025820314886808
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782510507742314}
+  m_GameObject: {fileID: 1605813289354874}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64399891213836078
+--- !u!64 &64224126884780400
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782510507742314}
+  m_GameObject: {fileID: 1605813289354874}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -96,12 +96,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114505608100750562
+--- !u!114 &114158244195681696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782510507742314}
+  m_GameObject: {fileID: 1605813289354874}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38360d495287e2d42a51c728731b6f56, type: 3}

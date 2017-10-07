@@ -18,15 +18,15 @@ public class Grid : MonoBehaviour {
 	void Awake() {
 
         rooms = new Room[9];
-        rooms[0] = new Room("salotto", GameObject.Find("area salotto").transform);
-        rooms[1] = new Room("sala da pranzo", GameObject.Find("area pranzo").transform);
-        rooms[2] = new Room("ingresso", GameObject.Find("area ingresso").transform);
-        rooms[3] = new Room("studio", GameObject.Find("area studio").transform);
-        rooms[4] = new Room("biblioteca", GameObject.Find("area biblioteca").transform);
-        rooms[5] = new Room("cucina", GameObject.Find("area cucina").transform);
-        rooms[6] = new Room("serra", GameObject.Find("area serra").transform);
-        rooms[7] = new Room("sala del biliardo", GameObject.Find("area biliardo").transform);
-        rooms[8] = new Room("sala da ballo", GameObject.Find("area ballo").transform);
+        rooms[0] = new Room("Salotto", GameObject.Find("area salotto").transform);
+        rooms[1] = new Room("Sala da pranzo", GameObject.Find("area pranzo").transform);
+        rooms[2] = new Room("Ingresso", GameObject.Find("area ingresso").transform);
+        rooms[3] = new Room("Studio", GameObject.Find("area studio").transform);
+        rooms[4] = new Room("Biblioteca", GameObject.Find("area biblioteca").transform);
+        rooms[5] = new Room("Cucina", GameObject.Find("area cucina").transform);
+        rooms[6] = new Room("Serra", GameObject.Find("area serra").transform);
+        rooms[7] = new Room("Sala del biliardo", GameObject.Find("area biliardo").transform);
+        rooms[8] = new Room("Sala da ballo", GameObject.Find("area ballo").transform);
         nodeRadius = (-transform.position.x+bottomRight.position.x) / 48;
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;

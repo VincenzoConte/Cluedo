@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1755605932739134}
+  m_RootGameObject: {fileID: 1676508763948944}
   m_IsPrefabParent: 1
---- !u!1 &1755605932739134
+--- !u!1 &1676508763948944
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4084893414058444}
-  - component: {fileID: 33971730559312622}
-  - component: {fileID: 64404760708310130}
-  - component: {fileID: 23478420562789354}
-  - component: {fileID: 114870301609296204}
+  - component: {fileID: 4767356365328074}
+  - component: {fileID: 33160813403385326}
+  - component: {fileID: 64643135964077210}
+  - component: {fileID: 23246598780190254}
+  - component: {fileID: 114367091292521504}
   m_Layer: 0
   m_Name: Emma Stacy
   m_TagString: card
@@ -30,25 +30,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4084893414058444
+--- !u!4 &4767356365328074
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755605932739134}
+  m_GameObject: {fileID: 1676508763948944}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -71.8, y: 284.9925, z: -4.325564}
+  m_LocalPosition: {x: 616.81, y: 483.91, z: -844.7284}
   m_LocalScale: {x: 1.5, y: 0.05, z: 2.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!23 &23478420562789354
+--- !u!23 &23246598780190254
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755605932739134}
+  m_GameObject: {fileID: 1676508763948944}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 663a3b6ff063adc429f84613b2227d8d, type: 2}
+  - {fileID: 2100000, guid: e01da6e0145e34542b676621928c416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,19 +75,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33971730559312622
+--- !u!33 &33160813403385326
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755605932739134}
+  m_GameObject: {fileID: 1676508763948944}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64404760708310130
+--- !u!64 &64643135964077210
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755605932739134}
+  m_GameObject: {fileID: 1676508763948944}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -96,12 +96,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114870301609296204
+--- !u!114 &114367091292521504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755605932739134}
+  m_GameObject: {fileID: 1676508763948944}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38360d495287e2d42a51c728731b6f56, type: 3}

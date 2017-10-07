@@ -12,6 +12,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	public GameObject card;
 	GameObject[] cards;
 	bool oneTimeDeal = true;
+	private Pathfinding aStar;
 
 	GameObject[] instantiatedCards;
 
@@ -30,6 +31,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	int dirCardDecider = 0;
 	// Use this for initialization
 	void Start () {
+		aStar = GameObject.Find ("A*").GetComponent<Pathfinding> ();
         receivedCards = new ArrayList();
 		seq = DOTween.Sequence ();
         seq.Pause();
@@ -108,6 +110,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 					seq.Append (instantiatedCards [ii].transform.DOMove (new Vector3 (instantiatedCards [ii].transform.position.x, 45, 0), 0.7f, false));
 				}
 			}
+			aStar.seeker.GetComponent<GamePlayer> ().carteInMano = receivedCards.ToArray(typeof(string)) as string [];
 			createdCards = true;
 		}
 	}
@@ -213,9 +216,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	//metodo effettivo per la distribuzione delle carte da parte dell'host verso i client tramite Messaggi
 	void DealerCards(){
 		//mazzo di carte riempito di 21 carte (6 pers, 6 armi, 9 stanze)
-		string[] cards = {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
+		string[] cards = {"Dolphin Rogue","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
 			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
-			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala da biliardo",
+			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala del biliardo",
 			"Biblioteca","Studio"};
 
 		//scelta random carte della soluzione
