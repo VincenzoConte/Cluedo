@@ -45,8 +45,11 @@ public class MostraCartaScript : MonoBehaviour {
 		}
 		if (counter == 0)
 		{
+			myButton = null;
 			NonHoCarte.gameObject.SetActive (true);
 		}
+
+		StartCoroutine (clickAfterTimer ());
 	}
 	public void ScegliCarta()
 	{
@@ -54,6 +57,7 @@ public class MostraCartaScript : MonoBehaviour {
 		GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
 		localPlayer.CmdMostraCarta(localPlayer.character, myButton.name, ipotesiFatta);
 		this.gameObject.SetActive (false);
+		StopCoroutine (clickAfterTimer ());
 	}
 
 	public void Skip()
@@ -61,5 +65,14 @@ public class MostraCartaScript : MonoBehaviour {
 		GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
 		localPlayer.CmdMostraCarta(localPlayer.character, null, ipotesiFatta);
 		this.gameObject.SetActive (false);
+		StopCoroutine (clickAfterTimer ());
+	}
+
+	IEnumerator clickAfterTimer(){
+		yield return new WaitForSeconds (20);
+		if (myButton == null)
+			NonHoCarte.onClick.Invoke ();
+		else
+			myButton.onClick.Invoke ();
 	}
 }
