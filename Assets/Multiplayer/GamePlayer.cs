@@ -12,11 +12,13 @@ public class GamePlayer : NetworkBehaviour {
 	public string [] carteInMano;
     public Sprite playerImage;
     public GameObject playerCamera;
+    public byte turniDaSaltare;
 	static int idPlayerQuestioned;
 	NetworkConnection[] players;
     // Use this for initialization
     void Start () { 
         GetComponent<Renderer>().material.color = color;
+        turniDaSaltare = 0;
 		if(NetworkServer.active){
 			players = new NetworkConnection[NetworkServer.connections.Count];
 			NetworkServer.connections.CopyTo(players, 0);
@@ -77,6 +79,19 @@ public class GamePlayer : NetworkBehaviour {
 		TargetChiediCarta (players[idPlayerQuestioned],0,ipotesi);
 	}
 
+    [Command]
+    public void CmdAccusa(string[] accusa)
+    {
+        string[] soluzione = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetSolution();
+        if (accusa[0].Equals(soluzione[0]) && accusa[1].Equals(soluzione[1]) && accusa[2].Equals(soluzione[2]))
+        {
+            RpcEsitoAccusa(true);
+            //fine partita
+        }
+        else
+            RpcEsitoAccusa(false);
+    }
+
 	[Command]
 	public void CmdMostraCarta(string nomePlayer, string carta, string[] ipotesi){
 		if(carta == null || carta == ""){
@@ -102,6 +117,26 @@ public class GamePlayer : NetworkBehaviour {
 	public void RpcIpotesi(string[] ipotesi) {
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
 	}
+
+    [ClientRpc]
+    public void RpcEsitoAccusa(bool esito)
+    {
+        if (esito)
+        {
+            if (isLocalPlayer)
+                Debug.Log("hai vinto");
+            else
+                Debug.Log(character+" ha vinto");
+            //fine partita
+
+        }
+        else
+        {
+            // messaggio accusa sbagliata
+            if (isLocalPlayer)
+                turniDaSaltare = 1;
+        }
+    }
 
     [ClientRpc]
     public void RpcAggiornaInterfaccia(GameObject player) {

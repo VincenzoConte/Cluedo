@@ -25,10 +25,6 @@ public class Communication : NetworkBehaviour {
             turno = -1;
             players = new NetworkConnection[NetworkServer.connections.Count];
             NetworkServer.connections.CopyTo(players, 0);
-            /*for(int i = 0; i < players.Length; i++)
-            {
-                players[i].RegisterHandler(msg, InizioTurno);
-            }*/
         }
     }
 

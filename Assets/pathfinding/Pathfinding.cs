@@ -51,7 +51,8 @@ public class Pathfinding : MonoBehaviour {
                 if (GetDistance(n, targetNode) < GetDistance(min, targetNode))
                     min = n;
             }
-            seeker.position = new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z);
+            //seeker.position = new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z);
+            seeker.transform.DOMove(new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z), 2);
             startNode = min;
         }
         openSet.Add(startNode);
@@ -143,7 +144,16 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
-            seeker.transform.position = new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z);
+            Sequence seq = DOTween.Sequence();
+            //seeker.transform.position = new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z);
+            seq.Append(seeker.transform.DOMove(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 2));
+            Transform camera = seeker.GetChild(0);
+            seq.Append(camera.DOLocalMove(new Vector3(0, 1, 0), 2));
+            seq.Join(camera.DOLocalRotate(new Vector3(0, 0, 0), 2));
+            seq.Append(camera.DOLocalRotate(new Vector3(0, 360, 0), 10, RotateMode.FastBeyond360));
+            seq.Append(camera.DOLocalMove(new Vector3(0, 10, 0), 2));
+            seq.Join(camera.DOLocalRotate(new Vector3(90, 0, 0), 2));
+
         }
 		oi.setMiSonoSpostato ();
     }

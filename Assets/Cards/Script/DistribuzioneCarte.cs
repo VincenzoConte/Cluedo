@@ -15,8 +15,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	private Pathfinding aStar;
 
 	GameObject[] instantiatedCards;
+    string[] hiddenCards;
 
-	public GameObject realCard;
+    public GameObject realCard;
 	NetworkConnection[] players;
 	public static short msgNum = MsgType.Highest + 11;
 	static ArrayList receivedCards;
@@ -222,7 +223,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			"Biblioteca","Studio"};
 
 		//scelta random carte della soluzione
-		string[] hiddenCards = new string[3];
+		hiddenCards = new string[3];
 		hiddenCards [0] = cards [UnityEngine.Random.Range (0, 5)];
 		hiddenCards [1] = cards [UnityEngine.Random.Range (6, 11)];
 		hiddenCards [2] = cards [UnityEngine.Random.Range (12, 20)];
@@ -268,4 +269,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		Debug.Log (strMsg.value+"");
 		receivedCards.Add (strMsg.value);
 	}
+
+    public string[] GetSolution()
+    {
+        return hiddenCards;
+    }
 }

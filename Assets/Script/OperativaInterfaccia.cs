@@ -152,10 +152,16 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void setTurnoTrue()             //METODO DI TEST PER ACQUISIRE MANUALMENTE IL TURNO. DA CANCELLARE. 
 	{
-	    isMyTurn= true;
-	    lanciatoDadi = false;
         GamePlayer player = aStar.seeker.GetComponent<GamePlayer>();
+        if (player.turniDaSaltare > 0)
+        {
+            player.turniDaSaltare--;
+            player.CmdFineTurno(gameObject);
+            return;
+        }
         player.CmdGiocatoreAttivo(player.gameObject);
+        isMyTurn = true;
+	    lanciatoDadi = false;
 
 		//Se è il mio turno, sono in grado fin da subito a fare l'accusa o a terminare il turno
 		accusa.gameObject.SetActive (true);

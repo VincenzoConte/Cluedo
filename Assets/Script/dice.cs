@@ -46,6 +46,7 @@ public class dice : NetworkBehaviour {
         {
             if (rb.IsSleeping())
             {
+                StopAllCoroutines();
                 value = GetNumber(Vector3.up, 30f);
                 flag = false;
             }
@@ -60,6 +61,7 @@ public class dice : NetworkBehaviour {
 		rb.AddForce ((Random.onUnitSphere + Vector3.one) * forceAmount, forceMode);
 		rb.AddTorque ((Random.onUnitSphere + Vector3.one) * torqueAmount, forceMode);
         flag = true;
+        StartCoroutine("DiceTimer");
      }
 
      public int GetNumber(Vector3 referenceVectorUp, float epsilonDeg = 5f) {
@@ -76,4 +78,11 @@ public class dice : NetworkBehaviour {
          }
          return (mostSimilarDirectionIndex >= 0) ? sideValues[mostSimilarDirectionIndex] : -1; 
      }
+
+    IEnumerator DiceTimer()
+    {
+        yield return new WaitForSeconds(10);
+        value = GetNumber(Vector3.up, 30f);
+        flag = false;
+    }
  }
