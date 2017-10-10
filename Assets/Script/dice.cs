@@ -58,7 +58,7 @@ public class dice : NetworkBehaviour {
      public void RollTheDice(){
         //lancia
 		changeView.ActiveTopView ();
-		rb.AddForce ((Random.onUnitSphere + Vector3.one) * forceAmount, forceMode);
+		rb.AddForce ((Random.onUnitSphere + new Vector3(1, 2f, 1)) * forceAmount, forceMode);
 		rb.AddTorque ((Random.onUnitSphere + Vector3.one) * torqueAmount, forceMode);
         flag = true;
         StartCoroutine("DiceTimer");

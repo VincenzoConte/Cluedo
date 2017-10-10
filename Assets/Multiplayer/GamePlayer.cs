@@ -113,6 +113,13 @@ public class GamePlayer : NetworkBehaviour {
         dado2.GetComponent<dice>().RollTheDice();
     }
 
+    [Command]
+    public void CmdAzzeraDadi(GameObject dado1, GameObject dado2)
+    {
+        dado1.GetComponent<dice>().value = 0;
+        dado2.GetComponent<dice>().value = 0;
+    }
+
 	[ClientRpc]
 	public void RpcIpotesi(string[] ipotesi) {
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];

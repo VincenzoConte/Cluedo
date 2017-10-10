@@ -29,9 +29,8 @@ public class Pathfinding : MonoBehaviour {
                 dado1.gameObject.SetActive(false);
                 dado2.gameObject.SetActive(false);
                 colliderr.gameObject.SetActive(false);
+                seeker.GetComponent<GamePlayer>().CmdAzzeraDadi(dado1.gameObject, dado2.gameObject);
             }
-            dado1.value = 0;
-            dado2.value = 0;
         }
 	}
 
@@ -42,17 +41,17 @@ public class Pathfinding : MonoBehaviour {
 
 		List<Node> openSet = new List<Node>();
 		HashSet<Node> closedSet = new HashSet<Node>();
+        bool isInRoom = false; ;
         if (Room.CheckNode(startNode))
         {
+            isInRoom = true;
             List<Node> doors = grid.FindRoom(startNode).doors;
             Node min = doors[0];
             foreach (Node n in doors)
             {
                 if (GetDistance(n, targetNode) < GetDistance(min, targetNode))
                     min = n;
-            }
-            //seeker.position = new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z);
-            seeker.transform.DOMove(new Vector3(min.worldPosition.x, seeker.position.y, min.worldPosition.z), 2);
+            }            
             startNode = min;
         }
         openSet.Add(startNode);
@@ -72,7 +71,7 @@ public class Pathfinding : MonoBehaviour {
 			if (node == targetNode) {
                 targetNode.walkable = false;
                 startNode.walkable = true;
-				RetracePath(startNode,targetNode);
+				RetracePath(startNode,targetNode, isInRoom);
 				return;
 			}
 
@@ -95,7 +94,7 @@ public class Pathfinding : MonoBehaviour {
 		}
 	}
 
-	void RetracePath(Node startNode, Node endNode) {
+	void RetracePath(Node startNode, Node endNode, bool isInRoom) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;
 
@@ -103,14 +102,14 @@ public class Pathfinding : MonoBehaviour {
 			path.Add(currentNode);
 			currentNode = currentNode.parent;
 		}
+        if(isInRoom)
+            path.Add(startNode);
 		path.Reverse();
-        Move(path);
-        //testing
-        //seeker.transform.position = endNode.worldPosition;
+        Move(isInRoom ,path);
 
 	}
 
-    void Move(List<Node> path)
+    void Move(bool isInRoom, List<Node> path)
     {
         //cammino
         /*foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
@@ -129,6 +128,13 @@ public class Pathfinding : MonoBehaviour {
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
             GameObject.Destroy(t, 0f);
         Sequence seq = DOTween.Sequence();
+        if (isInRoom)
+        {
+            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+            seq.Append(seeker.transform.DOMove(new Vector3(path[0].worldPosition.x, seeker.position.y, path[0].worldPosition.z), 1.5f));
+            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+            path.RemoveAt(0);
+        }
         float y = seeker.position.y;
         foreach (Node n in path)
         {
@@ -146,11 +152,13 @@ public class Pathfinding : MonoBehaviour {
         {
             Sequence seq = DOTween.Sequence();
             //seeker.transform.position = new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z);
-            seq.Append(seeker.transform.DOMove(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 2));
+            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+            seq.Append(seeker.transform.DOMove(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 1.5f));
+            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
             Transform camera = seeker.GetChild(0);
-            seq.Append(camera.DOLocalMove(new Vector3(0, 1, 0), 2));
+            seq.Append(camera.DOLocalMove(new Vector3(0, 1.7f, -2), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(0, 0, 0), 2));
-            seq.Append(camera.DOLocalRotate(new Vector3(0, 360, 0), 10, RotateMode.FastBeyond360));
+            seq.Append(seeker.transform.DOLocalRotate(new Vector3(0, 360, 0), 10, RotateMode.FastBeyond360));
             seq.Append(camera.DOLocalMove(new Vector3(0, 10, 0), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(90, 0, 0), 2));
 
