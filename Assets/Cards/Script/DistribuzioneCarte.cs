@@ -217,7 +217,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 	//metodo effettivo per la distribuzione delle carte da parte dell'host verso i client tramite Messaggi
 	void DealerCards(){
 		//mazzo di carte riempito di 21 carte (6 pers, 6 armi, 9 stanze)
-		string[] cards = {"Dolphin Rogue","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
+		string[] cards = {"Dolphin Rogue","Vincent Count","Mark Johnson","Freddie Carnival","Anne Marie","Emma Stacy",
 			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
 			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala del biliardo",
 			"Biblioteca","Studio"};
@@ -266,7 +266,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 	public static void MsgInvioCarteHandler(NetworkMessage netMsg){
 		StringMessage strMsg = netMsg.ReadMessage<StringMessage> ();
-		Debug.Log (strMsg.value+"");
+		//Debug.Log (strMsg.value+"");
 		receivedCards.Add (strMsg.value);
 	}
 

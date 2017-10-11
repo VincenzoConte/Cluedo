@@ -20,7 +20,7 @@ private string[] cards;
 	void Start () {
 		count = 0;
 
-		cards = new string[] {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carneval","Anne Marie","Emma Stacy",
+		cards = new string[] {"Dolphin Rouge","Vincent Count","Mark Johnson","Freddie Carnival","Anne Marie","Emma Stacy",
 			"Corda","Pistola","Chiave inglese","Pugnale","Candeliere","Tubo di piombo",
 			"Ingresso","Salotto","Sala da pranzo","Cucina","Sala da ballo","Serra","Sala del biliardo",
 			"Biblioteca","Studio"};

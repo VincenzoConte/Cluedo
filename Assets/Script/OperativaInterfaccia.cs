@@ -8,9 +8,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
-	public GameObject ipotesiPanel, infoPanel, mostraCartaPanel;
+	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel;
 	public Image avatar1;
-	public Text messaggioUI, messaggioInfoPanel;
+	public Text messaggioUI;
 	private dice dado1,dado2;
 	private	bool [] saveState;
 	GameObject colliderDadi;
@@ -58,11 +58,10 @@ public class OperativaInterfaccia : MonoBehaviour {
 				accusa.gameObject.SetActive (true);
 				endTurn.gameObject.SetActive (true);
 			}
-
 			if ((!lanciatoDadi) && isInRoom) 
 			{
 				string myStanza = myRoom ();
-				if (myStanza.Equals ("cucina") || myStanza.Equals ("serra") || myStanza.Equals ("studio") || myStanza.Equals ("salotto")) {   //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
+				if (myStanza.Equals ("Cucina") || myStanza.Equals ("Serra") || myStanza.Equals ("Studio") || myStanza.Equals ("Salotto")) {   //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
 					botola.gameObject.SetActive (true);                 //posso utilizzarla
 			}
 			if(usatoBotola)
@@ -131,21 +130,21 @@ public class OperativaInterfaccia : MonoBehaviour {
 	public void usaBotola()
 	{
 		string myStanza = myRoom ();
-		if(myStanza.Equals("cucina"))
+		if(myStanza.Equals("Cucina"))
 		{
-				aStar.MoveInRoom(new Room("studio", GameObject.Find("area studio").transform));
+				aStar.MoveInRoom(new Room("Studio", GameObject.Find("area studio").transform));
 			}
-		else if(myStanza.Equals("studio"))
+		else if(myStanza.Equals("Studio"))
 				{
-					aStar.MoveInRoom(new Room("cucina", GameObject.Find("area cucina").transform));
+					aStar.MoveInRoom(new Room("Cucina", GameObject.Find("area cucina").transform));
 				}
-		else if(myStanza.Equals("serra"))
+		else if(myStanza.Equals("Serra"))
 					{
-						aStar.MoveInRoom(new Room("salotto", GameObject.Find("area salotto").transform));
+						aStar.MoveInRoom(new Room("Salotto", GameObject.Find("area salotto").transform));
 					}
-		else if(myStanza.Equals("salotto"))
+		else if(myStanza.Equals("Salotto"))
 						{
-							aStar.MoveInRoom(new Room("serra", GameObject.Find("area serra").transform));
+							aStar.MoveInRoom(new Room("Serra", GameObject.Find("area serra").transform));
 						}
 		usatoBotola = true;
 	}
@@ -228,6 +227,16 @@ public class OperativaInterfaccia : MonoBehaviour {
 		ipotesi.gameObject.SetActive (false);
 		accusa.gameObject.SetActive (false);
 		endTurn.gameObject.SetActive (false);
+	}
+
+	public void ShowMessaggiPanel()
+	{
+		messaggiPanel.gameObject.SetActive (true);
+	}
+
+	public void HideMessaggiPanel()
+	{
+		messaggiPanel.gameObject.SetActive(false);
 	}
 
 

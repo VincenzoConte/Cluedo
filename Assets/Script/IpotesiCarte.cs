@@ -20,7 +20,6 @@ public class IpotesiCarte : MonoBehaviour {
 	public void OnEnable () {
 		ipotesi = new string[3];
 		ipotesiEffettivaButton.gameObject.SetActive (false);
-		Debug.Log ("ENABLED");
 		if(buttonS==null)
 			buttonS = this.GetComponent<Button> ();		
 		if(buttonA==null)
@@ -128,7 +127,6 @@ public class IpotesiCarte : MonoBehaviour {
 		{
 			ipotesiEffettivaButton.gameObject.SetActive (false);	
 		}
-		Debug.Log ("Testo dell'ipotesi: "+ ipotesi[0] + " "+ ipotesi[1] + " " + ipotesi[2]);
 	}
 
 	public void ripristina()

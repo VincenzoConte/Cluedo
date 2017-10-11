@@ -8,7 +8,7 @@ public class GamePlayer : NetworkBehaviour {
     [SyncVar]
     public Color color;
     [SyncVar]
-    public string character;
+    public string character;			//nome Player
 	public string [] carteInMano;
     public Sprite playerImage;
     public GameObject playerCamera;
@@ -40,7 +40,7 @@ public class GamePlayer : NetworkBehaviour {
             case "Anne Marie":
                 playerImage = Resources.Load<Sprite>("Immagini/PG/Anne");
                 break;
-            case "Freddie Carneval":
+            case "Freddie Carnival":
                 playerImage = Resources.Load<Sprite>("Immagini/PG/Freddie");
                 break;
             default:
@@ -93,7 +93,7 @@ public class GamePlayer : NetworkBehaviour {
     }
 
 	[Command]
-	public void CmdMostraCarta(string nomePlayer, string carta, string[] ipotesi){
+	public void CmdMostraCarta(string nomePlayer, string playerImage, string carta, string[] ipotesi){
 		if(carta == null || carta == ""){
 			idPlayerQuestioned = (idPlayerQuestioned + 1)%players.Length;
 			if (idPlayerQuestioned == (GameObject.Find ("GameManager").GetComponent<Communication> ().turno)) {
@@ -102,9 +102,13 @@ public class GamePlayer : NetworkBehaviour {
 				TargetChiediCarta (players [idPlayerQuestioned], 0, ipotesi);
 		}else
 		{
-			Debug.Log (" Il giocatore: " + nomePlayer + " mi ha mostrato la carta: " + carta);
+			//Debug.Log (" Il giocatore: " + nomePlayer + " mi ha mostrato la carta: " + carta);
+			string messaggio = " Il giocatore: " + nomePlayer + " mi ha mostrato la carta: " + carta;
+			GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().ShowMessaggiPanel ();
+			GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().setMessageOnScreen (playerImage, messaggio);
+			GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().decrementaCounter ();
 		}
-		RpcNotificaCarteIp (nomePlayer,carta);
+		RpcNotificaCarteIp (nomePlayer, playerImage, carta);
 	}
 
     [Command]
@@ -123,6 +127,9 @@ public class GamePlayer : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcIpotesi(string[] ipotesi) {
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
+		//PROVA
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().ShowMessaggiPanel ();
+		GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().resetMessagePanel ();
 	}
 
     [ClientRpc]
@@ -161,14 +168,25 @@ public class GamePlayer : NetworkBehaviour {
 	}
 
 	[ClientRpc]
-	public void RpcNotificaCarteIp(string nomePlayer, string carta){
-		if (carta == null || carta == "")
-			Debug.Log (nomePlayer + " non ha carte da mostrare!");
-		else{
-			if(GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
-				Debug.Log (nomePlayer + " ha mostrato: "+carta+"");
-			else
-				Debug.Log (nomePlayer + " ha mostrato una carta");
+	public void RpcNotificaCarteIp(string nomePlayer, string playerImage, string carta){
+		string messaggio;
+		if (carta == null || carta == "") 
+		{
+			//Debug.Log (nomePlayer + " non ha carte da mostrare!");
+			messaggio = nomePlayer + " non ha carte da mostrare!";
 		}
+		else
+		{
+			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
+			{
+				messaggio = nomePlayer + " ha mostrato: <b>" + carta + "</b>";
+			} else
+				{
+					//Debug.Log (nomePlayer + " ha mostrato una carta");
+					messaggio = nomePlayer + " ha mostrato una carta";
+				}	
+		}
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().ShowMessaggiPanel();
+		GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().setMessageOnScreen(playerImage, messaggio);
 	}
 }
