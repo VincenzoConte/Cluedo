@@ -8,7 +8,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
-	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel;
+	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni;
 	public Image avatar1;
 	public Text messaggioUI;
 	private dice dado1,dado2;
@@ -54,6 +54,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 				ipotesi.gameObject.SetActive (true);
 			}
 			if(fattoIpotesi){
+                bottoni.SetActive(true);
 				ipotesi.gameObject.SetActive (false);
 				accusa.gameObject.SetActive (true);
 				endTurn.gameObject.SetActive (true);
@@ -183,23 +184,25 @@ public class OperativaInterfaccia : MonoBehaviour {
 		saveState[4] = endTurn.gameObject.activeSelf;
 
 		ipotesiPanel.SetActive (true);
-		//ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
-		dadi.SetActive (false);
+        //ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
+        /*dadi.SetActive (false);
 		botola.gameObject.SetActive (false);
 		ipotesi.gameObject.SetActive (false);
 		accusa.gameObject.SetActive (false);
-		endTurn.gameObject.SetActive (false);
+		endTurn.gameObject.SetActive (false);*/
+        bottoni.SetActive(false);
 
 	}
 
 	public void goBack()
 	{
+        bottoni.SetActive(true);
 		dadi.SetActive (saveState [0]);
 		botola.gameObject.SetActive (saveState [1]);
 		ipotesi.gameObject.SetActive (saveState [2]);
 		accusa.gameObject.SetActive (saveState [3]);
 		endTurn.gameObject.SetActive (saveState [4]);	
-
+        
 		ipotesiPanel.SetActive (false);
 	}
 
