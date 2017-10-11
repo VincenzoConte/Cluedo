@@ -85,11 +85,11 @@ public class GamePlayer : NetworkBehaviour {
         string[] soluzione = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetSolution();
         if (accusa[0].Equals(soluzione[0]) && accusa[1].Equals(soluzione[1]) && accusa[2].Equals(soluzione[2]))
         {
-            RpcEsitoAccusa(true);
+            RpcEsitoAccusa(accusa, true);
             //fine partita
         }
         else
-            RpcEsitoAccusa(false);
+            RpcEsitoAccusa(accusa, false);
     }
 
 	[Command]
@@ -133,7 +133,7 @@ public class GamePlayer : NetworkBehaviour {
 	}
 
     [ClientRpc]
-    public void RpcEsitoAccusa(bool esito)
+    public void RpcEsitoAccusa(string[] accusa, bool esito)
     {
         if (esito)
         {
