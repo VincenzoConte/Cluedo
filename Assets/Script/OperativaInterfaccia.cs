@@ -211,6 +211,9 @@ public class OperativaInterfaccia : MonoBehaviour {
         GamePlayer p = player.GetComponent<GamePlayer>();
 		avatar1.sprite = p.playerImage;
 		messaggioUI.text = "E' il turno di "+ p.character;
+		if(IsMyTurn ()){
+			messaggioUI.text = "E' il tuo turno!";
+		}
     }
 
 	public void DoIpotesiEffettiva ()
