@@ -130,6 +130,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void usaBotola()
 	{
+        sc.ActivePlayerView();
 		string myStanza = myRoom ();
 		if(myStanza.Equals("Cucina"))
 		{
