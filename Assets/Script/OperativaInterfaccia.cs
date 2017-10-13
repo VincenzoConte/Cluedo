@@ -8,13 +8,13 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
-	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni;
+	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni, accusaPanel;
 	public Image avatar1;
 	public Text messaggioUI;
 	private dice dado1,dado2;
 	private	bool [] saveState;
 	GameObject colliderDadi;
-    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi;
+    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi, fattoAccusa;
 	public Grid grid;
 	SwitchCamera sc;
 	public Pathfinding aStar;
@@ -29,6 +29,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		lanciatoDadi = false;
 		miSonoSpostato = false;
 		fattoIpotesi = false;
+		fattoAccusa = false;
 		dado1 = GameObject.Find("dado").GetComponent<dice>();
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
@@ -185,12 +186,6 @@ public class OperativaInterfaccia : MonoBehaviour {
 		saveState[4] = endTurn.gameObject.activeSelf;
 
 		ipotesiPanel.SetActive (true);
-        //ipotesiPanel.GetComponent<IpotesiCarte> ().Start ();
-        /*dadi.SetActive (false);
-		botola.gameObject.SetActive (false);
-		ipotesi.gameObject.SetActive (false);
-		accusa.gameObject.SetActive (false);
-		endTurn.gameObject.SetActive (false);*/
         bottoni.SetActive(false);
 
 	}
@@ -223,10 +218,43 @@ public class OperativaInterfaccia : MonoBehaviour {
 		ipotesiPanel.gameObject.SetActive (false);
 	}
 
+	public void DoAccusaEffettiva()
+	{
+		fattoAccusa = true;
+		accusaPanel.gameObject.SetActive (false);
+	}
+
     public bool IsMyTurn()
     {
         return isMyTurn;
     }
+
+	public void showAccusaPanel()
+	{
+		saveState[0] = dadi.activeSelf;					//Mi salvo il valore dei pulsanti visibili e non sull'interfaccia
+		saveState[1] = botola.gameObject.activeSelf;
+		saveState[2] = ipotesi.gameObject.activeSelf;
+		saveState[3] = accusa.gameObject.activeSelf;
+		saveState[4] = endTurn.gameObject.activeSelf;
+
+
+		accusaPanel.SetActive (true);
+		accusaPanel.GetComponent<AccusaScript> ().resetta ();
+		bottoni.SetActive(false);
+
+	}
+
+	public void goBackAccusa()
+	{
+		bottoni.SetActive(true);
+		dadi.SetActive (saveState [0]);
+		botola.gameObject.SetActive (saveState [1]);
+		ipotesi.gameObject.SetActive (saveState [2]);
+		accusa.gameObject.SetActive (saveState [3]);
+		endTurn.gameObject.SetActive (saveState [4]);	
+
+		accusaPanel.SetActive (false);
+	}
 
 	public void HideButtons(){
 		dadi.SetActive (false);

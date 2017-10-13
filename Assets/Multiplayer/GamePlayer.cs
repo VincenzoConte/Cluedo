@@ -83,6 +83,8 @@ public class GamePlayer : NetworkBehaviour {
     public void CmdAccusa(string[] accusa)
     {
         string[] soluzione = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetSolution();
+		Debug.Log ("Soluzione: " + soluzione [0] + " " + soluzione [1] + " " + soluzione [2]);
+		Debug.Log ("Accusa: " + accusa [0] + " " + accusa [1] + " " + accusa [2]);
         if (accusa[0].Equals(soluzione[0]) && accusa[1].Equals(soluzione[1]) && accusa[2].Equals(soluzione[2]))
         {
             RpcEsitoAccusa(accusa, true);
@@ -137,7 +139,7 @@ public class GamePlayer : NetworkBehaviour {
     {
         if (esito)
         {
-            if (isLocalPlayer)
+			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
                 Debug.Log("hai vinto");
             else
                 Debug.Log(character+" ha vinto");
@@ -147,8 +149,14 @@ public class GamePlayer : NetworkBehaviour {
         else
         {
             // messaggio accusa sbagliata
-            if (isLocalPlayer)
-                turniDaSaltare = 1;
+			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
+			{
+				Debug.Log("Accusa errata, perdi un turno! ");
+				turniDaSaltare = 1;
+				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineTurno ();
+			}else{
+				Debug.Log(character+" ha sbagliato");
+			}
         }
     }
 
