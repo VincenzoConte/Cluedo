@@ -570,7 +570,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17166898}
-  m_LocalRotation: {x: -0.28416622, y: -0.72694236, z: -0.3420339, w: 0.52327543}
+  m_LocalRotation: {x: -0.28416625, y: -0.7269424, z: -0.34203392, w: 0.5232755}
   m_LocalPosition: {x: -4.076245, y: 5.903862, z: -1.005454}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -11127,6 +11127,34 @@ MonoBehaviour:
   empty: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   id: 4
   mb: {fileID: 0}
+--- !u!1 &331490578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 331490579}
+  m_Layer: 0
+  m_Name: CentroBotSerra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &331490579
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331490578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: -1.11, z: 0.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1409219964}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342171176
 GameObject:
   m_ObjectHideFlags: 0
@@ -21536,6 +21564,7 @@ Transform:
   m_Children:
   - {fileID: 910807996}
   - {fileID: 1653881874}
+  - {fileID: 957206160}
   m_Father: {fileID: 1325074101}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30641,6 +30670,34 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &957206159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 957206160}
+  m_Layer: 0
+  m_Name: CentroBotStudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &957206160
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957206159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68, y: -1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 660911273}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963505354
 GameObject:
   m_ObjectHideFlags: 0
@@ -30748,7 +30805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -171.79999}
+  m_AnchoredPosition: {x: 283.72693, y: -171.79997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &965739084
@@ -31281,6 +31338,7 @@ Transform:
   m_Children:
   - {fileID: 491663552}
   - {fileID: 758091643}
+  - {fileID: 1839980304}
   m_Father: {fileID: 1321612801}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32680,6 +32738,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1031881384}
   m_Mesh: {fileID: 4300002, guid: c0160d3ff95297543979af26a8ed4608, type: 3}
+--- !u!1 &1033671198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1033671199}
+  m_Layer: 0
+  m_Name: CentroBotCucina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1033671199
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1033671198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -1, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1153100103}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039356306
 GameObject:
   m_ObjectHideFlags: 0
@@ -35636,6 +35722,7 @@ Transform:
   m_Children:
   - {fileID: 93520207}
   - {fileID: 1017059789}
+  - {fileID: 1033671199}
   m_Father: {fileID: 426294793}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 60.756004}
@@ -41743,6 +41830,7 @@ Transform:
   m_Children:
   - {fileID: 1666114583}
   - {fileID: 1750314505}
+  - {fileID: 331490579}
   m_Father: {fileID: 1525365815}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 177.20401, z: 60.756004}
@@ -46220,7 +46308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -251.79999}
+  m_AnchoredPosition: {x: 283.72693, y: -251.79997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513648997
@@ -49113,6 +49201,10 @@ MonoBehaviour:
   bottomRight: {fileID: 1850562484}
   target: {fileID: 1704109691997974, guid: 147f8471c8189394f82574bf9fe1ac8d, type: 2}
   roomTarget: {fileID: 1837116713662692, guid: b3a83e994348c13469b3c8be89016f21, type: 2}
+  botolaCucina: {fileID: 1033671198}
+  botolaStudio: {fileID: 957206159}
+  botolaSerra: {fileID: 331490578}
+  botolaSalotto: {fileID: 1839980303}
 --- !u!4 &1601999534
 Transform:
   m_ObjectHideFlags: 0
@@ -49140,6 +49232,7 @@ MonoBehaviour:
   seeker: {fileID: 0}
   dado1: {fileID: 735541052}
   dado2: {fileID: 1101727894}
+  grid: {fileID: 0}
   oi: {fileID: 2070918631}
 --- !u!1 &1602149363
 GameObject:
@@ -57280,6 +57373,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1825951157}
   m_Mesh: {fileID: 4300000, guid: 2186b8522b6fd4f3a91076b0b83cfe14, type: 3}
+--- !u!1 &1839980303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1839980304}
+  m_Layer: 0
+  m_Name: CentroBotSalotto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839980304
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1839980303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51, y: -0.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 984613873}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1842592997
 GameObject:
   m_ObjectHideFlags: 0

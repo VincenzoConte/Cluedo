@@ -10,7 +10,9 @@ public class Grid : MonoBehaviour {
     public Transform bottomRight;
     public GameObject target;
     public GameObject roomTarget;
-    Room[] rooms;
+    public Room[] rooms;
+
+	public GameObject botolaCucina, botolaStudio, botolaSerra, botolaSalotto;
 
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
@@ -31,6 +33,12 @@ public class Grid : MonoBehaviour {
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = 24;
 		gridSizeY = 25;
+
+		rooms [0].botola = botolaSalotto;
+		rooms [3].botola = botolaStudio;
+		rooms [5].botola = botolaCucina;
+		rooms [6].botola = botolaSerra;
+
 		CreateGrid();
 	}
 

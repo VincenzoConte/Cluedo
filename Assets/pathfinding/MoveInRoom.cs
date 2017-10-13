@@ -19,7 +19,7 @@ public class MoveInRoom : MonoBehaviour {
     void OnMouseDown()
     {
         aStar.seeker.GetComponentInChildren<MoveCamera>().InitialPosition();
-        aStar.MoveInRoom(room);
+		aStar.MoveInRoom(room,false);
     }
 
 

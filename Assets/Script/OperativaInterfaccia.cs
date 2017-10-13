@@ -134,20 +134,20 @@ public class OperativaInterfaccia : MonoBehaviour {
 		string myStanza = myRoom ();
 		if(myStanza.Equals("Cucina"))
 		{
-				aStar.MoveInRoom(new Room("Studio", GameObject.Find("area studio").transform));
-			}
+			aStar.MoveInRoom(aStar.grid.rooms[3],true);
+		}
 		else if(myStanza.Equals("Studio"))
-				{
-					aStar.MoveInRoom(new Room("Cucina", GameObject.Find("area cucina").transform));
-				}
+		{
+			aStar.MoveInRoom(aStar.grid.rooms[5],true);
+		}
 		else if(myStanza.Equals("Serra"))
-					{
-						aStar.MoveInRoom(new Room("Salotto", GameObject.Find("area salotto").transform));
-					}
+		{
+			aStar.MoveInRoom(aStar.grid.rooms[0],true);
+		}
 		else if(myStanza.Equals("Salotto"))
-						{
-							aStar.MoveInRoom(new Room("Serra", GameObject.Find("area serra").transform));
-						}
+		{
+			aStar.MoveInRoom(aStar.grid.rooms[6],true);
+		}
 		usatoBotola = true;
 	}
 

@@ -8,7 +8,7 @@ public class Pathfinding : MonoBehaviour {
 	public Transform seeker;
     SwitchCamera changeView;
     public dice dado1, dado2;
-	Grid grid;
+	public Grid grid;
 	GameObject colliderr;
 	public OperativaInterfaccia oi;
 
@@ -143,7 +143,7 @@ public class Pathfinding : MonoBehaviour {
 		oi.setMiSonoSpostato ();
     }
 
-    public void MoveInRoom(Room room)
+	public void MoveInRoom(Room room, bool usatoBotola)
     {
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
             GameObject.Destroy(t, 0f);
@@ -151,17 +151,28 @@ public class Pathfinding : MonoBehaviour {
         if (n != null)
         {
             Sequence seq = DOTween.Sequence();
-            //seeker.transform.position = new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z);
-            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
-            seq.Append(seeker.transform.DOMove(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 1.5f));
-            seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+			if (usatoBotola) {
+				float y = seeker.position.y;
+				Debug.Log (y+" prima");
+				GameObject botola = grid.FindRoom (grid.NodeFromWorldPoint (seeker.position)).botola;
+				seq.Append (seeker.DOJump (botola.transform.position, 2, 1, 1));
+				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
+				seq.Append (seeker.transform.DOMove (room.botola.transform.position, 1.5f));
+				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
+				seq.Append (seeker.transform.DOMove (new Vector3 (room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
+				seq.Append (seeker.DOJump (new Vector3 (n.worldPosition.x, seeker.position.y, n.worldPosition.z),2,1,1));
+				Debug.Log (y+" dopo");
+			} else {
+				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
+				seq.Append (seeker.transform.DOMove (new Vector3 (n.worldPosition.x, seeker.position.y, n.worldPosition.z), 1.5f));
+				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
+			}
             Transform camera = seeker.GetChild(0);
             seq.Append(camera.DOLocalMove(new Vector3(0, 1.7f, -2), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(0, 0, 0), 2));
             seq.Append(seeker.transform.DOLocalRotate(new Vector3(0, 360, 0), 10, RotateMode.FastBeyond360));
             seq.Append(camera.DOLocalMove(new Vector3(0, 10, 0), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(90, 0, 0), 2));
-
         }
 		oi.setMiSonoSpostato ();
     }

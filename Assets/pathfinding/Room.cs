@@ -7,12 +7,14 @@ public class Room {
     public Transform area;
     public List<Node> doors;
     public bool draw = false;
+	public GameObject botola;
 
     public Room(string name, Transform area)
     {
         this.area = area;
         this.name = name;
         doors = new List<Node>();
+		botola = null;
     }
 
     public string getNomeStanza()
