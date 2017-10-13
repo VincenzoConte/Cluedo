@@ -11,6 +11,7 @@ public class PanelDealer : MonoBehaviour {
 	{
 		panelSospettoAccusa.SetActive (true);
 		mainPanelAccusa.SetActive (false);
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goOneBack ();}); 
 	}
 
@@ -26,6 +27,7 @@ public class PanelDealer : MonoBehaviour {
 	{
 		panelArmaAccusa.SetActive (true);
 		mainPanelAccusa.SetActive (false);
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goOneBack ();}); 
 	}
 
@@ -33,6 +35,7 @@ public class PanelDealer : MonoBehaviour {
 	{
 		panelArmaAccusa.SetActive (false);
 		mainPanelAccusa.SetActive (true);
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goBack ();}); 
 	}
 
@@ -40,6 +43,7 @@ public class PanelDealer : MonoBehaviour {
 	{
 		panelStanzaAccusa.SetActive (true);
 		mainPanelAccusa.SetActive (false);
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goOneBack ();}); 
 	}
 
@@ -47,6 +51,7 @@ public class PanelDealer : MonoBehaviour {
 	{
 		panelStanzaAccusa.SetActive (false);
 		mainPanelAccusa.SetActive (true);
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goBack ();}); 
 	}
 
@@ -56,7 +61,7 @@ public class PanelDealer : MonoBehaviour {
 		panelSospettoAccusa.SetActive (false);
 		panelArmaAccusa.SetActive (false);
 		panelStanzaAccusa.SetActive (false);
-
+		indietro.onClick.RemoveAllListeners ();
 		indietro.onClick.AddListener (delegate { this.GetComponent<AccusaScript> ().goBack ();}); 
 	}
 
