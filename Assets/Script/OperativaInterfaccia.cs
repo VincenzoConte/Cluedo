@@ -73,6 +73,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 			}
 
 			}
+			endTurn.gameObject.SetActive (true);
 		}
 
 		else{

@@ -31,6 +31,7 @@ public class AccusaScript : MonoBehaviour {
 		this.GetComponent<PanelDealer> ().hidePanelSospetto ();
 		this.GetComponent<PanelDealer> ().hidePanelArma ();
 		this.GetComponent<PanelDealer> ().hideStanzaPanel ();
+		avatar.sprite = gameManagerr.GetComponent<OperativaInterfaccia> ().avatar1.sprite;
 	}
 
 	public void selectCardAccusa(string category, string nameCard)

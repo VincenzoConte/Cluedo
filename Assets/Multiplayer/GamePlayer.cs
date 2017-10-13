@@ -137,12 +137,13 @@ public class GamePlayer : NetworkBehaviour {
     [ClientRpc]
     public void RpcEsitoAccusa(string[] accusa, bool esito)
     {
+		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Accuso " + accusa [0] + " con " + accusa [1] + " in  " + accusa [2];
         if (esito)
         {
 			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
-                Debug.Log("hai vinto");
+				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text ="hai vinto";
             else
-                Debug.Log(character+" ha vinto");
+				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = ""+character+" ha vinto";
             //fine partita
 
         }
@@ -151,11 +152,11 @@ public class GamePlayer : NetworkBehaviour {
             // messaggio accusa sbagliata
 			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
 			{
-				Debug.Log("Accusa errata, perdi un turno! ");
+				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text ="Accusa errata, perdi un turno! ";
 				turniDaSaltare = 1;
-				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineTurno ();
+				//GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineTurno ();
 			}else{
-				Debug.Log(character+" ha sbagliato");
+				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = ""+character+" ha sbagliato";
 			}
         }
     }
