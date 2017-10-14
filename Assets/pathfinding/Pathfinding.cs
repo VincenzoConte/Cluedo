@@ -35,9 +35,16 @@ public class Pathfinding : MonoBehaviour {
                 seeker.GetComponent<GamePlayer>().CmdAzzeraDadi(dado1.gameObject, dado2.gameObject);
             }
         }
+        else if(dado1.value<0 || dado2.value < 0)
+        {
+            if (dado1.value < 0)
+                dado1.RollTheDice();
+            if (dado2.value < 0)
+                dado2.RollTheDice();
+        }
 	}
 
-	public void FindPath(Vector3 targetPos) {
+	public List<Node> FindPath(Vector3 targetPos) {
         Vector3 startPos = seeker.position;
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -74,8 +81,7 @@ public class Pathfinding : MonoBehaviour {
 			if (node == targetNode) {
                 targetNode.walkable = false;
                 startNode.walkable = true;
-				RetracePath(startNode,targetNode, isInRoom);
-				return;
+                return RetracePath(startNode, targetNode, isInRoom);
 			}
 
 			foreach (Node neighbour in grid.GetNeighbours(node)) {
@@ -95,9 +101,10 @@ public class Pathfinding : MonoBehaviour {
                 }
 			}
 		}
+        return null;
 	}
 
-	void RetracePath(Node startNode, Node endNode, bool isInRoom) {
+	List<Node> RetracePath(Node startNode, Node endNode, bool isInRoom) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;
 
@@ -108,11 +115,11 @@ public class Pathfinding : MonoBehaviour {
         if(isInRoom)
             path.Add(startNode);
 		path.Reverse();
-        Move(isInRoom ,path);
+        return path;
 
 	}
 
-    void Move(bool isInRoom, List<Node> path)
+    public void Move(List<Node> path)
     {
         //cammino
         /*foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
@@ -131,7 +138,7 @@ public class Pathfinding : MonoBehaviour {
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
             GameObject.Destroy(t, 0f);
         Sequence seq = DOTween.Sequence();
-        if (isInRoom)
+        if (Room.CheckNode(grid.NodeFromWorldPoint(seeker.position)))
         {
             seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
             seq.Append(seeker.transform.DOMove(new Vector3(path[0].worldPosition.x, seeker.position.y, path[0].worldPosition.z), 1.5f));
@@ -153,23 +160,42 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
-            grid.NodeFromWorldPoint(seeker.position).walkable = true;
+            Node myNode = grid.NodeFromWorldPoint(seeker.position);
+            myNode.walkable = true;
             n.walkable = false;
             Sequence seq = DOTween.Sequence();
 			if (usatoBotola) {
 				float y = seeker.position.y;
-				Debug.Log (y+" prima");
-				GameObject botola = grid.FindRoom (grid.NodeFromWorldPoint (seeker.position)).botola;
+				GameObject botola = grid.FindRoom (myNode).botola;
 				seq.Append (seeker.DOJump (botola.transform.position, 2, 1, 1));
 				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
 				seq.Append (seeker.transform.DOMove (room.botola.transform.position, 1.5f));
 				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
 				seq.Append (seeker.transform.DOMove (new Vector3 (room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
 				seq.Append (seeker.DOJump (new Vector3 (n.worldPosition.x, seeker.position.y, n.worldPosition.z),2,1,1));
-				Debug.Log (y+" dopo");
 			} else {
-				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
-				seq.Append (seeker.transform.DOMove (new Vector3 (n.worldPosition.x, seeker.position.y, n.worldPosition.z), 1.5f));
+                List<Node> doors = room.doors;
+                Node min = doors[0];
+                foreach (Node door in doors)
+                {
+                    if (GetDistance(myNode, door) < GetDistance(min, door))
+                        min = n;
+                }
+                List<Node> path = FindPath(min.worldPosition);
+                if (Room.CheckNode(myNode))
+                {
+                    seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+                    seq.Append(seeker.transform.DOMove(new Vector3(path[0].worldPosition.x, seeker.position.y, path[0].worldPosition.z), 1.5f));
+                    seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+                    path.RemoveAt(0);
+                }
+                float y = seeker.position.y;
+                foreach (Node step in path)
+                {
+                    seq.Append(seeker.DOJump(new Vector3(step.worldPosition.x, y, step.worldPosition.z), 1, 1, 1));
+                }
+                seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
+				seq.Append (seeker.transform.DOMove (new Vector3 (n.worldPosition.x, y, n.worldPosition.z), 1.5f));
 				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
 			}
             Transform camera = seeker.GetChild(0);
@@ -186,9 +212,7 @@ public class Pathfinding : MonoBehaviour {
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
 		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
-		if (dstX > dstY)
-			return 14*dstY + 10* (dstX-dstY);
-		return 14*dstX + 10 * (dstY-dstX);
+        return dstX + dstY;
 	}
 
     //cerca celle raggiungibili con length spostamenti

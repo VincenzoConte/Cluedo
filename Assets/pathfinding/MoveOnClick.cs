@@ -25,7 +25,7 @@ public class MoveOnClick : MonoBehaviour {
     void OnMouseDown()
     {
         aStar.seeker.GetComponentInChildren<MoveCamera>().InitialPosition();
-        aStar.FindPath(transform.position);
+        aStar.Move(aStar.FindPath(transform.position));
   
     }
 }

@@ -41,13 +41,16 @@ public class dice : NetworkBehaviour {
 
      void Update ()
 	{
-        if (flag)
+        if (NetworkServer.active)
         {
-            if (rb.IsSleeping())
+            if (flag)
             {
-                StopAllCoroutines();
-                value = GetNumber(Vector3.up, 30f);
-                flag = false;
+                if (rb.IsSleeping())
+                {
+                    StopAllCoroutines();
+                    value = GetNumber(Vector3.up, 30f);
+                    flag = false;
+                }
             }
         }
     }
@@ -79,7 +82,8 @@ public class dice : NetworkBehaviour {
 
     IEnumerator DiceTimer()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(12);
+        rb.Sleep();
         value = GetNumber(Vector3.up, 30f);
         flag = false;
     }

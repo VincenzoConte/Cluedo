@@ -51,10 +51,10 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 			isInRoom = findPosition ();
 		//	Debug.Log (myRoom() +"");						//IN CHE STANZA MI TROVO?
-			if (((miSonoSpostato  && isInRoom) || usatoBotola ) && !fattoIpotesi) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
+			if (((miSonoSpostato  && isInRoom) || usatoBotola ) && !fattoIpotesi && !fattoAccusa) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
 				ipotesi.gameObject.SetActive (true);
 			}
-			if(fattoIpotesi){
+			if(fattoIpotesi && !fattoAccusa){
                 bottoni.SetActive(true);
 				ipotesi.gameObject.SetActive (false);
 				accusa.gameObject.SetActive (true);

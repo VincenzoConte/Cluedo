@@ -54,7 +54,7 @@ public class Room {
             {
                 if (IsInRoom(neigh))
                 {
-                    if (neigh.walkable && !Physics.CheckSphere(n.worldPosition, 0.3f, LayerMask.GetMask("player")))
+                    if (neigh.walkable && !Physics.CheckSphere(n.worldPosition + (Vector3.up/2), 0.5f, LayerMask.GetMask("player")))
                         return neigh;
                     else if (!list.Contains(neigh))
                         list.Add(neigh);
