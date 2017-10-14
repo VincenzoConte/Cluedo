@@ -24,7 +24,7 @@ public class Room {
 
     public static bool CheckNode(Node n)
     {
-        return Physics.CheckSphere(n.worldPosition, 0.1f, LayerMask.GetMask("room"));
+        return Physics.CheckSphere(n.worldPosition, 0.2f, LayerMask.GetMask("room"));
     }
 
     public bool IsInRoom(Node n)
@@ -43,7 +43,7 @@ public class Room {
     {
         Grid grid = GameObject.Find("A*").GetComponent<Grid>();
         Node n = grid.NodeFromWorldPoint(area.position);
-        if (n.walkable)
+        if (n.walkable && !Physics.CheckSphere(n.worldPosition, 0.3f, LayerMask.GetMask("player")))
             return n;
         List<Node> list = new List<Node>();
         list.Add(n);
@@ -54,7 +54,7 @@ public class Room {
             {
                 if (IsInRoom(neigh))
                 {
-                    if (neigh.walkable)
+                    if (neigh.walkable && !Physics.CheckSphere(n.worldPosition, 0.3f, LayerMask.GetMask("player")))
                         return neigh;
                     else if (!list.Contains(neigh))
                         list.Add(neigh);

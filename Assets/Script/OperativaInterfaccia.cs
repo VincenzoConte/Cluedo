@@ -223,7 +223,13 @@ public class OperativaInterfaccia : MonoBehaviour {
 	{
 		fattoAccusa = true;
 		accusaPanel.gameObject.SetActive (false);
-	}
+        bottoni.SetActive(true);
+        dadi.SetActive(false);
+        botola.gameObject.SetActive(false);
+        ipotesi.gameObject.SetActive(false);
+        accusa.gameObject.SetActive(false);
+        endTurn.gameObject.SetActive(true);
+    }
 
     public bool IsMyTurn()
     {

@@ -14,7 +14,7 @@ public class dice : NetworkBehaviour {
     public int value;
     SwitchCamera changeView;
     Rigidbody rb;
-    bool flag;
+    bool flag = false;
     void Start ()
 	{
         value = 0;
@@ -36,7 +36,6 @@ public class dice : NetworkBehaviour {
 			directions.Add (Vector3.back);
 			sideValues.Add (6); // back
 			rb = this.GetComponent<Rigidbody> ();
-			flag = false;
 		}
     }
 
@@ -66,7 +65,6 @@ public class dice : NetworkBehaviour {
 
      public int GetNumber(Vector3 referenceVectorUp, float epsilonDeg = 5f) {
          Vector3 referenceObjectSpace = transform.InverseTransformDirection(referenceVectorUp);
- 
          float min = float.MaxValue;
          int mostSimilarDirectionIndex = -1;
          for (int i=0; i < directions.Count; ++i) {

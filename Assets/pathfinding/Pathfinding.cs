@@ -23,7 +23,10 @@ public class Pathfinding : MonoBehaviour {
         {
             if (oi.IsMyTurn())
             {
-                FindTargets(seeker.position, dado1.value + dado2.value);
+                int val = dado1.value + dado2.value;
+                dado1.value = 0;
+                dado2.value = 0;
+                FindTargets(seeker.position, val);
                 changeView.ActivePlayerView();
                 //Setto invisibili i dadi e collider
                 dado1.gameObject.SetActive(false);
@@ -150,6 +153,8 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
+            grid.NodeFromWorldPoint(seeker.position).walkable = true;
+            n.walkable = false;
             Sequence seq = DOTween.Sequence();
 			if (usatoBotola) {
 				float y = seeker.position.y;
@@ -197,6 +202,7 @@ public class Pathfinding : MonoBehaviour {
         if (Room.CheckNode(startNode))
         {
             room = grid.FindRoom(startNode);
+            Debug.Log(room.name);
             foreach (Node n in room.doors)
             {
                 n.position = 1;
@@ -245,7 +251,6 @@ public class Pathfinding : MonoBehaviour {
                     {
                         isInRoom = true;
                     }
-
                     //int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
                     if (!isInRoom && (!openSet.Contains(neighbour) || node.position+1 < neighbour.position))
                     {

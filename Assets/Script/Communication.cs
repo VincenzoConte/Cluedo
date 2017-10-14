@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.UI;
@@ -22,9 +19,9 @@ public class Communication : NetworkBehaviour {
         oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
         if (NetworkServer.active)
         {
-            turno = -1;
             players = new NetworkConnection[NetworkServer.connections.Count];
             NetworkServer.connections.CopyTo(players, 0);
+            turno = Random.Range(0, NetworkServer.connections.Count);
         }
     }
 
