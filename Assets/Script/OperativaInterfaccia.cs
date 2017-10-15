@@ -281,5 +281,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		messaggiPanel.gameObject.SetActive(false);
 	}
 
-
+	public void Exit(){
+		Application.Quit ();
+	}
 }
