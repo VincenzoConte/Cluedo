@@ -93,5 +93,8 @@ namespace Prototype.NetworkLobby
             }
         }
 
+		public void Exit(){
+			Application.Quit ();
+		}
     }
 }
