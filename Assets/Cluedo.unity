@@ -570,7 +570,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17166898}
-  m_LocalRotation: {x: -0.28416622, y: -0.72694236, z: -0.3420339, w: 0.52327543}
+  m_LocalRotation: {x: -0.28416625, y: -0.7269424, z: -0.34203392, w: 0.5232755}
   m_LocalPosition: {x: -4.076245, y: 5.903862, z: -1.005454}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -1306,7 +1306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -411.8}
+  m_AnchoredPosition: {x: 283.72693, y: -411.79996}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37792973
@@ -7490,7 +7490,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202778209}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 67.52, z: 0}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17969,7 +17969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -491.8}
+  m_AnchoredPosition: {x: 283.72693, y: -491.79996}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504917724
@@ -20970,7 +20970,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588167177}
   m_LocalRotation: {x: -0, y: 0.41938373, z: -0, w: 0.9078091}
-  m_LocalPosition: {x: -0.43842542, y: -2.0479143, z: -19.139187}
+  m_LocalPosition: {x: -0.43842542, y: -2.107, z: -19.139187}
   m_LocalScale: {x: 0.66116834, y: 1.0956495, z: 1.3223372}
   m_Children:
   - {fileID: 1719027865}
@@ -27849,7 +27849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -331.8}
+  m_AnchoredPosition: {x: 283.72693, y: -331.79996}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782626474
@@ -48531,7 +48531,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1479196535}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1

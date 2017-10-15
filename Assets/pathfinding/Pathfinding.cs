@@ -35,7 +35,7 @@ public class Pathfinding : MonoBehaviour {
                 seeker.GetComponent<GamePlayer>().CmdAzzeraDadi(dado1.gameObject, dado2.gameObject);
             }
         }
-        else if(dado1.value<0 || dado2.value < 0)
+        else if(UnityEngine.Networking.NetworkServer.active && (dado1.value<0 || dado2.value < 0))
         {
             if (dado1.value < 0)
                 dado1.RollTheDice();
@@ -148,9 +148,15 @@ public class Pathfinding : MonoBehaviour {
         float y = seeker.position.y;
         foreach (Node n in path)
         {
+            seq.AppendCallback(PlaySound);
             seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, y, n.worldPosition.z),1 , 1, 1));
         }
 		oi.setMiSonoSpostato ();
+    }
+
+    void PlaySound()
+    {
+        seeker.gameObject.GetComponent<AudioSource>().Play();
     }
 
 	public void MoveInRoom(Room room, bool usatoBotola)
@@ -192,6 +198,7 @@ public class Pathfinding : MonoBehaviour {
                 float y = seeker.position.y;
                 foreach (Node step in path)
                 {
+                    seq.AppendCallback(PlaySound);
                     seq.Append(seeker.DOJump(new Vector3(step.worldPosition.x, y, step.worldPosition.z), 1, 1, 1));
                 }
                 seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));

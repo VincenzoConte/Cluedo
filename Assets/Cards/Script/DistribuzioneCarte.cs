@@ -84,7 +84,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			instantiatedCards = new GameObject[receivedCards.Count - 1];
 			for (int i = 0; i < receivedCards.Count - 1; i++) {
 				GameObject instCard = null;
-				Vector3 startPos = new Vector3(startX + (17f*(i%mod)),40,-50);
+				Vector3 startPos = new Vector3(startX + (17f*(i%mod)),80,-50);
 
 				foreach(GameObject go in cardPrefabs){
 					if(go.name.Equals (receivedCards[i])){
@@ -99,16 +99,16 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			}
 			if (receivedCards.Count - 1 == 6) {
 				int initZ = 13;
-				seq.Append (instantiatedCards [0].transform.DOMove (new Vector3 (instantiatedCards [0].transform.position.x, 45, -initZ), 0.7f, false));
-				seq.Append (instantiatedCards [1].transform.DOMove (new Vector3 (instantiatedCards [1].transform.position.x, 45, -initZ), 0.7f, false));
-				seq.Append (instantiatedCards [2].transform.DOMove (new Vector3 (instantiatedCards [2].transform.position.x, 45, -initZ), 0.7f, false));
-				seq.Append (instantiatedCards [3].transform.DOMove (new Vector3 (instantiatedCards [3].transform.position.x, 45, initZ), 0.7f, false));
-				seq.Append (instantiatedCards [4].transform.DOMove (new Vector3 (instantiatedCards [4].transform.position.x, 45, initZ), 0.7f, false));
-				seq.Append (instantiatedCards [5].transform.DOMove (new Vector3 (instantiatedCards [5].transform.position.x, 45, initZ), 0.7f, false));
+				seq.Append (instantiatedCards [0].transform.DOMove (new Vector3 (instantiatedCards [0].transform.position.x, 80, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [1].transform.DOMove (new Vector3 (instantiatedCards [1].transform.position.x, 80, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [2].transform.DOMove (new Vector3 (instantiatedCards [2].transform.position.x, 80, -initZ), 0.7f, false));
+				seq.Append (instantiatedCards [3].transform.DOMove (new Vector3 (instantiatedCards [3].transform.position.x, 80, initZ), 0.7f, false));
+				seq.Append (instantiatedCards [4].transform.DOMove (new Vector3 (instantiatedCards [4].transform.position.x, 80, initZ), 0.7f, false));
+				seq.Append (instantiatedCards [5].transform.DOMove (new Vector3 (instantiatedCards [5].transform.position.x, 80, initZ), 0.7f, false));
 					
 			} else {
 				for (int ii = 0; ii < instantiatedCards.Length; ii++) {
-					seq.Append (instantiatedCards [ii].transform.DOMove (new Vector3 (instantiatedCards [ii].transform.position.x, 45, 0), 0.7f, false));
+					seq.Append (instantiatedCards [ii].transform.DOMove (new Vector3 (instantiatedCards [ii].transform.position.x, 80, 0), 0.7f, false));
 				}
 			}
 			aStar.seeker.GetComponent<GamePlayer> ().carteInMano = receivedCards.ToArray(typeof(string)) as string [];
