@@ -14,7 +14,7 @@ public class GamePlayer : NetworkBehaviour {
     public GameObject playerCamera;
     public byte turniDaSaltare;
 	static int idPlayerQuestioned;
-	NetworkConnection[] players;
+	public NetworkConnection[] players;
     // Use this for initialization
     void Start () { 
         GetComponent<Renderer>().material.color = color;
@@ -145,7 +145,7 @@ public class GamePlayer : NetworkBehaviour {
             else
 				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = ""+character+" ha vinto";
             //fine partita
-
+			GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineGiocoPanel.SetActive (true);
         }
         else
         {

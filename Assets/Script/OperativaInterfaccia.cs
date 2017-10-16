@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using System;
 
 public class OperativaInterfaccia : MonoBehaviour {
 
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
-	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni, accusaPanel;
+	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni, accusaPanel, fineGiocoPanel;
 	public Image avatar1;
 	public Text messaggioUI;
 	private dice dado1,dado2;
@@ -283,5 +285,21 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void Exit(){
 		Application.Quit ();
+	}
+
+	public void Restart(){
+		if (NetworkServer.active) {
+			NetworkConnection[] players = aStar.seeker.GetComponent<GamePlayer> ().players;
+			foreach (NetworkConnection nc in players) {
+				if(nc.isConnected)
+					nc.Disconnect ();
+			}
+
+			GameObject.Find ("LobbyManager").GetComponent<Prototype.NetworkLobby.LobbyManager> ().StopHostClbk ();
+		}
+		else
+			GameObject.Find ("LobbyManager").GetComponent<Prototype.NetworkLobby.LobbyManager> ().StopClientClbk ();
+		Destroy (GameObject.Find ("LobbyManager"));
+		SceneManager.LoadScene ("MainMenu");
 	}
 }
