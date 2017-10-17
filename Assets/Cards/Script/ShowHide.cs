@@ -30,7 +30,7 @@ public class ShowHide : MonoBehaviour {
 
 	public void MoveFunction(){
 		if(!isHidden){
-			transform.DOMove (new Vector3 (1.8f, 45, -40), 0.6f, false);
+			transform.DOMove (new Vector3 (1.8f, 80, -40), 0.6f, false);
 			isHidden = true;
 		}else{
 			transform.DOMove (initPos, 0.6f, false);
