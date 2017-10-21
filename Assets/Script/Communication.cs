@@ -28,21 +28,25 @@ public class Communication : NetworkBehaviour {
     public static void InizioTurno(NetworkMessage netMsg)
     {
         oi.setTurnoTrue();
-
     }
 
     public void CambioTurno()
     {
         if (NetworkServer.active)
         {
-            turno = (turno + 1) % NetworkServer.connections.Count;
+            turno = (turno + 1) % players.Length;
+            while (turno != 0 && players[turno] == null)
+            {
+                turno = (turno + 1) % players.Length;
+            }
             players[turno].Send(msg, new EmptyMessage());
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-        
+    public void RefreshConnections()
+    {
+        players = new NetworkConnection[NetworkServer.connections.Count];
+        NetworkServer.connections.CopyTo(players, 0);
     }
 
 }

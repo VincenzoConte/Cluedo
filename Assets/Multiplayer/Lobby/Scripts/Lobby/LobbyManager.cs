@@ -410,7 +410,16 @@ namespace Prototype.NetworkLobby
         public override void OnClientDisconnect(NetworkConnection conn)
         {
             base.OnClientDisconnect(conn);
+            StopClientClbk();
             ChangeTo(mainMenuPanel);
+        }
+
+        public override void OnServerDisconnect(NetworkConnection conn)
+        {
+            Debug.Log("client disconnected");
+            base.OnServerDisconnect(conn);
+            if(isInGame)
+                GameObject.Find("GameManager").GetComponent<Communication>().RefreshConnections();
         }
 
         public override void OnClientError(NetworkConnection conn, int errorCode)
