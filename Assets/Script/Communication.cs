@@ -47,6 +47,8 @@ public class Communication : NetworkBehaviour {
     {
         players = new NetworkConnection[NetworkServer.connections.Count];
         NetworkServer.connections.CopyTo(players, 0);
+        if (players[turno] == null)
+            CambioTurno();
     }
 
 }
