@@ -56,7 +56,10 @@ public class OperativaInterfaccia : MonoBehaviour {
 			if (((miSonoSpostato  && isInRoom) || usatoBotola ) && !fattoIpotesi && !fattoAccusa) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
 				ipotesi.gameObject.SetActive (true);
 			}
-			if(fattoIpotesi && !fattoAccusa){
+            else
+                ipotesi.gameObject.SetActive(false);
+
+            if (fattoIpotesi && !fattoAccusa){
                 bottoni.SetActive(true);
 				ipotesi.gameObject.SetActive (false);
 				accusa.gameObject.SetActive (true);
@@ -289,7 +292,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void Restart(){
 		if (NetworkServer.active) {
-			NetworkConnection[] players = aStar.seeker.GetComponent<GamePlayer> ().players;
+			NetworkConnection[] players = GameObject.Find("GameManager").GetComponent<Connections>().connections;
 			foreach (NetworkConnection nc in players) {
 				if(nc.isConnected)
 					nc.Disconnect ();

@@ -11,6 +11,7 @@ namespace Prototype.NetworkLobby
 
         public override void OnLobbyServerSceneLoadedForPlayer(NetworkManager manager, GameObject lobbyPlayer, GameObject gamePlayer)
         {
+            //gamePlayer.transform.Rotate(new Vector3(0, 0, 270));
             GamePlayer player = gamePlayer.GetComponent<GamePlayer>();
             LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
             player.color = lobby.playerColor;

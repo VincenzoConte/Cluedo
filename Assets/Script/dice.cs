@@ -9,6 +9,7 @@ public class dice : NetworkBehaviour {
     public List<int> sideValues;
     public float forceAmount = 40.0f;
     public float torqueAmount = 100.0f;
+    Vector3 initPos;
     public ForceMode forceMode;
     [SyncVar]
     public int value;
@@ -17,6 +18,7 @@ public class dice : NetworkBehaviour {
     bool flag = false;
     void Start ()
 	{
+        initPos = gameObject.transform.position;
         value = 0;
         changeView = GameObject.Find("Gestione camera").GetComponent<SwitchCamera>();
         if (directions.Count == 0) {
@@ -59,6 +61,7 @@ public class dice : NetworkBehaviour {
 
      public void RollTheDice(){
         //lancia
+        gameObject.transform.position = initPos;
 		changeView.ActiveTopView ();
 		rb.AddForce ((Random.onUnitSphere + new Vector3(1, 2f, 1)) * forceAmount, forceMode);
 		rb.AddTorque ((Random.onUnitSphere + Vector3.one) * torqueAmount, forceMode);

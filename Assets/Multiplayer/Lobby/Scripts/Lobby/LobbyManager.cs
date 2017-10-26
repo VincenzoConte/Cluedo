@@ -420,8 +420,7 @@ namespace Prototype.NetworkLobby
             base.OnServerDisconnect(conn);
             if (isInGame)
             {
-                GameObject.Find("GameManager").GetComponent<Communication>().RefreshConnections();
-                GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().RefreshConnections();
+                GameObject.Find("GameManager").GetComponent<Connections>().RefreshConnections();
             }
         }
 

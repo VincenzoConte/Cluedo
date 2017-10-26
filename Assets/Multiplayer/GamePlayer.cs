@@ -14,15 +14,10 @@ public class GamePlayer : NetworkBehaviour {
     public GameObject playerCamera;
     public byte turniDaSaltare;
 	static int idPlayerQuestioned;
-	public NetworkConnection[] players;
     // Use this for initialization
     void Start () { 
         GetComponent<Renderer>().material.color = color;
         turniDaSaltare = 0;
-		if(NetworkServer.active){
-			players = new NetworkConnection[NetworkServer.connections.Count];
-			NetworkServer.connections.CopyTo(players, 0);
-		}
         switch (character)
         {
             case "Vincent Count":
@@ -75,14 +70,17 @@ public class GamePlayer : NetworkBehaviour {
 	[Command]
 	public void CmdIpotesi(string[] ipotesi) {
 		RpcIpotesi (ipotesi);
-        int turno = GameObject.Find("GameManager").GetComponent<Communication>().turno;
+        GameObject gm = GameObject.Find("GameManager");
+        int turno = gm.GetComponent<Communication>().turno;
+        NetworkConnection[] players = gm.GetComponent<Connections>().connections;
         idPlayerQuestioned = (turno + 1)%players.Length;
         while (idPlayerQuestioned!=turno && players[idPlayerQuestioned] == null)
         {
             string card = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetCard(ipotesi, idPlayerQuestioned);
-            RpcNotificaCarteIp("Giocatore "+idPlayerQuestioned, null, card);
+            RpcNotificaCarteIp("Giocatore " + (idPlayerQuestioned + 1), null, card);
             if (card != null)
                 return;
+            idPlayerQuestioned = (turno + 1) % players.Length;
         }
         if(idPlayerQuestioned != turno)
 		    TargetChiediCarta (players[idPlayerQuestioned],0,ipotesi);
@@ -106,8 +104,10 @@ public class GamePlayer : NetworkBehaviour {
 	[Command]
 	public void CmdMostraCarta(string nomePlayer, string playerImage, string carta, string[] ipotesi){
 		if(carta == null || carta == ""){
-			idPlayerQuestioned = (idPlayerQuestioned + 1)%players.Length;
-            int turno = GameObject.Find("GameManager").GetComponent<Communication>().turno;
+            GameObject gm = GameObject.Find("GameManager");
+            NetworkConnection[] players = gm.GetComponent<Connections>().connections;
+            idPlayerQuestioned = (idPlayerQuestioned + 1)%players.Length;
+            int turno = gm.GetComponent<Communication>().turno;
             if (idPlayerQuestioned == (turno))
             {
                 //po verimm
@@ -117,9 +117,10 @@ public class GamePlayer : NetworkBehaviour {
                 while (idPlayerQuestioned != turno && players[idPlayerQuestioned] == null)
                 {
                     string card = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetCard(ipotesi, idPlayerQuestioned);
-                    RpcNotificaCarteIp("Giocatore " + idPlayerQuestioned, null, card);
+                    RpcNotificaCarteIp("Giocatore " + (idPlayerQuestioned + 1), null, card);
                     if (card != null)
                         return;
+                    idPlayerQuestioned = (turno + 1) % players.Length;
                 }
                 if (idPlayerQuestioned != turno)
                     TargetChiediCarta(players[idPlayerQuestioned], 0, ipotesi);

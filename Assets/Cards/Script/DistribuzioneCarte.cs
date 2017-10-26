@@ -19,7 +19,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
     string[] randomlyDealtCards;
 
     public GameObject realCard;
-	NetworkConnection[] players;
+    public Connections conn;
 	public static short msgNum = MsgType.Highest + 11;
 	static ArrayList receivedCards;
 	bool oneStamp = true;
@@ -43,13 +43,10 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			Instantiate (card, new Vector3 (1.8f, y, 0), Quaternion.Euler(0,0,180));
 			y = y + 0.2f;
 		}
+        if (NetworkServer.active)
+            numPlayers = NetworkServer.connections.Count;
 
 		cards = GameObject.FindGameObjectsWithTag ("falseCard");
-		if (NetworkServer.active) {
-			numPlayers = NetworkServer.connections.Count;
-			players = new NetworkConnection[NetworkServer.connections.Count];
-			NetworkServer.connections.CopyTo(players, 0);
-		}
 	}
 	
 	// Update is called once per frame
@@ -255,7 +252,8 @@ public class DistribuzioneCarte : NetworkBehaviour {
 			cardsToDeal [r] = cardsToDeal [z];
 		}
 
-		//Debug.Log ("Le carte distribuite radomicamente sono: ");
+        //Debug.Log ("Le carte distribuite radomicamente sono: ");
+        NetworkConnection[] players = conn.connections;
 		for(int x=0;x<randomlyDealtCards.Length;x++){
 			//Debug.Log (randomlyDealtCards[x]+"");
 			players [x%numPlayers].Send (msgNum, new StringMessage (randomlyDealtCards [x]));
@@ -278,22 +276,14 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
     public string GetCard(string[] cards, int player)
     {
-        if (Array.BinarySearch(randomlyDealtCards, cards[0]) % players.Length == player)
+        NetworkConnection[] players = conn.connections;
+        if (Array.IndexOf(randomlyDealtCards, cards[0]) % players.Length == player)
             return cards[0];
-        else if (Array.BinarySearch(randomlyDealtCards, cards[1]) % players.Length == player)
+        else if (Array.IndexOf(randomlyDealtCards, cards[1]) % players.Length == player)
             return cards[1];
-        else if (Array.BinarySearch(randomlyDealtCards, cards[2]) % players.Length == player)
+        else if (Array.IndexOf(randomlyDealtCards, cards[2]) % players.Length == player)
             return cards[2];
         return null;
     }
 
-    public void RefreshConnections()
-    {
-        if (NetworkServer.active)
-        {
-            numPlayers = NetworkServer.connections.Count;
-            players = new NetworkConnection[NetworkServer.connections.Count];
-            NetworkServer.connections.CopyTo(players, 0);
-        }
-    }
 }

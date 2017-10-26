@@ -555,6 +555,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClickCreateMatchmakingGame
       objectReference: {fileID: 0}
+    - target: {fileID: 114416029058769564, guid: 639f7ba124c27384fa09c43a27244c42,
+        type: 2}
+      propertyPath: m_GamePlayerPrefab
+      value: 
+      objectReference: {fileID: 1947056257129570, guid: 1b648f19d0180154bb0cd88b2fc3501e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 639f7ba124c27384fa09c43a27244c42, type: 2}
   m_IsPrefabParent: 0

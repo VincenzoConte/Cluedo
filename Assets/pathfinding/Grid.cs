@@ -123,6 +123,8 @@ public class Grid : MonoBehaviour {
 
     public Room FindRoom(Node n)
     {
+        if (!Room.CheckNode(n))
+            return null;
         for (int i = 0; i < rooms.Length; i++)
         {
             if (rooms[i].IsInRoom(n))

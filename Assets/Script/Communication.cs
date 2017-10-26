@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Communication : NetworkBehaviour {
 
-    NetworkConnection[] players;
     public int turno;
     public static short msg = MsgType.Highest + 2;
     static OperativaInterfaccia oi;
@@ -17,12 +16,6 @@ public class Communication : NetworkBehaviour {
     void OnEnable()
     {
         oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
-        if (NetworkServer.active)
-        {
-            players = new NetworkConnection[NetworkServer.connections.Count];
-            NetworkServer.connections.CopyTo(players, 0);
-            turno = Random.Range(0, NetworkServer.connections.Count);
-        }
     }
 
     public static void InizioTurno(NetworkMessage netMsg)
@@ -34,6 +27,7 @@ public class Communication : NetworkBehaviour {
     {
         if (NetworkServer.active)
         {
+            NetworkConnection[] players = gameObject.GetComponent<Connections>().connections;
             turno = (turno + 1) % players.Length;
             while (turno != 0 && players[turno] == null)
             {
@@ -41,14 +35,6 @@ public class Communication : NetworkBehaviour {
             }
             players[turno].Send(msg, new EmptyMessage());
         }
-    }
-
-    public void RefreshConnections()
-    {
-        players = new NetworkConnection[NetworkServer.connections.Count];
-        NetworkServer.connections.CopyTo(players, 0);
-        if (players[turno] == null)
-            CambioTurno();
     }
 
 }
