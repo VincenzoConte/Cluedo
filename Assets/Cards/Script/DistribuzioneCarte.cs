@@ -286,4 +286,14 @@ public class DistribuzioneCarte : NetworkBehaviour {
             return cards[2];
         return null;
     }
+
+    public void RefreshConnections()
+    {
+        if (NetworkServer.active)
+        {
+            numPlayers = NetworkServer.connections.Count;
+            players = new NetworkConnection[NetworkServer.connections.Count];
+            NetworkServer.connections.CopyTo(players, 0);
+        }
+    }
 }

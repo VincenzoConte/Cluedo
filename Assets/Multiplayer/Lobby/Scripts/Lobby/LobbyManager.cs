@@ -418,8 +418,11 @@ namespace Prototype.NetworkLobby
         {
             Debug.Log("client disconnected");
             base.OnServerDisconnect(conn);
-            if(isInGame)
+            if (isInGame)
+            {
                 GameObject.Find("GameManager").GetComponent<Communication>().RefreshConnections();
+                GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().RefreshConnections();
+            }
         }
 
         public override void OnClientError(NetworkConnection conn, int errorCode)
