@@ -75,8 +75,17 @@ public class GamePlayer : NetworkBehaviour {
 	[Command]
 	public void CmdIpotesi(string[] ipotesi) {
 		RpcIpotesi (ipotesi);
-		idPlayerQuestioned = (GameObject.Find ("GameManager").GetComponent<Communication> ().turno + 1)%players.Length;
-		TargetChiediCarta (players[idPlayerQuestioned],0,ipotesi);
+        int turno = GameObject.Find("GameManager").GetComponent<Communication>().turno;
+        idPlayerQuestioned = (turno + 1)%players.Length;
+        while (idPlayerQuestioned!=turno && players[idPlayerQuestioned] == null)
+        {
+            string card = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetCard(ipotesi, idPlayerQuestioned);
+            RpcNotificaCarteIp("Giocatore "+idPlayerQuestioned, null, card);
+            if (card != null)
+                return;
+        }
+        if(idPlayerQuestioned != turno)
+		    TargetChiediCarta (players[idPlayerQuestioned],0,ipotesi);
 	}
 
     [Command]
@@ -98,10 +107,23 @@ public class GamePlayer : NetworkBehaviour {
 	public void CmdMostraCarta(string nomePlayer, string playerImage, string carta, string[] ipotesi){
 		if(carta == null || carta == ""){
 			idPlayerQuestioned = (idPlayerQuestioned + 1)%players.Length;
-			if (idPlayerQuestioned == (GameObject.Find ("GameManager").GetComponent<Communication> ().turno)) {
-				//po verimm
-			} else
-				TargetChiediCarta (players [idPlayerQuestioned], 0, ipotesi);
+            int turno = GameObject.Find("GameManager").GetComponent<Communication>().turno;
+            if (idPlayerQuestioned == (turno))
+            {
+                //po verimm
+            }
+            else
+            {
+                while (idPlayerQuestioned != turno && players[idPlayerQuestioned] == null)
+                {
+                    string card = GameObject.Find("CardsDealer").GetComponent<DistribuzioneCarte>().GetCard(ipotesi, idPlayerQuestioned);
+                    RpcNotificaCarteIp("Giocatore " + idPlayerQuestioned, null, card);
+                    if (card != null)
+                        return;
+                }
+                if (idPlayerQuestioned != turno)
+                    TargetChiediCarta(players[idPlayerQuestioned], 0, ipotesi);
+            }
 		}else
 		{
 			//Debug.Log (" Il giocatore: " + nomePlayer + " mi ha mostrato la carta: " + carta);

@@ -16,6 +16,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 	GameObject[] instantiatedCards;
     string[] hiddenCards;
+    string[] randomlyDealtCards;
 
     public GameObject realCard;
 	NetworkConnection[] players;
@@ -245,7 +246,7 @@ public class DistribuzioneCarte : NetworkBehaviour {
 		}
 
 		//carte riordinate randomicamente (mischiate) da distribuire ai gioctori
-		string[] randomlyDealtCards = new string[18];
+		randomlyDealtCards = new string[18];
 		int w = 0;
 		for(int z=cardsToDeal.Length-1;z>=0;z--){
 			int r = UnityEngine.Random.Range (0, z);
@@ -273,5 +274,16 @@ public class DistribuzioneCarte : NetworkBehaviour {
     public string[] GetSolution()
     {
         return hiddenCards;
+    }
+
+    public string GetCard(string[] cards, int player)
+    {
+        if (Array.BinarySearch(randomlyDealtCards, cards[0]) % players.Length == player)
+            return cards[0];
+        else if (Array.BinarySearch(randomlyDealtCards, cards[1]) % players.Length == player)
+            return cards[1];
+        else if (Array.BinarySearch(randomlyDealtCards, cards[2]) % players.Length == player)
+            return cards[2];
+        return null;
     }
 }
