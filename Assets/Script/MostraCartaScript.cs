@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MostraCartaScript : MonoBehaviour {
 
@@ -31,8 +32,8 @@ public class MostraCartaScript : MonoBehaviour {
 					myButton = Instantiate (buttonPrefab, new Vector3 (200.2f + margin, 350.5f, 0), Quaternion.Euler (0, 0, 0)) as Button;
 					myButton.image.sprite = Resources.Load<Sprite> ("Immagini/Carte/" + ipotesi [i].Replace (" ", ""));
 					margin += 290f;
-					myButton.name = ipotesi [i];
-					myButton.onClick.AddListener (ScegliCarta);	
+					myButton.GetComponent<SelectButton>().nameButton = ipotesi [i];
+				//	myButton.onClick.AddListener (ScegliCarta);	
 					myButton.transform.SetParent (panel.transform);
 					counter++;
 					break;
@@ -48,10 +49,10 @@ public class MostraCartaScript : MonoBehaviour {
 		StartCoroutine (clickAfterTimer ());
 	}
 
-	public void ScegliCarta()
+	public void ScegliCarta(string nameButton)
 	{
 		GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
-		localPlayer.CmdMostraCarta(localPlayer.character, localPlayer.playerImage.name, myButton.name, ipotesiFatta);
+		localPlayer.CmdMostraCarta(localPlayer.character, localPlayer.playerImage.name, nameButton, ipotesiFatta);
 		this.gameObject.SetActive (false);
 		StopCoroutine (clickAfterTimer ());
 	}
