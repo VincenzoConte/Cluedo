@@ -170,16 +170,19 @@ public class Pathfinding : MonoBehaviour {
             myNode.walkable = true;
             n.walkable = false;
             Sequence seq = DOTween.Sequence();
-			if (usatoBotola) {
-				float y = seeker.position.y;
-				GameObject botola = grid.FindRoom (myNode).botola;
-				seq.Append (seeker.DOJump (botola.transform.position, 2, 1, 1));
-				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
-				seq.Append (seeker.transform.DOMove (room.botola.transform.position, 1.5f));
-				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
-				seq.Append (seeker.transform.DOMove (new Vector3 (room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
-				seq.Append (seeker.DOJump (new Vector3 (n.worldPosition.x, seeker.position.y, n.worldPosition.z),2,1,1));
-			} else {
+            if (usatoBotola)
+            {
+                float y = seeker.position.y;
+                GameObject botola = grid.FindRoom(myNode).botola;
+                seq.Append(seeker.DOJump(botola.transform.position, 2, 1, 1));
+                seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+                seq.Append(seeker.transform.DOMove(room.botola.transform.position, 1.5f));
+                seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+                seq.Append(seeker.transform.DOMove(new Vector3(room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
+                seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 2, 1, 1));
+            }
+            else
+            {
                 List<Node> doors = room.doors;
                 Node min = doors[0];
                 foreach (Node door in doors)
@@ -196,15 +199,18 @@ public class Pathfinding : MonoBehaviour {
                     path.RemoveAt(0);
                 }
                 float y = seeker.position.y;
-                foreach (Node step in path)
+                if (path != null && path.Count > 0)
                 {
-                    seq.AppendCallback(PlaySound);
-                    seq.Append(seeker.DOJump(new Vector3(step.worldPosition.x, y, step.worldPosition.z), 1, 1, 1));
+                    foreach (Node step in path)
+                    {
+                        seq.AppendCallback(PlaySound);
+                        seq.Append(seeker.DOJump(new Vector3(step.worldPosition.x, y, step.worldPosition.z), 1, 1, 1));
+                    }
                 }
-                seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (0, 0.5f));
-				seq.Append (seeker.transform.DOMove (new Vector3 (n.worldPosition.x, y, n.worldPosition.z), 1.5f));
-				seq.Append (seeker.GetComponent<Renderer> ().material.DOFade (1, 0.5f));
-			}
+                seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+                seq.Append(seeker.transform.DOMove(new Vector3(n.worldPosition.x, y, n.worldPosition.z), 1.5f));
+                seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+            }
             Transform camera = seeker.GetChild(0);
             seq.Append(camera.DOLocalMove(new Vector3(0, 1.7f, -2), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(0, 0, 0), 2));
@@ -212,6 +218,8 @@ public class Pathfinding : MonoBehaviour {
             seq.Append(camera.DOLocalMove(new Vector3(0, 10, 0), 2));
             seq.Join(camera.DOLocalRotate(new Vector3(90, 0, 0), 2));
         }
+        else
+            Debug.Log("no walkable node in "+room.name);
 		oi.setMiSonoSpostato ();
     }
 

@@ -46,18 +46,18 @@ public class MoveCamera : MonoBehaviour {
 
     public void ZoomIn()
     {
-        float y = cam.gameObject.transform.position.y - 1;
+        float y = cam.gameObject.transform.localPosition.y - 1;
         if (y < min)
             y = min;
-        cam.gameObject.transform.position = new Vector3(cam.gameObject.transform.position.x, y, cam.gameObject.transform.position.z);
+        cam.gameObject.transform.localPosition = new Vector3(cam.gameObject.transform.localPosition.x, y, cam.gameObject.transform.localPosition.z);
 
     }
 
     public void ZoomOut()
     {
-        float y = cam.gameObject.transform.position.y + 1;
+        float y = cam.gameObject.transform.localPosition.y + 1;
         if (y > max)
             y = max;
-        cam.gameObject.transform.position = new Vector3(cam.gameObject.transform.position.x, y, cam.gameObject.transform.position.z);
+        cam.gameObject.transform.localPosition = new Vector3(cam.gameObject.transform.localPosition.x, y, cam.gameObject.transform.localPosition.z);
     }
 }

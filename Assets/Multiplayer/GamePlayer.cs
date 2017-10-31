@@ -53,7 +53,7 @@ public class GamePlayer : NetworkBehaviour {
         GameObject.Find("A*").GetComponent<Pathfinding>().seeker = gameObject.transform;
         GameObject cam = Instantiate(playerCamera);
         cam.transform.SetParent(gameObject.transform);
-        cam.transform.localPosition = new Vector3(0, 10, 0);
+        cam.transform.localPosition = new Vector3(0, 30, 0);
         GameObject.Find("Gestione camera").GetComponent<SwitchCamera>().SetPlayerCamera(cam);
     }
 
