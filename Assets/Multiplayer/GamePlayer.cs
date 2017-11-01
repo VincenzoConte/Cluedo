@@ -80,7 +80,7 @@ public class GamePlayer : NetworkBehaviour {
             RpcNotificaCarteIp("Giocatore " + (idPlayerQuestioned + 1), null, card);
             if (card != null)
                 return;
-            idPlayerQuestioned = (turno + 1) % players.Length;
+            idPlayerQuestioned = (idPlayerQuestioned + 1) % players.Length;
         }
         if(idPlayerQuestioned != turno)
 		    TargetChiediCarta (players[idPlayerQuestioned],0,ipotesi);
@@ -120,7 +120,7 @@ public class GamePlayer : NetworkBehaviour {
                     RpcNotificaCarteIp("Giocatore " + (idPlayerQuestioned + 1), null, card);
                     if (card != null)
                         return;
-                    idPlayerQuestioned = (turno + 1) % players.Length;
+                    idPlayerQuestioned = (idPlayerQuestioned + 1) % players.Length;
                 }
                 if (idPlayerQuestioned != turno)
                     TargetChiediCarta(players[idPlayerQuestioned], 0, ipotesi);

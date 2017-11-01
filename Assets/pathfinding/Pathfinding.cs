@@ -178,7 +178,7 @@ public class Pathfinding : MonoBehaviour {
                 seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
                 seq.Append(seeker.transform.DOMove(room.botola.transform.position, 1.5f));
                 seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
-                seq.Append(seeker.transform.DOMove(new Vector3(room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
+                seq.Join(seeker.transform.DOMove(new Vector3(room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
                 seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 2, 1, 1));
             }
             else
@@ -187,8 +187,9 @@ public class Pathfinding : MonoBehaviour {
                 Node min = doors[0];
                 foreach (Node door in doors)
                 {
-                    if (GetDistance(myNode, door) < GetDistance(min, door))
-                        min = n;
+                    Debug.Log(door.gridX+" "+" "+door.gridY+": "+GetDistance(myNode,door));
+                    if (GetDistance(myNode, door) < GetDistance(myNode, min))
+                        min = door;
                 }
                 List<Node> path = FindPath(min.worldPosition);
                 if (Room.CheckNode(myNode))

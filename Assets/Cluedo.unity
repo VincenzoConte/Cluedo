@@ -570,7 +570,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17166898}
-  m_LocalRotation: {x: -0.28416625, y: -0.7269424, z: -0.34203392, w: 0.5232755}
+  m_LocalRotation: {x: -0.28416622, y: -0.72694236, z: -0.3420339, w: 0.52327543}
   m_LocalPosition: {x: -4.076245, y: 5.903862, z: -1.005454}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -3389,7 +3389,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 93520207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ApribilePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9304,7 +9304,7 @@ GameObject:
   - component: {fileID: 264948584}
   - component: {fileID: 264948586}
   - component: {fileID: 264948585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12014,7 +12014,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 331490579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CentroBotSerra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12578,7 +12578,7 @@ GameObject:
   - component: {fileID: 359881129}
   - component: {fileID: 359881131}
   - component: {fileID: 359881130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12652,7 +12652,7 @@ GameObject:
   - component: {fileID: 360611976}
   - component: {fileID: 360611975}
   - component: {fileID: 360611974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13128,7 +13128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900.1918, y: -161}
+  m_AnchoredPosition: {x: 900.1919, y: -161}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369177128
@@ -13389,7 +13389,7 @@ GameObject:
   - component: {fileID: 378598808}
   - component: {fileID: 378598810}
   - component: {fileID: 378598809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14277,7 +14277,7 @@ GameObject:
   - component: {fileID: 407786494}
   - component: {fileID: 407786496}
   - component: {fileID: 407786495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16432,7 +16432,7 @@ GameObject:
   - component: {fileID: 454145499}
   - component: {fileID: 454145498}
   - component: {fileID: 454145497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: apribile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17384,7 +17384,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 491663552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ApribilePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22861,7 +22861,7 @@ GameObject:
   - component: {fileID: 653353119}
   - component: {fileID: 653353121}
   - component: {fileID: 653353120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23094,7 +23094,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 660911273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotolaStudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27093,7 +27093,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 758091643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roof_Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27413,7 +27413,7 @@ GameObject:
   - component: {fileID: 766583458}
   - component: {fileID: 766583457}
   - component: {fileID: 766583456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: apribile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27849,7 +27849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 283.72693, y: -331.79996}
+  m_AnchoredPosition: {x: 283.72693, y: -331.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782626474
@@ -28373,7 +28373,7 @@ GameObject:
   - component: {fileID: 795726011}
   - component: {fileID: 795726013}
   - component: {fileID: 795726012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28827,7 +28827,7 @@ GameObject:
   - component: {fileID: 802226464}
   - component: {fileID: 802226466}
   - component: {fileID: 802226465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32546,7 +32546,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 910807996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ApribilePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33610,7 +33610,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 957206160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CentroBotStudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34250,7 +34250,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 984613873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotolaSalotto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35125,7 +35125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1017059789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roof_Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35661,7 +35661,7 @@ GameObject:
   - component: {fileID: 1031881388}
   - component: {fileID: 1031881387}
   - component: {fileID: 1031881386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35746,7 +35746,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1033671199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CentroBotCucina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39045,7 +39045,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1153100103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotolaCucina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39059,16 +39059,16 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153100102}
-  m_LocalRotation: {x: 0.17850268, y: -0.6842053, z: -0.17850268, w: 0.6842053}
-  m_LocalPosition: {x: 0.032957368, y: 0.043280344, z: -0.011183486}
-  m_LocalScale: {x: 0.0149375405, y: 0.011042362, z: 0.007816159}
+  m_LocalRotation: {x: 0.23371866, y: -0.6673647, z: -0.23371866, w: 0.6673647}
+  m_LocalPosition: {x: 0.03286, y: 0.0465, z: -0.0121}
+  m_LocalScale: {x: 0.012250171, y: 0.009055763, z: 0.0064099766}
   m_Children:
   - {fileID: 93520207}
   - {fileID: 1017059789}
   - {fileID: 1033671199}
   m_Father: {fileID: 426294793}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 60.756004}
+  m_LocalEulerAnglesHint: {x: -180, y: 89.99999, z: 141.398}
 --- !u!1 &1156823537
 GameObject:
   m_ObjectHideFlags: 0
@@ -39757,7 +39757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1980.4172, y: -161}
+  m_AnchoredPosition: {x: 1980.4174, y: -161}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168598997
@@ -45675,7 +45675,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1409219964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotolaSerra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48777,7 +48777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 899.775, y: -226.5}
+  m_AnchoredPosition: {x: 899.77515, y: -226.5}
   m_SizeDelta: {x: 155, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479361071
@@ -48964,7 +48964,7 @@ GameObject:
   - component: {fileID: 1487302247}
   - component: {fileID: 1487302249}
   - component: {fileID: 1487302248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52196,7 +52196,7 @@ GameObject:
   - component: {fileID: 1557887045}
   - component: {fileID: 1557887044}
   - component: {fileID: 1557887043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: apribile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54528,7 +54528,7 @@ GameObject:
   - component: {fileID: 1613076196}
   - component: {fileID: 1613076195}
   - component: {fileID: 1613076194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: apribile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55895,7 +55895,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1653881874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roof_Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55926,7 +55926,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1666114583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ApribilePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59756,7 +59756,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1750314505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roof_Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62823,7 +62823,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1839980304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CentroBotSalotto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66970,7 +66970,7 @@ GameObject:
   - component: {fileID: 1947530320}
   - component: {fileID: 1947530319}
   - component: {fileID: 1947530318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67530,7 +67530,7 @@ GameObject:
   - component: {fileID: 1961401618}
   - component: {fileID: 1961401620}
   - component: {fileID: 1961401619}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69241,7 +69241,7 @@ GameObject:
   - component: {fileID: 2034835664}
   - component: {fileID: 2034835666}
   - component: {fileID: 2034835665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70300,7 +70300,7 @@ GameObject:
   - component: {fileID: 2061448933}
   - component: {fileID: 2061448935}
   - component: {fileID: 2061448934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71521,7 +71521,7 @@ GameObject:
   - component: {fileID: 2083796542}
   - component: {fileID: 2083796544}
   - component: {fileID: 2083796543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71998,7 +71998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1980.0005, y: -226.5}
+  m_AnchoredPosition: {x: 1980.0006, y: -226.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095812210
@@ -72563,7 +72563,7 @@ GameObject:
   - component: {fileID: 2104910294}
   - component: {fileID: 2104910293}
   - component: {fileID: 2104910292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object85
   m_TagString: Untagged
   m_Icon: {fileID: 0}

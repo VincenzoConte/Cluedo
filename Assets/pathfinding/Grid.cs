@@ -191,6 +191,8 @@ public class Grid : MonoBehaviour {
         if (grid != null) {
 			foreach (Node n in grid) {
 				Gizmos.color = (n.walkable)?Color.white:Color.red;
+                if (n.room != null)
+                    Gizmos.color = Color.green;
 				/*if (path != null)
 					if (path.Contains(n))
 						Gizmos.color = Color.black;*/
