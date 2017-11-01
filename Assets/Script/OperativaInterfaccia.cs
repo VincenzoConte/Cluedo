@@ -8,6 +8,8 @@ using System;
 
 public class OperativaInterfaccia : MonoBehaviour {
 
+	public GameObject piantina;
+	bool piantinaIsActive;
 	public GameObject dadi;
 	public Button accusa, botola, ipotesi, endTurn;
 	public GameObject ipotesiPanel, mostraCartaPanel, messaggiPanel, bottoni, accusaPanel, fineGiocoPanel;
@@ -36,6 +38,8 @@ public class OperativaInterfaccia : MonoBehaviour {
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
 		saveState = new bool[5];
+
+		piantinaIsActive = false;
 	}
 	
 	// Update is called once per frame
@@ -304,5 +308,15 @@ public class OperativaInterfaccia : MonoBehaviour {
 			GameObject.Find ("LobbyManager").GetComponent<Prototype.NetworkLobby.LobbyManager> ().StopClientClbk ();
 		Destroy (GameObject.Find ("LobbyManager"));
 		SceneManager.LoadScene ("MainMenu");
+	}
+
+	public void ShowRoomNames(){
+		if (!piantinaIsActive) {
+			piantina.SetActive (true);
+			piantinaIsActive = true;
+		} else {
+			piantina.SetActive (false);
+			piantinaIsActive = false;
+		}
 	}
 }
