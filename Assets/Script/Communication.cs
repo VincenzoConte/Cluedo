@@ -11,6 +11,10 @@ public class Communication : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
+        if (NetworkServer.active)
+        {
+            turno = Random.Range(0, NetworkServer.connections.Count);
+        }
 	}
 
     void OnEnable()

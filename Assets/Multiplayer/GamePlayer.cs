@@ -14,6 +14,7 @@ public class GamePlayer : NetworkBehaviour {
     public GameObject playerCamera;
     public byte turniDaSaltare;
 	static int idPlayerQuestioned;
+    GameObject aStar = null;
     // Use this for initialization
     void Start () { 
         GetComponent<Renderer>().material.color = color;
@@ -46,7 +47,8 @@ public class GamePlayer : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (aStar == null)
+            aStar = GameObject.Find("A*");
 	}
 
     public override void OnStartLocalPlayer() {
@@ -152,9 +154,18 @@ public class GamePlayer : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcIpotesi(string[] ipotesi) {
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
-		//PROVA
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().ShowMessaggiPanel ();
 		GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().resetMessagePanel ();
+        Pathfinding pf = aStar.GetComponent<Pathfinding>();
+        GamePlayer myPlayer = pf.seeker.GetComponent<GamePlayer>();
+        if (myPlayer.character.Equals(ipotesi[0]))
+        {
+            Room room = pf.grid.FindRoomByName(ipotesi[2]);
+            if (room != null)
+                pf.MoveAfterHypothesis(room);
+            else
+                Debug.Log("errore: stanza non trovata");
+        }
 	}
 
     [ClientRpc]
@@ -191,7 +202,7 @@ public class GamePlayer : NetworkBehaviour {
 
 	[TargetRpc]
 	public void TargetChiediCarta(NetworkConnection target, int extra, string[] ipotesi) {
-        GamePlayer localPlayer = GameObject.Find("A*").GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
+        GamePlayer localPlayer =aStar.GetComponent<Pathfinding>().seeker.GetComponent<GamePlayer>();
 
 		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().mostraCartaPanel.SetActive (true);
 		MostraCartaScript mc = GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().mostraCartaPanel.GetComponent<MostraCartaScript> ();

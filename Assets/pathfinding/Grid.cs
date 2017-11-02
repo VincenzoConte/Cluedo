@@ -135,6 +135,14 @@ public class Grid : MonoBehaviour {
         }
         return null;
     }
+
+    public Room FindRoomByName(string name)
+    {
+        foreach (Room r in rooms)
+            if (name.Equals(r.getNomeStanza()))
+                return r;
+        return null;
+    }
 	
 
 	public Node NodeFromWorldPoint(Vector3 worldPosition) {
@@ -173,6 +181,7 @@ public class Grid : MonoBehaviour {
                 clone.transform.localScale = n.room.area.localScale;
                 clone.GetComponent<MoveInRoom>().room = n.room;
                 clone.tag = "target";
+                n.room = null;
             }
             else
             {

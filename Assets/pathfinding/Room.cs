@@ -43,28 +43,24 @@ public class Room {
     {
         Grid grid = GameObject.Find("A*").GetComponent<Grid>();
         Node n = grid.NodeFromWorldPoint(area.position);
-        if (n.walkable && !Physics.CheckSphere(n.worldPosition + (Vector3.up / 2), 0.3f, LayerMask.GetMask("player")))
+        if (n.walkable && !(Physics.CheckCapsule(n.worldPosition, n.worldPosition + 2 * Vector3.up, 0.37f, LayerMask.GetMask("player"))))
             return n;
         List<Node> list = new List<Node>();
         list.Add(n);
-        int i = 0;
-        while (i < 600)
+        while (list.Count>0)
         {
-            foreach(Node neigh in grid.GetNeighbours(n))
+            n = list[0];
+            foreach (Node neigh in grid.GetNeighbours(n))
             {
                 if (IsInRoom(neigh))
                 {
-                    if (neigh.walkable && !Physics.CheckSphere(n.worldPosition + (Vector3.up/2), 0.3f, LayerMask.GetMask("player")))
+                    if (neigh.walkable && !(Physics.CheckCapsule(n.worldPosition, n.worldPosition + 2 * Vector3.up, 0.37f, LayerMask.GetMask("player"))))
                         return neigh;
                     else if (!list.Contains(neigh))
                         list.Add(neigh);
                 }
             }
             list.Remove(n);
-            if (list.Count == 0)
-                break;
-            n = list[0];
-            i++;
         }
         return null;
 

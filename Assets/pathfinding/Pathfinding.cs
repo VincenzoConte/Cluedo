@@ -167,8 +167,6 @@ public class Pathfinding : MonoBehaviour {
         if (n != null)
         {
             Node myNode = grid.NodeFromWorldPoint(seeker.position);
-            myNode.walkable = true;
-            n.walkable = false;
             Sequence seq = DOTween.Sequence();
             if (usatoBotola)
             {
@@ -187,7 +185,6 @@ public class Pathfinding : MonoBehaviour {
                 Node min = doors[0];
                 foreach (Node door in doors)
                 {
-                    Debug.Log(door.gridX+" "+" "+door.gridY+": "+GetDistance(myNode,door));
                     if (GetDistance(myNode, door) < GetDistance(myNode, min))
                         min = door;
                 }
@@ -224,7 +221,18 @@ public class Pathfinding : MonoBehaviour {
 		oi.setMiSonoSpostato ();
     }
 
-	int GetDistance(Node nodeA, Node nodeB) {
+    public void MoveAfterHypothesis(Room room)
+    {
+        Sequence seq = DOTween.Sequence();
+        Node myNode = grid.NodeFromWorldPoint(seeker.position);
+        Node dest = room.GetWalkableNode();
+        seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
+        seq.Append(seeker.transform.DOMove(new Vector3(dest.worldPosition.x, seeker.position.y, dest.worldPosition.z), 1.5f));
+        seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+    }
+
+
+    int GetDistance(Node nodeA, Node nodeB) {
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
 		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
