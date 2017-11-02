@@ -570,7 +570,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17166898}
-  m_LocalRotation: {x: -0.28416625, y: -0.7269424, z: -0.34203392, w: 0.5232755}
+  m_LocalRotation: {x: -0.28416622, y: -0.72694236, z: -0.3420339, w: 0.52327543}
   m_LocalPosition: {x: -4.076245, y: 5.903862, z: -1.005454}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -32371,7 +32371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befa74fb3f457814c8013ae5e65ec291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 1501029415839228, guid: 3343b7ab39886e640b623b0c78e648d2, type: 2}
+  card: {fileID: 1119864921135514, guid: 3343b7ab39886e640b623b0c78e648d2, type: 2}
   realCard: {fileID: 1482715865463080, guid: e63c5e1643a6b0d408e02955c4c50922, type: 2}
   conn: {fileID: 2070918634}
   cardPrefabs:
