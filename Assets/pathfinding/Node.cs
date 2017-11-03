@@ -27,4 +27,20 @@ public class Node {
 			return gCost + hCost;
 		}
 	}
+
+    // override object.Equals
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        Node n = (Node)obj;
+        if (gridX == n.gridX && gridY == n.gridY)
+            return true;
+
+        return false;
+    }
+    
 }

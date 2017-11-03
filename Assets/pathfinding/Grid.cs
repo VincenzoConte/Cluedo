@@ -159,7 +159,16 @@ public class Grid : MonoBehaviour {
         return grid[x, y];
     }
 
-	public List<Node> path;
+    public bool IsNodeOccupied(Node n)
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+            if (n.Equals(NodeFromWorldPoint(player.transform.position)))
+                return true;
+        return false;
+    }
+
+    public List<Node> path;
 
     public void DrawTargets()
     {

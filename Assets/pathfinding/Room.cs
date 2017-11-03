@@ -43,7 +43,7 @@ public class Room {
     {
         Grid grid = GameObject.Find("A*").GetComponent<Grid>();
         Node n = grid.NodeFromWorldPoint(area.position);
-        if (n.walkable && !(Physics.CheckCapsule(n.worldPosition, n.worldPosition + 2 * Vector3.up, 0.37f, LayerMask.GetMask("player"))))
+        if (n.walkable && !grid.IsNodeOccupied(n))
             return n;
         List<Node> list = new List<Node>();
         list.Add(n);
@@ -54,7 +54,7 @@ public class Room {
             {
                 if (IsInRoom(neigh))
                 {
-                    if (neigh.walkable && !(Physics.CheckCapsule(n.worldPosition, n.worldPosition + 2 * Vector3.up, 0.37f, LayerMask.GetMask("player"))))
+                    if (neigh.walkable && !grid.IsNodeOccupied(neigh))
                         return neigh;
                     else if (!list.Contains(neigh))
                         list.Add(neigh);
@@ -65,4 +65,5 @@ public class Room {
         return null;
 
     }
+
 }
