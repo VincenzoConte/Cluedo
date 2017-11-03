@@ -30,7 +30,7 @@ public class GamePlayer : NetworkBehaviour {
             case "Emma Stacy":
                 playerImage = Resources.Load<Sprite>("Immagini/PG/Emma");
                 break;
-            case "Dolphin Rouge":
+            case "Dolphin Rogue":
                 playerImage = Resources.Load<Sprite>("Immagini/PG/Dolphin");
                 break;
             case "Anne Marie":
@@ -171,26 +171,27 @@ public class GamePlayer : NetworkBehaviour {
     [ClientRpc]
     public void RpcEsitoAccusa(string[] accusa, bool esito)
     {
-		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Accuso " + accusa [0] + " con " + accusa [1] + " in  " + accusa [2];
+        OperativaInterfaccia oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
+        oi.messaggioUI.text = "Accuso " + accusa [0] + " con " + accusa [1] + " in  " + accusa [2];
         if (esito)
         {
-			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
-				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text ="hai vinto";
+			if (oi.IsMyTurn ())
+				oi.messaggioUI.text ="hai vinto";
             else
-				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = ""+character+" ha vinto";
+				oi.messaggioUI.text += ": <b>"+character+" ha vinto!</b>";
             //fine partita
 			GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineGiocoPanel.SetActive (true);
         }
         else
         {
             // messaggio accusa sbagliata
-			if (GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().IsMyTurn ())
+			if (oi.IsMyTurn ())
 			{
-				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text ="Accusa errata, perdi un turno! ";
-				turniDaSaltare = 1;
+				oi.messaggioUI.text ="Accusa errata, perdi due turni! ";
+				turniDaSaltare = 2;
 				//GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().fineTurno ();
 			}else{
-				GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = ""+character+" ha sbagliato";
+				oi.messaggioUI.text += ": "+"<b>Sbagliato!</b>";
 			}
         }
     }
