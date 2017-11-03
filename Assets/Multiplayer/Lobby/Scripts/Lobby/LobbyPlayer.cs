@@ -12,7 +12,7 @@ namespace Prototype.NetworkLobby
     public class LobbyPlayer : NetworkLobbyPlayer
     {
         static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.black, Color.blue, Color.green, Color.yellow };
-        static string[] Characters = new string[] { "Dolphin Rouge", "Vincent Count", "Mark Johnson", "Freddie Carnival", "Anne Marie", "Emma Stacy" };
+        static string[] Characters = new string[] { "Dolphin Rogue", "Vincent Count", "Mark Johnson", "Freddie Carnival", "Anne Marie", "Emma Stacy" };
         //used on server to avoid assigning the same color to two player
         static List<int> _colorInUse = new List<int>();
 
