@@ -168,6 +168,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 		}
         botola.gameObject.SetActive(false);
         dadi.gameObject.SetActive(false);
+        movedAfterHypothesis = false;
         usandoBotola = true;
 	}
 

@@ -224,16 +224,17 @@ public class Pathfinding : MonoBehaviour {
             Debug.Log("no walkable node in "+room.name);
     }
 
-    public void MoveAfterHypothesis(Room room)
+    public bool MoveAfterHypothesis(Room room)
     {
         Node myNode = grid.NodeFromWorldPoint(seeker.position);
         if (room.Equals(grid.FindRoom(myNode)))
-            return;
+            return false;
         Node dest = room.GetWalkableNode();
         Sequence seq = DOTween.Sequence();
         seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
         seq.Append(seeker.transform.DOMove(new Vector3(dest.worldPosition.x, seeker.position.y, dest.worldPosition.z), 1.5f));
         seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
+        return true;
     }
 
 

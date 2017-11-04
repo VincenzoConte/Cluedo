@@ -164,8 +164,8 @@ public class GamePlayer : NetworkBehaviour {
             Room room = pf.grid.FindRoomByName(ipotesi[2]);
             if (room != null)
             {
-                pf.MoveAfterHypothesis(room);
-                oi.movedAfterHypothesis = true;
+                if(pf.MoveAfterHypothesis(room))
+                    oi.movedAfterHypothesis = true;
             }
             else
                 Debug.Log("errore: stanza non trovata");
