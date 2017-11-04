@@ -18,8 +18,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 	private dice dado1,dado2;
 	private	bool [] saveState;
 	GameObject colliderDadi;
-    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, miSonoSpostato, fattoIpotesi, fattoAccusa;
-	public Grid grid;
+    bool isMyTurn = false, lanciatoDadi, isInRoom, usatoBotola, usandoBotola, miSonoSpostato, fattoIpotesi, fattoAccusa;
+    public bool movedAfterHypothesis;
+    public Grid grid;
 	SwitchCamera sc;
 	public Pathfinding aStar;
 	Room room;
@@ -38,8 +39,9 @@ public class OperativaInterfaccia : MonoBehaviour {
         dado2 = GameObject.Find("dado 2").GetComponent<dice>();
         colliderDadi = GameObject.Find ("ColliderDadi");
 		saveState = new bool[5];
+        movedAfterHypothesis = false;
 
-		piantinaIsActive = false;
+        piantinaIsActive = false;
 	}
 	
 	// Update is called once per frame
@@ -49,7 +51,7 @@ public class OperativaInterfaccia : MonoBehaviour {
         if (isMyTurn) 
 		{                   
 
-			if (lanciatoDadi == true) {        //Se ho lanciato i dadi, non posso rilanciarli e non posso più utilizzare la botola (SE disponibile)
+			if (lanciatoDadi) {        //Se ho lanciato i dadi, non posso rilanciarli e non posso più utilizzare la botola (SE disponibile)
 				//Rendo invisibile il bottone dadi
 				dadi.gameObject.SetActive (false);
 				botola.gameObject.SetActive (false);
@@ -57,7 +59,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 			isInRoom = findPosition ();
 		//	Debug.Log (myRoom() +"");						//IN CHE STANZA MI TROVO?
-			if (((miSonoSpostato  && isInRoom) || usatoBotola ) && !fattoIpotesi && !fattoAccusa) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
+			if (((miSonoSpostato  && isInRoom) || usatoBotola || movedAfterHypothesis) && !fattoIpotesi && !fattoAccusa) {    //Se ho cambiato stanza (Lanciando i dadi o usando la botola) e sono in una stanza e non ho fatto ipotesi // posso avanzare un'ipotesi
 				ipotesi.gameObject.SetActive (true);
 			}
             else
@@ -65,11 +67,14 @@ public class OperativaInterfaccia : MonoBehaviour {
 
             if (fattoIpotesi && !fattoAccusa){
                 bottoni.SetActive(true);
+                dadi.gameObject.SetActive(false);
+                botola.gameObject.SetActive(false);
 				ipotesi.gameObject.SetActive (false);
 				accusa.gameObject.SetActive (true);
 				endTurn.gameObject.SetActive (true);
 			}
-			if ((!lanciatoDadi) && isInRoom) 
+
+			if ((!lanciatoDadi) && isInRoom && !usandoBotola) 
 			{
 				string myStanza = myRoom ();
 				if (myStanza.Equals ("Cucina") || myStanza.Equals ("Serra") || myStanza.Equals ("Studio") || myStanza.Equals ("Salotto")) {   //Se mi trovo in una stanza dove c'è la botola e non ho ancora tirato i dadi
@@ -131,7 +136,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 		usatoBotola = false;
 		miSonoSpostato = false;
 		fattoIpotesi = false;
-		sc.ActiveTopView ();
+        movedAfterHypothesis = false;
+        usandoBotola = false;
+        sc.ActiveTopView ();
 		dado1.gameObject.SetActive (true);
 		dado2.gameObject.SetActive (true);
         colliderDadi.gameObject.SetActive(true);
@@ -159,7 +166,9 @@ public class OperativaInterfaccia : MonoBehaviour {
 		{
 			aStar.MoveInRoom(aStar.grid.rooms[6],true);
 		}
-		usatoBotola = true;
+        botola.gameObject.SetActive(false);
+        dadi.gameObject.SetActive(false);
+        usandoBotola = true;
 	}
 
 	public void setTurnoTrue()             //METODO DI TEST PER ACQUISIRE MANUALMENTE IL TURNO. DA CANCELLARE. 
@@ -184,8 +193,16 @@ public class OperativaInterfaccia : MonoBehaviour {
 
 	public void setMiSonoSpostato()
 	{
-		miSonoSpostato = true; 
+		miSonoSpostato = true;
+        movedAfterHypothesis = false; 
 	}
+
+    public void setUsatoBotola()
+    {
+        usatoBotola = true;
+        usandoBotola = false;
+        movedAfterHypothesis = false;
+    }
 
 	public void showIpotesiPanel()
 	{
@@ -226,6 +243,7 @@ public class OperativaInterfaccia : MonoBehaviour {
 	{
 		fattoIpotesi = true;
 		ipotesiPanel.gameObject.SetActive (false);
+        dadi.gameObject.SetActive(false);
 	}
 
 	public void DoAccusaEffettiva()

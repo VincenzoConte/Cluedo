@@ -153,16 +153,20 @@ public class GamePlayer : NetworkBehaviour {
 
 	[ClientRpc]
 	public void RpcIpotesi(string[] ipotesi) {
-		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
-		GameObject.Find ("GameManager").GetComponent<OperativaInterfaccia> ().ShowMessaggiPanel ();
+        OperativaInterfaccia oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
+        oi.messaggioUI.text = "Secondo me è stato "+ ipotesi[0] + " con "+ ipotesi[1] + " in "+ ipotesi[2];
+		oi.ShowMessaggiPanel ();
 		GameObject.Find ("PanelMessaggi").GetComponent<MessageDealer> ().resetMessagePanel ();
         Pathfinding pf = aStar.GetComponent<Pathfinding>();
         GamePlayer myPlayer = pf.seeker.GetComponent<GamePlayer>();
-        if (myPlayer.character.Equals(ipotesi[0]))
+        if (!oi.IsMyTurn() && myPlayer.character.Equals(ipotesi[0]))
         {
             Room room = pf.grid.FindRoomByName(ipotesi[2]);
             if (room != null)
+            {
                 pf.MoveAfterHypothesis(room);
+                oi.movedAfterHypothesis = true;
+            }
             else
                 Debug.Log("errore: stanza non trovata");
         }
@@ -172,7 +176,7 @@ public class GamePlayer : NetworkBehaviour {
     public void RpcEsitoAccusa(string[] accusa, bool esito)
     {
         OperativaInterfaccia oi = GameObject.Find("GameManager").GetComponent<OperativaInterfaccia>();
-        oi.messaggioUI.text = "Accuso " + accusa [0] + " con " + accusa [1] + " in  " + accusa [2];
+        oi.messaggioUI.text = "Accuso " + accusa [0] + " con " + accusa [1] + " in " + accusa [2];
         if (esito)
         {
 			if (oi.IsMyTurn ())

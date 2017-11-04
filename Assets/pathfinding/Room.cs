@@ -66,4 +66,18 @@ public class Room {
 
     }
 
+    // override object.Equals
+    public override bool Equals(object obj)
+    {
+       if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        Room r = (Room)obj;
+        if (name.Equals(r.name))
+            return true;
+        return false;
+    }
+
 }

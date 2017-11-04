@@ -135,6 +135,7 @@ public class Pathfinding : MonoBehaviour {
         seeker.transform.DOPath(points, path.Count, PathType.CatmullRom, PathMode.Full3D, 5);*/
 
         //salti
+        oi.movedAfterHypothesis = false;
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("target"))
             GameObject.Destroy(t, 0f);
         Sequence seq = DOTween.Sequence();
@@ -151,7 +152,7 @@ public class Pathfinding : MonoBehaviour {
             seq.AppendCallback(PlaySound);
             seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, y, n.worldPosition.z),1 , 1, 1));
         }
-		oi.setMiSonoSpostato ();
+        seq.OnComplete(oi.setMiSonoSpostato);
     }
 
     void PlaySound()
@@ -166,6 +167,7 @@ public class Pathfinding : MonoBehaviour {
         Node n = room.GetWalkableNode();
         if (n != null)
         {
+            oi.movedAfterHypothesis = false;
             Node myNode = grid.NodeFromWorldPoint(seeker.position);
             Sequence seq = DOTween.Sequence();
             if (usatoBotola)
@@ -178,6 +180,7 @@ public class Pathfinding : MonoBehaviour {
                 seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
                 seq.Join(seeker.transform.DOMove(new Vector3(room.botola.transform.position.x, y, room.botola.transform.position.z), 0.5f));
                 seq.Append(seeker.DOJump(new Vector3(n.worldPosition.x, seeker.position.y, n.worldPosition.z), 2, 1, 1));
+                seq.AppendCallback(oi.setUsatoBotola);
             }
             else
             {
@@ -196,6 +199,7 @@ public class Pathfinding : MonoBehaviour {
                     seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
                     path.RemoveAt(0);
                 }
+                seq.AppendCallback(oi.setMiSonoSpostato);
                 float y = seeker.position.y;
                 if (path != null && path.Count > 0)
                 {
@@ -218,14 +222,15 @@ public class Pathfinding : MonoBehaviour {
         }
         else
             Debug.Log("no walkable node in "+room.name);
-		oi.setMiSonoSpostato ();
     }
 
     public void MoveAfterHypothesis(Room room)
     {
-        Sequence seq = DOTween.Sequence();
         Node myNode = grid.NodeFromWorldPoint(seeker.position);
+        if (room.Equals(grid.FindRoom(myNode)))
+            return;
         Node dest = room.GetWalkableNode();
+        Sequence seq = DOTween.Sequence();
         seq.Append(seeker.GetComponent<Renderer>().material.DOFade(0, 0.5f));
         seq.Append(seeker.transform.DOMove(new Vector3(dest.worldPosition.x, seeker.position.y, dest.worldPosition.z), 1.5f));
         seq.Append(seeker.GetComponent<Renderer>().material.DOFade(1, 0.5f));
