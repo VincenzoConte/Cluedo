@@ -199,7 +199,7 @@ namespace Prototype.NetworkLobby
                 case "Emma Stacy":
                     playerImage = emma;
                     break;
-                case "Dolphin Rouge":
+                case "Dolphin Rogue":
                     playerImage = dolphin;
                     break;
                 case "Anne Marie":
