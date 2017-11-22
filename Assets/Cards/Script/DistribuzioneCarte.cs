@@ -222,9 +222,9 @@ public class DistribuzioneCarte : NetworkBehaviour {
 
 		//scelta random carte della soluzione
 		hiddenCards = new string[3];
-		hiddenCards [0] = cards [UnityEngine.Random.Range (0, 5)];
-		hiddenCards [1] = cards [UnityEngine.Random.Range (6, 11)];
-		hiddenCards [2] = cards [UnityEngine.Random.Range (12, 20)];
+		hiddenCards [0] = cards [UnityEngine.Random.Range (0, 6)];
+		hiddenCards [1] = cards [UnityEngine.Random.Range (6, 12)];
+		hiddenCards [2] = cards [UnityEngine.Random.Range (12, 21)];
 
 		/*Debug.Log ("Le carte della soluzione sono: ");
 		for(int l=0;l<hiddenCards.Length;l++){
