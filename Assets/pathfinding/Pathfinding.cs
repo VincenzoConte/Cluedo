@@ -64,6 +64,8 @@ public class Pathfinding : MonoBehaviour {
             }            
             startNode = min;
         }
+        //modifica 26/11
+        startNode.gCost = 0;
         openSet.Add(startNode);
 
         while (openSet.Count > 0) {

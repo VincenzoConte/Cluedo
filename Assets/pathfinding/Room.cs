@@ -46,6 +46,7 @@ public class Room {
         if (n.walkable && !grid.IsNodeOccupied(n))
             return n;
         List<Node> list = new List<Node>();
+        List<Node> closedList = new List<Node>();
         list.Add(n);
         while (list.Count>0)
         {
@@ -56,14 +57,14 @@ public class Room {
                 {
                     if (neigh.walkable && !grid.IsNodeOccupied(neigh))
                         return neigh;
-                    else if (!list.Contains(neigh))
+                    else if (!list.Contains(neigh) && !closedList.Contains(neigh))
                         list.Add(neigh);
                 }
             }
             list.Remove(n);
+            closedList.Add(n);
         }
         return null;
-
     }
 
     // override object.Equals
