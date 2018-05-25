@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: c0160d3ff95297543979af26a8ed4608
-timeCreated: 1500462643
-licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Cylinder02
     100002: Object85
@@ -32,10 +30,38 @@ ModelImporter:
     4300004: Object86
     4300006: Object87
     4300008: Object88
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cylinder02Mat
+    second: {fileID: 2100000, guid: 54b0407065a7b9a4283dab32286fd3f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Object85Mat
+    second: {fileID: 2100000, guid: 4e7e81ce38a1a6545b78fdbc6e413ac7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Object86Mat
+    second: {fileID: 2100000, guid: 4894f2e2c3e9d9a4fb4ff4149727348c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Object87Mat
+    second: {fileID: 2100000, guid: 32462bc78b185e14997c17df91c95f2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Object88Mat
+    second: {fileID: 2100000, guid: b082aabc029d9984487b23f1cad5417b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -48,6 +74,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -72,6 +100,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
