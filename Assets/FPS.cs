@@ -13,6 +13,6 @@ public class FPS : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Text>().text = (1f / Time.deltaTime).ToString();
+        gameObject.GetComponent<Text>().text = ((int)(1f / Time.deltaTime)).ToString();
     }
 }
